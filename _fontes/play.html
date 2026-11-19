@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:390px;height:844px;overflow:hidden;background:#fff;color:#1f1f1f;position:relative}
+.sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 30px;font-size:15px;font-weight:600}
+.sbar span:last-child{display:flex;gap:6px;align-items:center}
+.sbar i{display:block;background:#1f1f1f;border-radius:2px}
+/* ===== Google Play (Android) ===== */
+.android{font-family:'Google Sans',Roboto,sans-serif}
+.android .sbar{font-family:Roboto;font-weight:500;font-size:14px;height:36px}
+.gtop{height:56px;display:flex;align-items:center;padding:0 8px 0 12px;gap:6px}
+.gtop .ar{font-size:24px;color:#444;width:40px;text-align:center}
+.gtop .sp{margin-left:auto;display:flex;gap:22px;padding-right:12px}
+.gtop .sp i{width:18px;height:18px;border:2.2px solid #444;border-radius:50%;display:block}
+.gtop .sp b{width:4px;height:18px;background:radial-gradient(#444 1.8px,transparent 2.2px) 0 0/4px 7px;display:block}
+.ghead{display:flex;gap:20px;padding:10px 24px 0;align-items:center}
+.ghead img{width:80px;height:80px;border-radius:18px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.ghead h1{font-size:23px;font-weight:500;line-height:1.2}
+.ghead .dv{color:#01875f;font-size:14px;font-weight:500;margin-top:4px}
+.ghead .ia{font-size:11.5px;color:#5f6368;margin-top:2px}
+.gst{display:flex;justify-content:space-around;padding:22px 16px 0;text-align:center;font-size:12px;color:#5f6368}
+.gst div{flex:1;border-left:1px solid #e3e3e3}
+.gst div:first-child{border:0}
+.gst b{display:block;color:#1f1f1f;font-size:14px;font-weight:500;margin-bottom:3px}
+.gst .lv{display:inline-grid;place-items:center;width:17px;height:17px;background:#34a853;color:#fff;font-size:10px;font-weight:700;border-radius:2px}
+.ginst{margin:22px 24px 0;background:#01875f;color:#fff;height:40px;border-radius:20px;display:grid;place-items:center;font-weight:500;font-size:14px}
+.gdev{display:flex;gap:10px;align-items:center;padding:14px 24px 0;color:#5f6368;font-size:12.5px}
+.gdev i{width:15px;height:11px;border:1.8px solid #5f6368;border-radius:2px;display:block}
+.gshots{display:flex;gap:9px;padding:22px 0 0 24px;overflow:hidden}
+.gshots img{width:118px;flex:none;border-radius:8px}
+.gsec{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:center}
+.gsec b{font-size:18px;font-weight:500}
+.gsec span{font-size:22px;color:#444}
+.gtxt{padding:10px 24px 0;font-size:13.5px;color:#444;line-height:1.5;font-family:Roboto}
+.gtags{display:flex;gap:8px;padding:16px 24px 0}
+.gtags span{border:1px solid #c4c7c5;border-radius:8px;padding:6px 14px;font-size:13px;color:#444}
+.navb{position:absolute;left:0;right:0;bottom:0;height:64px;border-top:1px solid #eee;background:#fff;display:flex;justify-content:space-around;align-items:center;font-size:11.5px;color:#444;font-family:Roboto}
+.navb div{text-align:center}
+.navb i{display:block;margin:0 auto 4px;width:22px;height:16px;border:2px solid #444;border-radius:5px}
+.navb .on{color:#0b57d0;font-weight:500}
+.navb .on i{background:#c2e7ff;border-color:#c2e7ff;width:56px;height:28px;border-radius:14px;margin-bottom:2px}
+/* ===== App Store (iOS) ===== */
+.ios{font-family:-apple-system,'SF Pro Text',Inter,sans-serif}
+.itop{height:44px;display:flex;align-items:center;padding:0 16px;color:#0a84ff;font-size:17px;gap:4px}
+.itop b{font-size:24px;font-weight:400;margin-top:-3px}
+.ihead{display:flex;gap:16px;padding:6px 20px 0}
+.ihead img{width:118px;height:118px;border-radius:26px;border:.5px solid rgba(0,0,0,.12)}
+.ihead h1{font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-.2px}
+.ihead .su{font-size:14px;color:#8a8a8e;margin-top:3px}
+.ihead .row{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
+.get{background:#0a84ff;color:#fff;font-weight:700;font-size:15px;padding:6px 22px;border-radius:99px}
+.sh{width:28px;height:28px;color:#0a84ff;font-size:20px;text-align:center}
+.iinfo{display:flex;margin:22px 0 0 20px;padding:12px 0;border-top:.5px solid #d1d1d6;border-bottom:.5px solid #d1d1d6;overflow:hidden}
+.iinfo div{flex:none;width:112px;text-align:center;border-left:.5px solid #d1d1d6;padding:0 6px}
+.iinfo div:first-child{border:0}
+.iinfo small{display:block;font-size:10.5px;color:#8a8a8e;text-transform:uppercase;letter-spacing:.02em;font-weight:500}
+.iinfo b{display:block;font-size:20px;color:#6c6c70;font-weight:700;margin:4px 0 2px}
+.iinfo span{font-size:12px;color:#8a8a8e}
+.inew{padding:18px 20px 0}
+.inew b{font-size:21px;font-weight:700;letter-spacing:-.3px}
+.ishots{display:flex;gap:10px;padding:14px 0 0 20px;overflow:hidden}
+.ishots img{width:212px;flex:none;border-radius:18px;border:.5px solid rgba(0,0,0,.1)}
+.idev{display:flex;align-items:center;gap:8px;padding:12px 20px 0;font-size:13px;color:#8a8a8e}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:82px;background:rgba(249,249,249,.96);border-top:.5px solid #d1d1d6;display:flex;justify-content:space-around;padding-top:8px;font-size:10px;color:#8a8a8e}
+.tabs div{text-align:center;width:60px}
+.tabs i{display:block;width:26px;height:24px;margin:0 auto 3px;border-radius:6px;background:#b6b6bb}
+.tabs .on{color:#0a84ff}.tabs .on i{background:#0a84ff}
+.hide{display:none}
+</style></head><body>
+<div id="android">
+  <div class="sbar"><span>9:41</span><span><i style="width:16px;height:10px"></i><i style="width:14px;height:10px"></i><i style="width:22px;height:11px;border-radius:3px"></i></span></div>
+  <div class="gtop"><span class="ar">←</span><span class="sp"><i></i><b></b></span></div>
+  <div class="ghead"><img src="../img/icone.png"><div><h1>Fortal Loca &amp; Vende: Aluguel de Motos</h1><div class="dv">Pedro-Martins</div></div></div>
+  <div class="gst"><div><b><span class="lv">L</span></b>Classificação Livre</div><div><b>Grátis</b>download</div><div><b>Novo</b>lançamento</div></div>
+  <div class="ginst">Instalar</div>
+  <div class="gdev"><i></i>Este app está disponível para seu dispositivo</div>
+  <div class="gshots"><img src="../img/loja/01-inicio.jpg"><img src="../img/loja/02-financeiro.jpg"><img src="../img/loja/04-troca-oleo.jpg"><img src="../img/loja/05-mais.jpg"></div>
+  <div class="gsec"><b>Sobre este app</b><span>→</span></div>
+  <div class="gtxt">Alugue sua moto com intenção de compra. Pague a semana no Pix, acompanhe contrato, multas e vistorias. Na última parcela, a moto é sua.</div>
+  <div class="gtags"><span>Auto e veículos</span><span>Fortaleza</span></div>
+  <div class="navb"><div><i></i>Jogos</div><div class="on"><i></i>Apps</div><div><i></i>Pesquisar</div><div><i></i>Livros</div></div>
+</div>
+<div id="ios" class="hide">
+  <div class="sbar"><span>9:41</span><span><i style="width:17px;height:11px"></i><i style="width:15px;height:11px"></i><i style="width:25px;height:12px;border-radius:4px"></i></span></div>
+  <div class="itop"><b>‹</b>Buscar</div>
+  <div class="ihead"><img src="../img/icone.png"><div style="flex:1;min-width:0"><h1>Fortal Loca &amp; Vende</h1><div class="su">Aluguel de motos com intenção de compra</div><div class="row"><span class="get">Obter</span><span class="sh">⇪</span></div></div></div>
+  <div class="iinfo"><div><small>Idade</small><b>4+</b><span>Anos</span></div><div><small>Categoria</small><b>🚗</b><span>Estilo de vida</span></div><div><small>Desenvolvedor</small><b>👤</b><span>Pedro Martins</span></div><div><small>Idioma</small><b>PT</b><span>Português</span></div></div>
+  <div class="inew"><b>Pré-visualizar</b></div>
+  <div class="ishots"><img src="../img/loja/01-inicio.jpg"><img src="../img/loja/02-financeiro.jpg"></div>
+  <div class="idev">📱 iPhone</div>
+  <div class="tabs"><div><i></i>Hoje</div><div><i></i>Jogos</div><div class="on"><i></i>Apps</div><div><i></i>Arcade</div><div><i></i>Buscar</div></div>
+</div>
+<script>if(location.hash==='#ios'){document.getElementById('android').className='android hide';document.getElementById('ios').className='ios'}else{document.getElementById('android').className='android'}</script>
+</body></html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:var(--w);height:var(--h);overflow:hidden}
+body{font-family:Archivo,sans-serif;background:#0a0a0b;color:#fff;position:relative}
+.bg{position:absolute;inset:0;background:
+ radial-gradient(circle at 78% 40%,rgba(227,18,27,.55),transparent 45%),
+ radial-gradient(circle at 10% 110%,rgba(227,18,27,.35),transparent 40%);}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000 20%,transparent 75%)}
+.sp{position:absolute;height:3px;background:linear-gradient(90deg,transparent,#e3121b,transparent)}
+.txt{position:absolute;z-index:2}
+.logo{display:block}
+.chip{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#e3121b;border-radius:99px}
+h1{font-weight:900;font-style:italic;font-stretch:125%;letter-spacing:-.035em;line-height:.95}
+h1 em{color:#ff2b34;font-style:italic}
+.tags{display:flex;flex-wrap:wrap}
+.tags span{font-weight:700;border:1px solid rgba(255,255,255,.22);border-radius:99px;background:rgba(255,255,255,.05);white-space:nowrap}
+.tags span.r{background:#fff;color:#0a0a0b;border-color:#fff}
+.by{font-family:'JetBrains Mono';color:#a1a1a8;letter-spacing:.08em;text-transform:uppercase}
+.by b{color:#fff}
+.ph{position:absolute;z-index:2;border-radius:46px;background:#050506;padding:11px;box-shadow:0 40px 90px -10px rgba(0,0,0,.9),inset 0 0 0 2px #2a2a2f}
+.ph img{display:block;border-radius:36px;width:100%}
+.card{position:absolute;z-index:3;background:#fff;color:#111;border-radius:16px;box-shadow:0 24px 50px -10px rgba(0,0,0,.7);display:flex;align-items:center;gap:12px;font-weight:700}
+.card i{display:grid;place-items:center;border-radius:10px;font-style:normal;color:#fff}
+.card small{display:block;font-family:'JetBrains Mono';font-weight:500;color:#666}
+/* paisagem 1200x630 */
+.l .txt{left:60px;top:52px;width:620px}
+.l .logo{width:360px;margin-bottom:22px}
+.l .chip{font-size:14px;padding:7px 14px}
+.l h1{font-size:60px;margin:20px 0 22px}
+.l .tags{gap:8px;max-width:560px}
+.l .tags span{font-size:16px;padding:7px 14px}
+.l .by{position:absolute;left:64px;bottom:34px;font-size:14px;z-index:2}
+.l .ph{width:232px;right:96px;top:40px;transform:rotate(6deg)}
+.l .ph.b{width:200px;right:300px;top:110px;transform:rotate(-8deg);opacity:.92}
+.l .c1{right:24px;top:150px;padding:12px 16px;font-size:16px}
+.l .c2{right:230px;bottom:34px;padding:12px 16px;font-size:16px}
+.l .card i{width:34px;height:34px;font-size:18px}
+.l .card small{font-size:11px}
+/* quadrado 1080 */
+.q .txt{left:70px;top:70px;width:940px}
+.q .logo{width:520px;margin-bottom:30px}
+.q .chip{font-size:18px;padding:9px 18px}
+.q h1{font-size:86px;margin:28px 0 28px}
+.q .tags{gap:10px;max-width:600px}
+.q .tags span{font-size:21px;padding:9px 18px}
+.q .by{position:absolute;left:70px;bottom:56px;font-size:19px;z-index:2}
+.q .ph{width:300px;right:64px;bottom:-170px;transform:rotate(7deg)}
+.q .ph.b{display:none}
+.q .c1{right:300px;bottom:330px;padding:14px 18px;font-size:20px}
+.q .c2{right:290px;bottom:160px;padding:14px 18px;font-size:20px}
+.q .card i{width:40px;height:40px;font-size:20px}
+.q .card small{font-size:13px}
+</style></head>
+<body>
+<div class="bg"></div><div class="grid"></div>
+<i class="sp" style="top:22%;left:-5%;width:42%"></i><i class="sp" style="top:64%;left:30%;width:36%;opacity:.6"></i><i class="sp" style="bottom:12%;left:-10%;width:30%;opacity:.5"></i>
+<div class="txt">
+  <img class="logo" src="../img/logo-fortal.png" alt="">
+  <span class="chip">Proposta exclusiva</span>
+  <h1>Tudo da Fortal<br><em>num sistema só.</em></h1>
+  <div class="tags"><span>ÁgilLock</span><span>SafeLock</span><span>VozChat</span><span class="r">App nas lojas</span><span>Compra e Venda</span><span>Multas no mesmo dia</span></div>
+</div>
+<div class="ph b"><img src="../img/loja/tela-financeiro.jpg" alt=""></div>
+<div class="ph"><img src="../img/loja/tela-inicio.jpg" alt=""></div>
+<div class="card c1"><i style="background:#2fd27a">✓</i><div>Passou na SafeLock<small>direto no WhatsApp</small></div></div>
+<div class="card c2"><i style="background:#e3121b">▶</i><div>Contrato assinado<small>em 2 min 10 s</small></div></div>
+<div class="by">Preparado por <b>Pedro Castro</b> · nov 2026</div>
+<script>
+var q=location.hash==='#q';document.documentElement.style.setProperty('--w',q?'1080px':'1200px');document.documentElement.style.setProperty('--h',q?'1080px':'630px');document.body.className=q?'q':'l';
+</script>
+</body></html>

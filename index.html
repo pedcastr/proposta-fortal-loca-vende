@@ -1,0 +1,1795 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0b" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" href="img/favicon.png" />
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+<title>Proposta Fortal Loca & Vende</title>
+<meta name="description" content="Proposta exclusiva: o sistema próprio da Fortal Loca & Vende, com ÁgilLock, SafeLock e VozChat integrados, app com a marca da Fortal nas lojas e área de Compra e Venda." />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Proposta · Fortal Loca & Vende" />
+<meta property="og:url" content="https://pedcastr.github.io/proposta-fortal-loca-vende/" />
+<meta property="og:title" content="Fortal Loca & Vende · o sistema próprio da sua locadora" />
+<meta property="og:description" content="A Fortal já usa os sistemas da ÁgilLock e da SafeLock, que eu desenvolvo e mantenho. Agora tudo isso num sistema só, com a marca da Fortal e app nas lojas." />
+<meta property="og:image" content="https://pedcastr.github.io/proposta-fortal-loca-vende/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://pedcastr.github.io/proposta-fortal-loca-vende/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --ink:#0a0a0b; --ink-2:#111113; --ink-3:#18181b; --ink-4:#222226; --line-d:rgba(255,255,255,.09);
+  --paper:#f5f3ef; --paper-2:#ebe8e2; --line:#dcd8d0; --text:#141414; --muted:#66625b; --muted-d:#9b9a9f;
+  --red:#e3121b; --red-2:#ff2b34; --red-d:#a80d14; --red-soft:rgba(227,18,27,.14);
+  --ok:#2fd27a; --warn:#ffb020; --blue:#3b82f6;
+  --radius:16px; --maxw:1200px;
+  --sans:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--ink);color:#ededee;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+::selection{background:var(--red);color:#fff}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 16px}}
+.mono{font-family:var(--mono)}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.label::before{content:'';width:28px;height:2px;background:var(--red)}
+.light .label{color:var(--muted)}
+.display{font-weight:800;font-stretch:118%;letter-spacing:-.03em;line-height:.98}
+.it{font-style:italic;font-weight:900;font-stretch:125%}
+.hl{color:var(--red-2)}
+.light .hl{color:var(--red)}
+h2.title{font-size:clamp(2.1rem,5.4vw,3.9rem);margin:18px 0 18px}
+.lead{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--muted-d);max-width:660px}
+.light .lead{color:var(--muted)}
+section{position:relative}
+.pad{padding:120px 0}
+@media(max-width:720px){.pad{padding:78px 0}}
+.light{background:var(--paper);color:var(--text)}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}.center .label{justify-content:center}
+.grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line-d) 1px,transparent 1px),linear-gradient(90deg,var(--line-d) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 78%)}
+.glow{position:absolute;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle,rgba(227,18,27,.28),transparent 62%);pointer-events:none;transform:translate(-50%,-50%)}
+.speed{position:absolute;pointer-events:none;inset:0;overflow:hidden}
+.speed i{position:absolute;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.5;animation:streak 3.2s linear infinite}
+@keyframes streak{from{transform:translateX(-120%)}to{transform:translateX(120vw)}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .2em;margin:0 -.05em -.2em}
+.split .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease)}
+.split.in .w>span{transform:none}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:.98rem;border:1px solid transparent;cursor:pointer;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 12px 34px -10px rgba(227,18,27,.7)}
+.btn-red:hover{background:var(--red-2);transform:translateY(-2px)}
+.btn-line{border-color:rgba(255,255,255,.25);color:#fff}
+.btn-line:hover{border-color:var(--red-2);color:var(--red-2)}
+.light .btn-line{border-color:rgba(0,0,0,.2);color:var(--text)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:100}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(10,10,11,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-d)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{height:34px;width:auto}
+.brand small{display:block;font-family:var(--mono);font-size:.62rem;color:var(--muted-d);letter-spacing:.08em;text-transform:uppercase;border-left:1px solid var(--line-d);padding-left:14px;line-height:1.35;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:.92rem}
+.nav-links a:not(.btn){color:#c9c9cc;transition:color .2s}
+.nav-links a:not(.btn):hover{color:var(--red-2)}
+.nav-links .btn{padding:10px 18px;font-size:.86rem}
+@media(max-width:1020px){.nav-links a:not(.btn){display:none}}
+@media(max-width:420px){.hide-s{display:none}}
+@media(max-width:560px){.brand small{display:none}.brand img{height:28px}.nav-links .btn{padding:9px 14px;font-size:.8rem}}
+
+/* HERO */
+.hero{min-height:100vh;padding:140px 0 90px;overflow:hidden;display:flex;align-items:center}
+.hero .glow{left:var(--gx,70%);top:var(--gy,35%);transition:left .6s var(--ease),top .6s var(--ease)}
+.hero-in{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:1040px){.hero-in{grid-template-columns:1fr;gap:56px}}
+.hero-in>*,.split2>*,.feat>*,.dev>*,.prices>*,.incl>*,.store-grid>*,.cv-grid>*{min-width:0}
+.hero-logo{width:min(420px,88%);margin-bottom:28px;filter:drop-shadow(0 12px 40px rgba(227,18,27,.35))}
+.for{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--line-d);border-radius:999px;font-size:.82rem;color:#d7d7da;background:rgba(255,255,255,.03);max-width:100%}
+.for b{background:var(--red);color:#fff;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;padding:3px 8px;border-radius:99px;font-weight:600}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);margin:24px 0 24px}
+.hero .lead{font-size:clamp(1.05rem,1.7vw,1.22rem)}
+.hero .lead b{color:#fff}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+@media(max-width:560px){.hero-ctas .btn{flex:1 1 100%}}
+.hero-meta{display:flex;flex-wrap:wrap;gap:22px 34px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line-d)}
+.hero-meta div{font-size:.92rem;font-weight:700}
+.hero-meta small{display:block;font-family:var(--mono);font-size:.64rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;font-weight:400}
+
+/* browser / screen mocks */
+.win{position:relative;border-radius:16px;background:#0f0f11;border:1px solid var(--line-d);box-shadow:0 50px 120px -30px rgba(0,0,0,.85),0 0 0 1px rgba(227,18,27,.06);overflow:hidden}
+.win-top{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line-d);background:#0c0c0e}
+.win-top i{width:9px;height:9px;border-radius:50%;background:#2a2a2f}
+.win-top i:first-child{background:var(--red)}
+.win-top span{margin-left:10px;font-family:var(--mono);font-size:.66rem;color:var(--muted-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app{display:grid;grid-template-columns:168px 1fr;min-height:400px}
+@media(max-width:700px){.app{grid-template-columns:1fr}.side{display:none!important}}
+.side{background:#0c0c0e;border-right:1px solid var(--line-d);padding:14px 10px;display:flex;flex-direction:column;gap:3px}
+.side img{width:120px;margin:4px 6px 16px}
+.side a{display:flex;align-items:center;gap:9px;font-size:.72rem;color:#a9a9ae;padding:7px 9px;border-radius:8px}
+.side a i{width:14px;height:14px;border-radius:4px;background:#2a2a2f;flex:none}
+.side a.on{background:var(--red-soft);color:#fff}
+.side a.on i{background:var(--red)}
+.side .sep{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;color:#5d5d63;text-transform:uppercase;margin:10px 9px 4px}
+.main{padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.main-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.main-h b{font-size:1rem;font-weight:800;font-stretch:112%}
+.main-h small{font-family:var(--mono);font-size:.6rem;color:var(--muted-d)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.6rem;padding:3px 9px;border-radius:99px;background:var(--ink-4);color:#d4d4d8;white-space:nowrap}
+.pill.r{background:var(--red-soft);color:#ff6a70}
+.pill.g{background:rgba(47,210,122,.13);color:var(--ok)}
+.pill.y{background:rgba(255,176,32,.14);color:var(--warn)}
+.pill.b{background:rgba(59,130,246,.15);color:#7fb0ff}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:520px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--ink-3);border:1px solid var(--line-d);border-radius:10px;padding:10px 12px;min-width:0}
+.kpi small{display:block;font-family:var(--mono);font-size:.56rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi strong{font-size:1.06rem;font-weight:800;font-stretch:110%;white-space:nowrap}
+.kpi.r{background:linear-gradient(150deg,var(--red),var(--red-d));border-color:transparent}
+.kpi.r small{color:rgba(255,255,255,.75)}
+.kpi em{display:block;font-style:normal;font-family:var(--mono);font-size:.56rem;color:var(--ok);margin-top:2px}
+.kpi.r em{color:#fff}
+.box-d{background:var(--ink-3);border:1px solid var(--line-d);border-radius:10px;padding:12px;min-width:0;position:relative}
+.box-d>small{font-family:var(--mono);font-size:.58rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em;display:flex;justify-content:space-between;gap:8px}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.chart svg{width:100%;height:118px;display:block;margin-top:6px}
+.ln{stroke-dasharray:900;stroke-dashoffset:900}
+.in .ln,.ln.go{animation:draw 2.4s .3s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.donut{display:flex;align-items:center;gap:14px;margin-top:8px}
+.donut svg{width:84px;height:84px;flex:none}
+.legend{display:flex;flex-direction:column;gap:5px;font-size:.66rem;color:#c9c9cd}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:8px;height:8px;border-radius:2px;display:block}
+.rows{display:flex;flex-direction:column;gap:6px}
+.row{display:flex;align-items:center;gap:10px;font-size:.72rem;background:#141417;border:1px solid var(--line-d);border-radius:8px;padding:8px 10px;min-width:0}
+.row .dot{width:7px;height:7px;border-radius:50%;flex:none}
+.row span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#d2d2d6}
+.row strong{font-family:var(--mono);font-size:.68rem;white-space:nowrap}
+.toast{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:10px;background:#fff;color:var(--ink);padding:10px 14px;border-radius:12px;font-size:.76rem;font-weight:700;box-shadow:0 18px 40px rgba(0,0,0,.5);transform:translateY(140%);opacity:0;transition:transform .7s var(--ease),opacity .7s;max-width:calc(100% - 28px);border-left:4px solid var(--red)}
+.toast.show{transform:none;opacity:1}
+.toast small{display:block;font-weight:500;font-size:.66rem;opacity:.7}
+.toast svg{width:18px;height:18px;flex:none;color:var(--red)}
+.caption{font-family:var(--mono);font-size:.64rem;color:var(--muted-d);text-align:right;margin-top:10px;letter-spacing:.06em}
+.light .caption{color:var(--muted)}
+.float{position:absolute;z-index:3;background:rgba(17,17,19,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-d);border-radius:14px;padding:10px 14px;font-size:.74rem;display:flex;align-items:center;gap:10px;box-shadow:0 20px 50px -10px rgba(0,0,0,.7);animation:bob 5s ease-in-out infinite}
+.float b{display:block;font-size:.8rem}
+.float small{font-family:var(--mono);font-size:.6rem;color:var(--muted-d)}
+.float .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none}
+.float .ic svg{width:16px;height:16px}
+.f1{left:-26px;top:22%}.f2{right:-22px;top:54%;animation-delay:-2s}.f3{left:12%;bottom:-24px;animation-delay:-3.4s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@media(max-width:1040px){.f1{left:8px;top:-18px}.f2{right:8px;top:auto;bottom:40%}.f3{left:8px;bottom:-22px}}
+@media(max-width:560px){.float{font-size:.66rem;padding:8px 10px}.float .ic{width:24px;height:24px}.f2{display:none}}
+.hero-vis{position:relative}
+
+/* MARQUEE */
+.marquee{border-block:1px solid var(--line-d);overflow:hidden;padding:22px 0;background:var(--red)}
+.mq-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq-track span{display:flex;align-items:center;gap:22px;padding-right:22px;font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(1.2rem,2.4vw,1.8rem);letter-spacing:-.01em;white-space:nowrap;color:#fff;text-transform:uppercase}
+.mq-track span i{width:9px;height:9px;background:#0a0a0b;transform:rotate(45deg);display:block}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* REVELAÇÃO */
+.reveal-h{max-width:900px}
+.used{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+@media(max-width:860px){.used{grid-template-columns:1fr}}
+.u-card{position:relative;border-radius:24px;padding:34px 30px;background:#fff;border:1px solid var(--line);overflow:hidden;min-width:0}
+.u-card .tagline{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.u-card h3{font-size:clamp(2rem,4vw,2.8rem);font-weight:900;font-stretch:122%;font-style:italic;letter-spacing:-.03em;margin:10px 0 4px;line-height:1}
+.u-card .role{font-weight:700;font-size:1.02rem}
+.u-card ul{list-style:none;margin:20px 0 22px;display:flex;flex-direction:column;gap:9px}
+.u-card li{display:flex;gap:10px;font-size:.95rem;color:#3c3a36}
+.u-card li::before{content:'';flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)}
+.u-card .made{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:8px 14px 8px 8px;border-radius:99px;font-size:.82rem;font-weight:700}
+.u-card .made img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.u-card .big-ic{position:absolute;right:-30px;top:-30px;width:170px;height:170px;border-radius:50%;background:var(--red-soft);display:grid;place-items:center}
+.u-card .big-ic svg{width:64px;height:64px;color:var(--red);margin:30px 30px 0 0}
+.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1.35fr;gap:14px;align-items:center;margin-top:70px}
+@media(max-width:960px){.eq{grid-template-columns:1fr 1fr;gap:12px}.eq .op{display:none}}
+.eq-i{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff;text-align:center;min-width:0;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:120px}
+.eq-i b{display:block;font-size:1.25rem;font-weight:900;font-stretch:120%;font-style:italic}
+.eq-i small{font-family:var(--mono);font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.eq .op{font-size:2rem;font-weight:900;color:var(--red)}
+.eq-res{background:var(--ink);border-color:var(--ink);color:#fff;padding:22px;position:relative;overflow:hidden}
+@media(max-width:960px){.eq-res{grid-column:1/-1}}
+.eq-res img{width:180px;margin:0 auto 8px}
+.eq-res small{color:#c9c9cd}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:70px}
+@media(max-width:760px){.facts{grid-template-columns:1fr}}
+.fact{padding:30px 26px 6px 0}
+.fact+.fact{padding-left:26px;border-left:1px solid var(--line)}
+@media(max-width:760px){.fact+.fact{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+.fact strong{display:block;font-size:clamp(2.8rem,5vw,4rem);font-weight:900;font-stretch:120%;letter-spacing:-.04em;line-height:1;font-style:italic}
+.fact strong span{color:var(--red)}
+.fact p{color:var(--muted);margin-top:10px;font-size:.98rem}
+
+/* PRINTS */
+.shots-tabs{display:flex;gap:8px;margin:40px 0 22px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.shots-tabs::-webkit-scrollbar{display:none}
+.stab{flex:none;padding:10px 18px;border-radius:999px;border:1px solid var(--line-d);background:transparent;color:#d2d2d6;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s}
+.stab:hover{border-color:#fff}
+.stab.on{background:var(--red);color:#fff;border-color:var(--red)}
+.shot{display:none}
+.shot.on{display:flex;animation:shotIn .6s var(--ease)}
+@keyframes shotIn{from{opacity:0;transform:translateY(14px)}}
+.tbl{width:100%;border-collapse:collapse;font-size:.7rem}
+.tbl th{font-family:var(--mono);font-size:.56rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em;text-align:left;font-weight:500;padding:6px 8px;border-bottom:1px solid var(--line-d);white-space:nowrap}
+.tbl td{padding:8px;border-bottom:1px solid var(--line-d);color:#d6d6da;white-space:nowrap}
+.tbl td:last-child,.tbl th:last-child{text-align:right}
+.tbl-w{overflow-x:auto;border-radius:10px;border:1px solid var(--line-d);background:#131316}
+.plate{font-family:var(--mono);font-size:.62rem;background:#fff;color:#111;padding:1px 6px;border-radius:3px;border-top:3px solid #1d4ed8;font-weight:600;letter-spacing:.04em;display:inline-block}
+.bars-h{display:flex;flex-direction:column;gap:9px;margin-top:10px}
+.bh{display:grid;grid-template-columns:110px 1fr 74px;gap:10px;align-items:center;font-size:.68rem}
+@media(max-width:480px){.bh{grid-template-columns:84px 1fr 64px}}
+.bh span{color:#cfcfd3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bh .tr{height:8px;background:#26262b;border-radius:9px;overflow:hidden;display:flex}
+.bh .tr i{display:block;height:100%;width:0;transition:width 1.2s var(--ease)}
+.bh strong{text-align:right;font-family:var(--mono);font-size:.66rem}
+.in .bh .tr i,.shot.on .bh .tr i{width:var(--w)}
+
+/* FEATURE blocks */
+.feat{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center;padding:100px 0;border-top:1px solid var(--line-d)}
+.light .feat{border-color:var(--line)}
+.feat.first{border-top:0;padding-top:40px}
+.feat.rev{grid-template-columns:1.1fr 1fr}
+.feat.rev .feat-txt{order:2}
+@media(max-width:980px){.feat,.feat.rev{grid-template-columns:1fr;gap:40px;padding:70px 0}.feat.rev .feat-txt{order:0}.feat.first{padding-top:30px}}
+.feat h3{font-size:clamp(1.9rem,3.8vw,2.9rem);margin:16px 0 18px}
+.feat ul{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px}
+.feat li{display:block;position:relative;padding-left:19px;color:#d0d0d4;font-size:.98rem}
+.light .feat li{color:#3c3a36}
+.feat li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--red);transform:rotate(45deg)}
+.feat li b{color:#fff}
+.light .feat li b{color:var(--text)}
+.badge-new{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 10px;border-radius:4px;font-weight:600}
+.panel{background:var(--ink-2);border:1px solid var(--line-d);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;min-width:0}
+.light .panel.dk{background:var(--ink);color:#ededee;border-color:var(--ink)}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.panel-h b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-d);font-weight:500}
+.mini-btn{font-family:var(--mono);font-size:.72rem;padding:8px 14px;border-radius:8px;border:1px solid var(--red);background:var(--red);color:#fff;cursor:pointer;font-weight:600;transition:opacity .2s}
+.mini-btn.ghost{background:transparent;color:#ff6a70}
+.mini-btn:disabled{opacity:.4;cursor:default}
+
+/* MAPA */
+.map{position:relative;border-radius:12px;overflow:hidden;background:#101114;border:1px solid var(--line-d);aspect-ratio:16/11}
+.map svg.streets{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--ok);border:2px solid #0a0a0b;box-shadow:0 0 0 0 rgba(47,210,122,.6);animation:ping 2.4s infinite}
+.pin.st{background:#8a8a90;animation:none}
+.pin.al{background:var(--red);animation:pingr 1.4s infinite;width:18px;height:18px}
+@keyframes ping{70%{box-shadow:0 0 0 12px rgba(47,210,122,0)}100%{box-shadow:0 0 0 0 rgba(47,210,122,0)}}
+@keyframes pingr{0%{box-shadow:0 0 0 0 rgba(227,18,27,.7)}70%{box-shadow:0 0 0 16px rgba(227,18,27,0)}100%{box-shadow:0 0 0 0 rgba(227,18,27,0)}}
+.map-pop{position:absolute;background:#fff;color:#111;border-radius:10px;padding:9px 11px;font-size:.66rem;box-shadow:0 14px 34px rgba(0,0,0,.5);min-width:150px;max-width:62%}
+.map-pop b{display:block;font-size:.74rem}
+.map-pop small{font-family:var(--mono);font-size:.58rem;color:#666;display:block}
+.map-pop .pill{margin-top:5px}
+.map-legend{position:absolute;left:10px;top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.map-legend .pill{background:rgba(10,10,11,.8)}
+.trk-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:480px){.trk-grid{grid-template-columns:1fr}}
+.oil{margin-top:8px}
+.oil .tr{height:10px;background:#26262b;border-radius:9px;overflow:hidden}
+.oil .tr i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ok),var(--warn) 70%,var(--red));border-radius:9px;transition:width 1.6s var(--ease)}
+.in .oil .tr i{width:var(--w)}
+.oil div{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.58rem;color:var(--muted-d);margin-top:5px}
+.km{font-size:1.5rem;font-weight:900;font-stretch:115%;margin-top:4px}
+.km small{font-size:.6rem;font-family:var(--mono);color:var(--ok);font-weight:500;margin-left:6px}
+
+/* SAFELOCK FLOW */
+.sl{display:grid;grid-template-columns:.95fr 1.05fr;gap:14px}
+@media(max-width:620px){.sl{grid-template-columns:1fr}}
+.wa{background:#0b141a;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-height:340px;border:1px solid var(--line-d)}
+.wa-top{background:#1f2c34;padding:9px 12px;display:flex;align-items:center;gap:9px;font-size:.72rem}
+.wa-top i{width:26px;height:26px;border-radius:50%;background:#3b4a54;display:block;flex:none}
+.wa-top small{display:block;font-size:.58rem;color:#8696a0}
+.wa-body{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.025),transparent 50%)}
+.bub{max-width:88%;font-size:.7rem;padding:7px 9px;border-radius:9px;line-height:1.4;opacity:0;transform:translateY(8px);transition:all .5s var(--ease);color:#e9edef}
+.bub.show{opacity:1;transform:none}
+.bub.in{align-self:flex-start;background:#202c33;border-top-left-radius:2px}
+.bub.out{align-self:flex-end;background:#005c4b;border-top-right-radius:2px}
+.bub small{display:block;font-size:.54rem;color:rgba(233,237,239,.6);text-align:right;margin-top:2px}
+.cnh{width:150px;height:92px;border-radius:6px;background:linear-gradient(135deg,#cfe3c6,#9cc39a);position:relative;overflow:hidden;margin-bottom:3px}
+.cnh::before{content:'';position:absolute;left:8px;top:16px;width:30px;height:40px;background:#7a8f74;border-radius:3px}
+.cnh::after{content:'';position:absolute;left:46px;top:18px;right:10px;height:4px;background:#5f7559;box-shadow:0 10px 0 #5f7559,0 20px 0 #5f7559,0 30px 0 #5f7559,0 44px 0 #5f7559}
+.cnh .scan{position:absolute;left:0;right:0;height:2px;background:var(--red-2);box-shadow:0 0 12px var(--red-2);top:0;opacity:0}
+.cnh.go .scan{opacity:1;animation:scan 1.4s ease-in-out 2}
+@keyframes scan{50%{top:100%}}
+.kb3{display:flex;flex-direction:column;gap:8px}
+.kcol{background:#141417;border:1px solid var(--line-d);border-radius:10px;padding:8px;min-height:88px}
+.kcol h6{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-d);font-weight:500;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
+.kcol h6 i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
+.kc{background:#1d1d21;border:1px solid var(--line-d);border-radius:8px;padding:7px 9px;font-size:.68rem;margin-bottom:5px;color:#dcdce0;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.kc small{display:block;font-family:var(--mono);font-size:.54rem;color:var(--muted-d)}
+.kc.live{border-color:var(--red);box-shadow:0 0 0 3px rgba(227,18,27,.18);animation:pop .5s var(--ease)}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.sl-steps{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.sl-steps span{font-family:var(--mono);font-size:.6rem;padding:4px 9px;border-radius:99px;border:1px solid var(--line-d);color:var(--muted-d);transition:all .3s}
+.sl-steps span.on{background:var(--red);border-color:var(--red);color:#fff}
+.convert{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(120deg,rgba(227,18,27,.16),transparent);border:1px solid rgba(227,18,27,.35);border-radius:10px;padding:10px 12px;font-size:.74rem;flex-wrap:wrap}
+.convert b{display:block;font-size:.8rem}
+.convert small{color:var(--muted-d);font-size:.64rem}
+
+.vzshot{padding:0 0 100px}
+.vz-h{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.vz-h b{font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:800;font-stretch:112%}
+.vz-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff}
+.vz-scroll img{width:100%;min-width:760px}
+@media(max-width:980px){.vzshot{padding-bottom:70px}}
+/* MULTAS */
+.mt{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.mt{grid-template-columns:1fr}}
+.tline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:22px}
+.tline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:#26262b}
+.tl-i{position:relative;padding:0 0 14px;opacity:.25;transition:opacity .5s}
+.tl-i.on{opacity:1}
+.tl-i::before{content:'';position:absolute;left:-21px;top:4px;width:12px;height:12px;border-radius:50%;background:#26262b;border:2px solid #0a0a0b;transition:background .4s}
+.tl-i.on::before{background:var(--red)}
+.tl-i b{display:block;font-size:.76rem}
+.tl-i small{font-family:var(--mono);font-size:.6rem;color:var(--muted-d)}
+.week{background:#f5f3ef;color:#111;border-radius:12px;padding:14px;position:relative}
+.week h6{font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:#777;font-weight:500}
+.week h5{font-size:.95rem;font-weight:800;margin:2px 0 10px}
+.wl{display:flex;justify-content:space-between;font-size:.72rem;padding:7px 0;border-bottom:1px dashed #d4d0c8}
+.wl.add{color:var(--red);font-weight:700;max-height:0;overflow:hidden;padding:0;opacity:0;transition:all .6s var(--ease);border-bottom-color:transparent}
+.wl.add.on{max-height:40px;padding:7px 0;opacity:1;border-bottom-color:#d4d0c8}
+.wtot{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px}
+.wtot strong{font-size:1.4rem;font-weight:900;font-stretch:115%}
+.wtot span{font-size:.66rem;color:#777;font-family:var(--mono)}
+
+/* contrato */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.doc{background:#f5f3ef;color:var(--text);border-radius:12px;padding:16px;position:relative;min-height:230px}
+.doc .l{height:6px;background:#d9d5cc;border-radius:3px;margin-bottom:7px}
+.doc h6{font-size:.76rem;font-weight:800;margin-bottom:4px}
+.doc .sub{font-family:var(--mono);font-size:.56rem;color:#777;margin-bottom:10px;display:block}
+.sig{position:absolute;left:16px;right:16px;bottom:16px;border-top:1px solid #bbb;padding-top:8px;font-family:var(--mono);font-size:.6rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:6px}
+.stamp{font-family:var(--mono);font-size:.6rem;font-weight:600;color:#0d7a3f;border:1.5px solid #0d7a3f;padding:3px 7px;border-radius:4px;transform:rotate(-6deg) scale(1.6);opacity:0;transition:all .5s var(--ease)}
+.stamp.on{transform:rotate(-6deg) scale(1);opacity:1}
+.signers{display:flex;flex-direction:column;gap:8px}
+.signer{background:#141417;border:1px solid var(--line-d);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.72rem}
+.signer small{display:block;font-family:var(--mono);font-size:.56rem;color:var(--muted-d)}
+.opt2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.opt2 div{border:1px solid var(--line-d);border-radius:10px;padding:10px;font-size:.7rem;background:#141417}
+.opt2 div b{display:block;font-size:.78rem;margin-bottom:2px}
+.opt2 div.on{border-color:var(--red);background:rgba(227,18,27,.08)}
+
+/* cronômetro do contrato */
+.clock{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,rgba(227,18,27,.2),rgba(227,18,27,.04));border:1px solid rgba(227,18,27,.4);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.clock-t{flex:none;text-align:center}
+.clock-t small{display:block;font-family:var(--mono);font-size:.54rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.12em}
+.clock-t strong{font-family:var(--mono);font-size:1.9rem;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.1}
+.clock-m{min-width:0}
+.clock-m b{display:block;font-size:.86rem}
+.clock-m small{font-family:var(--mono);font-size:.58rem;color:var(--muted-d)}
+.chain{display:flex;flex-direction:column;gap:6px}
+.ch{display:flex;align-items:center;gap:10px;background:#141417;border:1px solid var(--line-d);border-radius:10px;padding:8px 10px;font-size:.72rem;opacity:.28;transition:all .45s var(--ease)}
+.ch.on{opacity:1;border-color:rgba(47,210,122,.4);background:rgba(47,210,122,.05)}
+.ch .n{width:24px;height:24px;border-radius:7px;background:var(--ink-4);display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;flex:none}
+.ch.on .n{background:var(--ok);color:#06210f}
+.ch div{flex:1;min-width:0}
+.ch b{display:block;font-size:.74rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch small{display:block;font-family:var(--mono);font-size:.56rem;color:var(--muted-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch em{font-style:normal;font-family:var(--mono);font-size:.62rem;color:var(--ok);flex:none}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;opacity:.3;transition:opacity .5s}
+.quick.on{opacity:1}
+.quick span{font-family:var(--mono);font-size:.62rem;padding:6px 10px;border-radius:8px;background:var(--ink-4);color:#e3e3e6;border:1px solid var(--line-d)}
+.quick span:first-child{background:#25d366;color:#05210f;border-color:#25d366;font-weight:600}
+/* logos de quem confia */
+.u-logo{height:64px;width:auto;margin:6px 0 10px}
+.u-logo.sq{height:96px}
+.eq-i img.lg{height:40px;width:auto;margin:0 auto 6px;object-fit:contain;max-width:100%}
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:60px}
+@media(max-width:820px){.wall{grid-template-columns:repeat(2,1fr)}}
+.wall div{background:#fff;border-radius:16px;height:120px;display:grid;place-items:center;padding:18px;position:relative;overflow:hidden;transition:transform .3s var(--ease)}
+.wall div:hover{transform:translateY(-4px)}
+.wall img{max-height:74px;max-width:88%;width:auto;object-fit:contain}
+.wall div.sq img{max-height:88px}
+.wall div.hot::after{content:'a Fortal usa';position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:.54rem;background:var(--red);color:#fff;padding:2px 7px;border-radius:4px;letter-spacing:.06em}
+.wall .txt{font-weight:900;font-style:italic;font-stretch:125%;font-size:1.6rem;color:#111;letter-spacing:-.03em;line-height:1;text-align:center}
+.wall .txt small{display:block;font-family:var(--mono);font-style:normal;font-weight:500;font-size:.56rem;letter-spacing:.14em;color:var(--red);margin-top:6px;text-transform:uppercase}
+
+/* bancos */
+.banks{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.bank{font-weight:800;font-stretch:112%;font-size:.88rem;padding:10px 16px;border-radius:12px;border:1px solid var(--line-d);background:var(--ink-3);color:#e6e6e9}
+.bank.any{background:var(--red);border-color:var(--red);color:#fff}
+.pixflow{display:flex;flex-direction:column;gap:8px}
+.pf{display:flex;align-items:center;gap:12px;background:#141417;border:1px solid var(--line-d);border-radius:10px;padding:10px 12px;font-size:.74rem;opacity:.3;transition:all .5s var(--ease)}
+.pf.on{opacity:1;border-color:rgba(47,210,122,.4)}
+.pf .n{width:26px;height:26px;border-radius:8px;background:var(--ink-4);display:grid;place-items:center;font-family:var(--mono);font-size:.66rem;flex:none}
+.pf.on .n{background:var(--ok);color:#06210f}
+.pf small{display:block;font-family:var(--mono);font-size:.58rem;color:var(--muted-d)}
+
+/* PHONES */
+.phone{width:250px;border-radius:40px;background:#050506;padding:10px;box-shadow:0 40px 90px -20px rgba(0,0,0,.6),inset 0 0 0 2px #2a2a2f;position:relative;flex:none}
+.phone::before{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:20px;background:#050506;z-index:5}
+.scr{width:100%;height:500px;border-radius:31px;overflow:hidden;background:#f6f5f2;color:var(--text);display:flex;flex-direction:column;font-size:.72rem;position:relative}
+.scr.real{background:#000}.scr.real img{width:100%;height:100%;object-fit:cover;object-position:top}
+.scr.dk{background:#0b141a;color:#e9edef}
+.phones{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px}
+.phones .phone.back{position:absolute;transform:translateX(100px) rotate(7deg) scale(.88);opacity:.9}
+.phones .phone.front{transform:translateX(-50px) rotate(-3deg);z-index:2}
+@media(max-width:560px){.phones{min-height:520px}.phones .phone.back{transform:translateX(62px) rotate(7deg) scale(.78)}.phones .phone.front{transform:translateX(-34px) rotate(-3deg) scale(.88)}}
+
+/* whatsapp phone */
+.wa-ph .wa-top{padding:40px 12px 10px}
+.wa-msgs{flex:1;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden;justify-content:flex-end}
+.tpl{align-self:flex-start;max-width:92%;background:#202c33;border-radius:9px;border-top-left-radius:2px;font-size:.66rem;line-height:1.42;overflow:hidden;opacity:0;transform:translateY(10px);transition:all .5s var(--ease)}
+.tpl.show{opacity:1;transform:none}
+.tpl .hd{background:linear-gradient(120deg,var(--red),var(--red-d));padding:8px 10px;display:flex;align-items:center;gap:8px}
+.tpl .hd img{height:14px;width:auto}
+.tpl .hd span{font-family:var(--mono);font-size:.54rem;color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-left:auto}
+.tpl p{padding:8px 10px 2px}
+.tpl small{display:block;text-align:right;font-size:.52rem;color:rgba(233,237,239,.55);padding:0 10px 6px}
+.tpl .bt{border-top:1px solid rgba(255,255,255,.08);text-align:center;color:#53bdeb;padding:7px;font-size:.66rem;font-weight:600}
+
+/* app screens */
+.as-top{background:var(--ink);color:#fff;padding:42px 16px 22px;position:relative;overflow:hidden}
+.as-top::after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(227,18,27,.5),transparent 65%)}
+.as-top img{height:20px;width:auto;margin-bottom:12px;position:relative;z-index:1}
+.as-top small{font-family:var(--mono);font-size:.54rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.1em;position:relative;z-index:1}
+.as-top b{display:block;font-size:1.05rem;font-stretch:112%;margin-top:2px;position:relative;z-index:1}
+.due{margin:-12px 12px 0;background:var(--red);border-radius:14px;padding:12px 14px;color:#fff;position:relative;z-index:2;box-shadow:0 12px 26px -8px rgba(227,18,27,.6)}
+.due small{font-size:.56rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+.due strong{display:block;font-size:1.45rem;font-weight:900;font-stretch:115%;margin:2px 0}
+.due span{display:inline-block;background:#fff;color:var(--red);font-weight:800;font-size:.62rem;padding:5px 10px;border-radius:99px;margin-top:4px}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:14px 12px}
+.icons div{background:#fff;border:1px solid #e5e2db;border-radius:10px;padding:9px 2px;text-align:center;font-size:.54rem;font-weight:700}
+.icons i{display:block;width:18px;height:18px;margin:0 auto 4px;border-radius:6px;background:var(--ink);position:relative}
+.icons i::after{content:'';position:absolute;inset:5px;border-radius:2px;background:var(--red)}
+.list-s{padding:0 12px;display:flex;flex-direction:column;gap:6px}
+.list-s div{background:#fff;border:1px solid #e5e2db;border-radius:10px;padding:9px 10px;display:flex;justify-content:space-between;align-items:center;font-size:.62rem;gap:6px}
+.list-s em{font-style:normal;font-family:var(--mono);font-size:.54rem;padding:2px 6px;border-radius:4px;background:#e2f7e9;color:#13703b;white-space:nowrap}
+.list-s em.r{background:#ffe3e4;color:#b50e16}
+.list-s em.y{background:#fff1d6;color:#8a5a00}
+
+/* OS / oficina */
+.os-grid{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
+@media(max-width:760px){.os-grid{grid-template-columns:1fr;justify-items:center}}
+.os-scr .as-top{padding-bottom:16px}
+.os-body{padding:12px;display:flex;flex-direction:column;gap:7px}
+.os-body h6{font-family:var(--mono);font-size:.54rem;text-transform:uppercase;letter-spacing:.1em;color:#888;font-weight:500}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.photos i{aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,#3a3a40,#1c1c20);display:block;position:relative;overflow:hidden}
+.photos i::after{content:'';position:absolute;left:20%;right:20%;bottom:22%;height:28%;border-radius:50% 50% 8px 8px;background:#55555c}
+.osl{display:flex;justify-content:space-between;background:#fff;border:1px solid #e5e2db;border-radius:8px;padding:7px 9px;font-size:.6rem;gap:6px}
+.osl b{font-family:var(--mono);font-size:.58rem;white-space:nowrap}
+.osl.warn{border-color:#ffc56b;background:#fff8ea}
+.os-tot{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;border-radius:10px;padding:9px 11px;font-size:.64rem}
+.os-tot strong{font-size:1rem;font-weight:900;font-stretch:115%}
+.os-send{background:var(--red);color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:800;font-size:.68rem}
+.push{background:rgba(30,30,34,.96);color:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 24px 50px -10px rgba(0,0,0,.6);border:1px solid var(--line-d);max-width:380px;width:100%;transform:translateY(-14px);opacity:0;transition:all .7s var(--ease)}
+.push.show{transform:none;opacity:1}
+.push-h{display:flex;align-items:center;gap:8px;font-size:.62rem;color:#a1a1a8;margin-bottom:6px}
+.push-h img{width:18px;height:18px;border-radius:5px}
+.push b{font-size:.84rem;display:block}
+.push p{font-size:.74rem;color:#cfcfd3;margin-top:2px}
+.push-a{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px}
+.push-a span{text-align:center;font-size:.68rem;font-weight:700;padding:8px;border-radius:9px;background:#2b2b31}
+.push-a span.ok{background:var(--ok);color:#06210f}
+.push-a span.no{background:#3a1e20;color:#ff7b80}
+.oc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+@media(max-width:480px){.oc{grid-template-columns:1fr}}
+.oc div{background:#141417;border:1px solid var(--line-d);border-radius:12px;padding:12px}
+.oc small{display:block;font-family:var(--mono);font-size:.56rem;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em}
+.oc strong{font-size:1.2rem;font-weight:900;font-stretch:112%}
+.oc .r strong{color:#ff6a70}.oc .g strong{color:var(--ok)}
+.os-right{display:flex;flex-direction:column;gap:14px;min-width:0;width:100%}
+
+/* relatórios */
+.reps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:40px}
+@media(max-width:900px){.reps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.reps{grid-template-columns:1fr}}
+.rep{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:transform .3s var(--ease),border-color .3s}
+.rep:hover{transform:translateY(-3px);border-color:var(--red)}
+.rep .ri{width:38px;height:38px;border-radius:10px;background:var(--red-soft);display:grid;place-items:center;flex:none}
+.rep .ri svg{width:18px;height:18px;color:var(--red)}
+.rep b{display:block;font-size:.98rem;font-weight:800;font-stretch:110%}
+.rep p{font-size:.84rem;color:var(--muted);margin-top:2px;line-height:1.45}
+
+/* COMPRA E VENDA */
+.cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:980px){.cv-grid{grid-template-columns:1fr;gap:40px}}
+.site{background:#fff;color:#111;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.site-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--ink);gap:10px}
+.site-top img{height:20px;width:auto}
+.site-top span{font-family:var(--mono);font-size:.58rem;color:#fff;background:var(--red);padding:4px 9px;border-radius:99px;white-space:nowrap}
+.site-hero{padding:18px 16px;background:linear-gradient(120deg,#141416,#2a0b0d);color:#fff}
+.site-hero b{font-size:1.25rem;font-weight:900;font-style:italic;font-stretch:122%;display:block;line-height:1.05}
+.site-hero small{font-size:.66rem;color:#c9c9cd}
+.vit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+@media(max-width:480px){.vit{grid-template-columns:repeat(2,1fr)}.vit .car:nth-child(3){display:none}}
+.car{border:1px solid #e5e2db;border-radius:10px;overflow:hidden;font-size:.62rem;min-width:0}
+.car .ph{aspect-ratio:1;background:#222;position:relative;overflow:hidden}
+.car .ph img{width:100%;height:100%;object-fit:cover}
+.car .ph .tg{z-index:1}
+.car .ph .tg{position:absolute;left:6px;top:6px;font-family:var(--mono);font-size:.5rem;background:var(--red);color:#fff;padding:2px 6px;border-radius:4px}
+.car .ph .tg.k{background:#111}
+.car .cb{padding:7px 8px}
+.car .cb b{display:block;font-size:.68rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.car .cb small{color:#777;font-size:.56rem;display:block}
+.car .cb strong{color:var(--red);font-size:.78rem;font-weight:900;display:block;margin-top:3px}
+.ficha{margin:0 12px 12px;border:1px dashed var(--red);border-radius:10px;padding:10px;font-size:.62rem;background:#fff6f6}
+.ficha b{display:block;font-size:.7rem;color:var(--red);margin-bottom:4px}
+.ficha div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dotted #f0c9cb}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{font-family:var(--mono);font-size:.74rem;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.chip.k{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.r{background:var(--red);color:#fff;border-color:var(--red)}
+.dark-chips .chip{background:var(--ink-3);border-color:var(--line-d);color:#e3e3e6}
+
+/* LOJAS */
+.store-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+@media(max-width:1000px){.store-grid{grid-template-columns:1fr;gap:50px}}
+.stores-vis{display:flex;justify-content:center;gap:22px;position:relative}
+@media(max-width:600px){.stores-vis{gap:0}.stores-vis .phone:last-child{margin-left:-110px;transform:translateY(40px) scale(.9);z-index:1}.stores-vis .phone:first-child{z-index:2;transform:scale(.9)}}
+.gp{background:#fff;color:#1f1f1f;padding:44px 14px 14px;height:100%;display:flex;flex-direction:column;gap:12px;font-family:Roboto,system-ui,sans-serif}
+.gp-search{display:flex;align-items:center;gap:8px;background:#eef1f6;border-radius:99px;padding:8px 12px;font-size:.62rem;color:#555}
+.gp-search i{width:10px;height:10px;border:2px solid #555;border-radius:50%;display:block}
+.gp-app{display:flex;gap:12px;align-items:center}
+.gp-app img{width:64px;height:64px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.gp-app b{display:block;font-size:.9rem;line-height:1.15;font-weight:700}
+.gp-app small{display:block;color:#01875f;font-size:.62rem;font-weight:600;margin-top:2px}
+.gp-app em{display:block;font-style:normal;color:#666;font-size:.56rem}
+.gp-stats{display:flex;justify-content:space-around;text-align:center;font-size:.6rem;color:#555;border-block:1px solid #eee;padding:8px 0}
+.gp-stats b{display:block;color:#1f1f1f;font-size:.72rem}
+.gp-btn{background:#01875f;color:#fff;text-align:center;border-radius:10px;padding:9px;font-weight:700;font-size:.72rem}
+.gp-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gp-shots img,.as-shots img{width:100%;border-radius:8px;display:block}
+.gp-shots div{aspect-ratio:9/16;border-radius:8px;background:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:6px}
+.gp-shots div::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(227,18,27,.55),transparent 60%)}
+.gp-shots div b{position:relative;color:#fff;font-size:.5rem;line-height:1.15;font-family:var(--sans);font-weight:900;font-style:italic;font-stretch:120%}
+.gp-shots div i{position:relative;display:block;height:28%;margin-bottom:6px;background:var(--red);border-radius:5px}
+.gp-shots div:nth-child(2) i{background:#fff}
+.gp-about{font-size:.6rem;color:#444;line-height:1.45}
+.gp-about b{display:block;font-size:.72rem;color:#1f1f1f;margin-bottom:2px}
+.as{background:#fff;color:#111;padding:44px 14px 14px;height:100%;display:flex;flex-direction:column;gap:12px;font-family:-apple-system,'SF Pro Text',system-ui,sans-serif}
+.as-app{display:flex;gap:12px;align-items:center}
+.as-app img{width:70px;height:70px;border-radius:17px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.as-app b{display:block;font-size:.88rem;line-height:1.15}
+.as-app small{display:block;color:#888;font-size:.6rem}
+.as-get{display:inline-block;background:#0a84ff;color:#fff;font-weight:700;font-size:.66rem;padding:5px 16px;border-radius:99px;margin-top:6px}
+.as-row{display:flex;justify-content:space-between;text-align:center;font-size:.54rem;color:#888;border-block:1px solid #eee;padding:8px 0}
+.as-row b{display:block;color:#555;font-size:.74rem}
+.as-shots{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.as-shots img{border-radius:12px}
+.as-shots div{aspect-ratio:9/17;border-radius:12px;background:linear-gradient(170deg,var(--red),#5d070b);padding:8px;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.as-shots div:nth-child(2){background:linear-gradient(170deg,#18181b,#000)}
+.as-shots b{color:#fff;font-size:.56rem;font-weight:900;font-style:italic;font-family:var(--sans);font-stretch:120%;line-height:1.1}
+.as-shots i{display:block;flex:1;border-radius:8px;background:rgba(255,255,255,.92)}
+.as-shots div:nth-child(2) i{background:var(--red)}
+.ben{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+@media(max-width:520px){.ben{grid-template-columns:1fr}}
+.ben div{border:1px solid var(--line-d);border-radius:14px;padding:16px;background:var(--ink-2)}
+.ben b{display:block;font-size:1rem;font-weight:800;font-stretch:112%;margin-bottom:4px}
+.ben p{font-size:.88rem;color:var(--muted-d);line-height:1.5}
+.ben svg{width:22px;height:22px;color:var(--red-2);margin-bottom:8px}
+.store-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.store{display:flex;align-items:center;gap:12px;padding:10px 18px;border-radius:12px;background:#fff;color:#000}
+.store svg{width:24px;height:24px;fill:#000}
+.store small{display:block;font-size:.6rem;opacity:.7}
+.store b{font-size:1rem;font-weight:800}
+
+/* SITE PÚBLICO */
+.sitepub{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+@media(max-width:980px){.sitepub{grid-template-columns:1fr;gap:40px}}
+.flow{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.flow>div{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.flow span{width:30px;height:30px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:.74rem;font-weight:600;flex:none}
+.flow b{display:block;font-size:.96rem;font-weight:800}
+.flow p{font-size:.86rem;color:var(--muted);line-height:1.45}
+
+/* MÓDULOS */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:40px 0 26px}
+.tab{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--text)}
+.tab.on{background:var(--red);color:#fff;border-color:var(--red)}
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+@media(max-width:1000px){.mods{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.mods{grid-template-columns:1fr 1fr}.mod{padding:16px 14px;min-height:0}.mod h4{font-size:.94rem}.mod p{font-size:.8rem}}
+.mod{background:var(--paper);padding:24px 22px;transition:background .3s,opacity .4s,filter .4s;min-height:140px}
+.mod:hover{background:#fff}
+.mod.dim{opacity:.2;filter:grayscale(1)}
+.mod .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mod .tag.n{color:#fff;background:var(--red);padding:2px 8px;border-radius:4px}
+.mod h4{font-size:1.06rem;font-weight:800;font-stretch:110%;margin:10px 0 6px;letter-spacing:-.01em}
+.mod p{font-size:.88rem;color:var(--muted);line-height:1.5}
+
+/* DEV */
+.dev{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}
+@media(max-width:900px){.dev{grid-template-columns:1fr;gap:40px}}
+.dev-photo{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:var(--ink-3);max-width:460px}
+.dev-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1) contrast(1.05)}
+.dev-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.dev-photo figcaption b{display:block;font-size:1.35rem;font-weight:800;font-stretch:115%}
+.dev-photo figcaption small{font-family:var(--mono);font-size:.7rem;color:var(--red-2);letter-spacing:.06em}
+.dev-photo::after{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--red)}
+blockquote.q{font-size:clamp(1.35rem,2.6vw,1.95rem);font-weight:500;line-height:1.35;letter-spacing:-.01em;margin:22px 0 30px;color:#f3f3f4}
+blockquote.q em{font-style:italic;color:var(--red-2);font-weight:800}
+.trust{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:var(--radius);overflow:hidden}
+@media(max-width:560px){.trust{grid-template-columns:1fr}}
+.pj{background:var(--ink);padding:18px 20px;transition:background .3s;position:relative}
+.pj:hover{background:var(--ink-3)}
+.pj b{font-size:1.06rem;font-weight:800;font-stretch:112%;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pj b small{font-family:var(--mono);font-size:.58rem;font-weight:500;color:var(--muted-d);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.pj p{font-size:.85rem;color:var(--muted-d);margin-top:4px;line-height:1.45}
+.pj.hot{background:linear-gradient(150deg,rgba(227,18,27,.18),var(--ink) 70%)}
+.pj.hot b small{color:#fff;background:var(--red);padding:2px 7px;border-radius:4px}
+.logos{display:flex;width:max-content;animation:mq 34s linear infinite}
+.logos-w{overflow:hidden;margin-top:60px;border-block:1px solid var(--line-d);padding:20px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.logos span{font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;color:#4d4d53;padding:0 30px;white-space:nowrap;display:flex;align-items:center;gap:60px}
+.logos span em{font-style:italic;color:#fff}
+
+/* IMPLANTAÇÃO */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:50px}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.stp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.stp .n{font-size:3rem;font-weight:900;font-style:italic;font-stretch:125%;color:var(--red);line-height:1;letter-spacing:-.04em}
+.stp h4{font-size:1.1rem;font-weight:800;font-stretch:110%;margin:10px 0 6px}
+.stp p{font-size:.88rem;color:var(--muted);line-height:1.5}
+
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:50px}
+@media(max-width:760px){.big3{grid-template-columns:1fr}}
+.b3{background:var(--ink);color:#fff;border-radius:20px;padding:26px 24px}
+.b3.red{background:linear-gradient(150deg,var(--red),#8f0a10)}
+.b3 strong{display:block;font-size:clamp(3rem,6vw,4.4rem);font-weight:900;font-style:italic;font-stretch:125%;letter-spacing:-.04em;line-height:1}
+.b3 strong span{font-size:.4em;letter-spacing:0;margin-left:4px}
+.b3 b{display:block;font-size:1.15rem;font-weight:800;font-stretch:112%;margin:12px 0 4px}
+.b3 p{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.5}
+.stp .wk{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+/* PRICING */
+.pricing{background:var(--ink);overflow:hidden}
+.pricing .glow{left:50%;top:0}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+@media(max-width:940px){.prices{grid-template-columns:1fr}}
+.price{position:relative;border-radius:24px;padding:32px 28px;border:1px solid var(--line-d);background:var(--ink-2);overflow:hidden}
+.price.main{background:linear-gradient(150deg,var(--red),#8f0a10);border-color:transparent;color:#fff;box-shadow:0 40px 90px -30px rgba(227,18,27,.6)}
+.price.main::after{content:'';position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;background:url(img/moto-marca.png) center/contain no-repeat;opacity:.12;transform:rotate(-8deg)}
+.price .k{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;opacity:.8}
+.amount{display:flex;align-items:flex-start;gap:6px;margin:16px 0 4px;font-stretch:120%}
+.amount sup{font-size:1.2rem;font-weight:700;margin-top:14px}
+.amount strong{font-size:clamp(3.4rem,8vw,5.6rem);font-weight:900;letter-spacing:-.05em;line-height:1;font-style:italic}
+.amount sub{align-self:flex-end;font-size:1rem;font-weight:600;margin-bottom:12px;opacity:.75}
+.price .note{font-size:.95rem;opacity:.85}
+.parc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px;position:relative;z-index:1}
+.parc div{background:rgba(0,0,0,.22);border-radius:12px;padding:10px;text-align:center}
+.parc small{display:block;font-family:var(--mono);font-size:.56rem;opacity:.8;text-transform:uppercase;letter-spacing:.08em}
+.parc b{font-size:.98rem;font-weight:900;font-stretch:112%}
+@media(max-width:420px){.parc{grid-template-columns:repeat(2,1fr)}}
+.incl-l{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:9px;position:relative;z-index:1}
+.incl-l li{display:flex;gap:10px;font-size:.92rem}
+.incl-l svg{flex:none;width:18px;height:18px;margin-top:3px}
+.plans{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.plan{display:flex;align-items:center;gap:14px;border:1px solid var(--line-d);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .25s;background:var(--ink-3);text-align:left;color:inherit;width:100%}
+.plan:hover{border-color:rgba(255,255,255,.3)}
+.plan .rd{width:20px;height:20px;border-radius:50%;border:2px solid #55555c;flex:none;position:relative;transition:border-color .25s}
+.plan.on{border-color:var(--red);background:rgba(227,18,27,.1)}
+.plan.on .rd{border-color:var(--red)}
+.plan.on .rd::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--red)}
+.plan div{flex:1;min-width:0}
+.plan b{display:block;font-size:.95rem;font-weight:800}
+.plan small{display:block;font-size:.76rem;color:var(--muted-d);line-height:1.4}
+.plan strong{font-family:var(--mono);font-size:.86rem;white-space:nowrap}
+.plan .best{font-family:var(--mono);font-size:.54rem;background:var(--red);color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:.08em}
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media(max-width:940px){.incl{grid-template-columns:1fr}}
+.box{border:1px solid var(--line-d);border-radius:22px;padding:28px;background:var(--ink-2)}
+.box h4{font-size:1.22rem;font-weight:800;font-stretch:112%;margin:10px 0 18px;letter-spacing:-.01em}
+.box ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.box li{display:flex;gap:12px;font-size:.94rem;color:#cfcfd3}
+.box li svg{flex:none;width:18px;height:18px;margin-top:3px}
+.box.mine{border-color:rgba(227,18,27,.45);background:linear-gradient(160deg,rgba(227,18,27,.1),var(--ink-2) 60%)}
+.box.mine li svg{stroke:var(--red-2)}
+.box.theirs li svg{stroke:var(--warn)}
+.box .foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-d);font-size:.86rem;color:var(--muted-d)}
+
+/* CTA */
+.cta{text-align:center;overflow:hidden}
+.cta h2{font-size:clamp(2.5rem,7.4vw,5.6rem)}
+.cta .lead{margin:22px auto 0}
+.cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+.terms{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 30px;margin-top:50px;font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.cta-logo{width:min(380px,80%);margin:0 auto 26px}
+.conf{background:var(--ink-2);border-top:1px solid var(--line-d);padding:44px 0}
+.conf-in{display:flex;gap:20px;align-items:flex-start}
+.conf-in svg{flex:none;width:30px;height:30px;color:var(--red-2);margin-top:2px}
+.conf b{display:block;font-weight:800;font-stretch:112%;font-size:1.05rem;margin-bottom:8px;color:#fff}
+.conf p{font-size:.85rem;color:var(--muted-d);max-width:920px;line-height:1.7}
+@media(max-width:560px){.conf-in{flex-direction:column;gap:12px}}
+footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:var(--muted-d)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-in a{color:var(--red-2)}
+.wa-fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:70;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 34px -8px rgba(0,0,0,.6);transform:scale(0);transition:transform .4s var(--ease)}
+.wa-fab.show{transform:scale(1)}
+.wa-fab svg{width:32px;height:32px;fill:#fff}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}.split .w>span{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#topo" class="brand">
+      <img src="img/logo-fortal.png" alt="Fortal Loca & Vende" />
+      <small>Proposta exclusiva<br/>Novembro · 2026</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#ja-usa">Você já usa</a>
+      <a href="#telas">O sistema</a>
+      <a href="#app">App</a>
+      <a href="#compra-venda">Compra e Venda</a>
+      <a href="#quem-faz">Quem faz</a>
+      <a href="#investimento" class="btn btn-red"><span class="hide-s">Ver </span>investimento</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="grid-bg"></div><div class="glow" id="glow"></div>
+  <div class="speed" aria-hidden="true"><i style="top:18%;width:40%;animation-delay:0s"></i><i style="top:46%;width:28%;animation-delay:1.2s"></i><i style="top:78%;width:36%;animation-delay:2.1s"></i></div>
+  <div class="wrap hero-in">
+    <div>
+      <img class="hero-logo rv" src="img/logo-fortal.png" alt="Fortal Loca & Vende" />
+      <span class="for rv d1"><b>EXCLUSIVO</b>Feito para a Fortal Loca &amp; Vende</span>
+      <h1 class="display split" data-split>Você já confia no meu trabalho. <span class="it hl">Só não sabia.</span></h1>
+      <p class="lead rv d2">O rastreamento das suas motos roda na <b>ÁgilLock</b>. A análise dos seus clientes passa pela <b>SafeLock</b>. Os sistemas dessas duas empresas foram desenvolvidos por mim, e sou eu quem os mantém no ar. Agora eu junto tudo isso num <b>sistema só, com a marca da Fortal</b>, feito do começo ao fim para locação e venda de motos.</p>
+      <div class="hero-ctas rv d3">
+        <a href="#ja-usa" class="btn btn-red">Ver como funciona <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#investimento" class="btn btn-line">Ir direto ao investimento</a>
+      </div>
+      <div class="hero-meta rv d4">
+        <div><small>Já usa</small>ÁgilLock + SafeLock</div>
+        <div><small>Vai ganhar</small>Sistema + app nas lojas</div>
+        <div><small>No ar em</small>2 semanas</div>
+      </div>
+    </div>
+
+    <div class="hero-vis rv d2">
+      <div class="float f1"><span class="ic" style="background:rgba(47,210,122,.15);color:var(--ok)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>ÁgilLock conectada</b><small>KM e posição de toda a frota</small></div></div>
+      <div class="float f2"><span class="ic" style="background:var(--red-soft);color:var(--red-2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>SafeLock · Passou</b><small>análise feita no WhatsApp</small></div></div>
+      <div class="float f3"><span class="ic" style="background:rgba(255,176,32,.15);color:var(--warn)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><div><b>Multa de hoje, lançada hoje</b><small>na semana do locatário</small></div></div>
+      <div class="win" id="heroWin">
+        <div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com</span></div>
+        <div class="app">
+          <div class="side">
+            <img src="img/logo-fortal.png" alt="" />
+            <a class="on"><i></i>Dashboard</a><a><i></i>Frota</a><a><i></i>Contratos</a><a><i></i>Financeiro</a><a><i></i>Multas</a><a><i></i>Oficina</a><a><i></i>Rastreamento</a>
+            <span class="sep">Compra e Venda</span><a><i></i>Vitrine</a>
+          </div>
+          <div class="main">
+            <div class="main-h"><b>Bom dia, Fortal</b><small>qua · 18 nov</small></div>
+            <div class="kpis">
+              <div class="kpi r"><small>Motos locadas</small><strong data-count="96">0</strong><em>+4 esta semana</em></div>
+              <div class="kpi"><small>A receber hoje</small><strong data-count="12740" data-money>0</strong><em>32 semanas</em></div>
+              <div class="kpi"><small>Em atraso</small><strong data-count="3">0</strong><em style="color:var(--warn)">R$ 1.050</em></div>
+              <div class="kpi"><small>Sem posição</small><strong data-count="1">0</strong><em style="color:#ff6a70">há 6 h</em></div>
+            </div>
+            <div class="box-d chart">
+              <small><span>Receita semanal · 12 semanas</span><span style="color:var(--ok)">+18%</span></small>
+              <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+                <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e3121b" stop-opacity=".45"/><stop offset="1" stop-color="#e3121b" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,98 C30,92 50,84 80,84 S130,66 160,70 210,52 240,56 290,38 320,40 370,22 400,14 L400,120 L0,120Z" fill="url(#ga)"/>
+                <path class="ln go" d="M0,98 C30,92 50,84 80,84 S130,66 160,70 210,52 240,56 290,38 320,40 370,22 400,14" fill="none" stroke="#ff2b34" stroke-width="2.6"/>
+              </svg>
+            </div>
+            <div class="rows">
+              <div class="row"><i class="dot" style="background:var(--ok)"></i><span>Pix recebido · semana 37 · CG 160 Start · <b>RJX4F21</b></span><strong style="color:var(--ok)">R$ 350,00</strong></div>
+              <div class="row"><i class="dot" style="background:var(--red)"></i><span>Bros 160 sem posição há 6 h · alerta da ÁgilLock</span><strong style="color:#ff6a70">ver no mapa</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><div><span id="toastT">Pix recebido · R$ 350,00</span><small id="toastS">Semana baixada sozinha</small></div></div>
+      </div>
+      <p class="caption">Tela ilustrativa do sistema da Fortal · dados fictícios</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track" id="mq">
+    <span>ÁgilLock integrada<i></i>SafeLock no WhatsApp<i></i>VozChat<i></i>App na Google Play e App Store<i></i>Multas no mesmo dia<i></i>Assinatura digital<i></i>Qualquer banco<i></i>Oficina parceira com app<i></i>Compra e Venda<i></i>Relatórios<i></i></span>
+  </div>
+</div>
+
+<!-- JÁ USA -->
+<section class="light pad" id="ja-usa">
+  <div class="wrap">
+    <span class="label rv">01 · O que a Fortal ainda não sabia</span>
+    <h2 class="title display split reveal-h" data-split>Dois sistemas que você usa todo dia <span class="it hl">foram feitos por mim.</span></h2>
+    <p class="lead rv d1">A Fortal já aprovou o meu trabalho na prática, sem saber quem estava por trás. Toda vez que vocês olham onde uma moto está, ou consultam um cliente antes de alugar, estão usando um sistema que eu desenvolvi para a ÁgilLock e para a SafeLock, e que mantenho no ar.</p>
+
+    <div class="used">
+      <article class="u-card rv">
+        <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <span class="tagline">Rastreamento da frota</span>
+        <h3><img class="u-logo" src="img/clientes/agillock-escuro.png" alt="ÁgilLock" /></h3>
+        <p class="role">É ela que mostra onde cada moto da Fortal está agora.</p>
+        <ul>
+          <li>Posição em tempo real e histórico de trajetos</li>
+          <li>Bloqueio e desbloqueio remoto da moto</li>
+          <li>Hodômetro, alertas e plano de manutenção por km</li>
+        </ul>
+        <span class="made"><img src="img/perfil.jpg" alt="" />Sistema desenvolvido e mantido por Pedro Castro</span>
+      </article>
+      <article class="u-card rv d1">
+        <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <span class="tagline">Análise de risco do locatário</span>
+        <h3><img class="u-logo sq" src="img/clientes/safelock.png" alt="SafeLock" /></h3>
+        <p class="role">É ela que diz se o cliente pode pegar a moto.</p>
+        <ul>
+          <li>Leitura da CNH e consulta pelo WhatsApp</li>
+          <li>Veredito claro: passou, em análise ou não passou</li>
+          <li>Laudo em PDF com os motivos de cada decisão</li>
+        </ul>
+        <span class="made"><img src="img/perfil.jpg" alt="" />Sistema desenvolvido e mantido por Pedro Castro</span>
+      </article>
+    </div>
+
+    <div class="eq">
+      <div class="eq-i rv"><img class="lg" src="img/clientes/agillock-escuro.png" alt="ÁgilLock" /><small>rastreamento</small></div>
+      <span class="op rv">+</span>
+      <div class="eq-i rv d1"><img class="lg" src="img/clientes/safelock.png" alt="SafeLock" style="height:64px" /><small>análise</small></div>
+      <span class="op rv d1">+</span>
+      <div class="eq-i rv d2"><img class="lg" src="img/clientes/vozchat.png" alt="VozChat" /><b>VozChat</b><small>WhatsApp</small></div>
+      <span class="op rv d2">=</span>
+      <div class="eq-i eq-res rv d3"><img src="img/logo-fortal.png" alt="Fortal" /><small>Um sistema só · 100% locação</small></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact rv"><strong>2<span>×</span></strong><p>sistemas desenvolvidos por mim que a Fortal já usa e aprova: os da ÁgilLock e da SafeLock.</p></div>
+      <div class="fact rv d1"><strong>1</strong><p>lugar para tudo. Rastreamento, análise, WhatsApp, contratos, financeiro e oficina conversando entre si.</p></div>
+      <div class="fact rv d2"><strong>100<span>%</span></strong><p>pensado para locação de motos com intenção de compra, semana a semana, como a Fortal trabalha.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINTS -->
+<section class="pad" id="telas" style="overflow:hidden">
+  <div class="glow" style="left:85%;top:20%"></div>
+  <div class="wrap" style="position:relative">
+    <span class="label rv">02 · O sistema da Fortal</span>
+    <h2 class="title display split" data-split>Já com a sua cara. <span class="it hl">Vermelho, preto e a sua logo.</span></h2>
+    <p class="lead rv d1">É o mesmo sistema que o Valmir mostrou na Zé Loc, vestido com a identidade da Fortal. Toque nas abas para ver algumas telas.</p>
+    <div class="shots-tabs rv d2" role="tablist">
+      <button class="stab on" data-s="0">Dashboard</button>
+      <button class="stab" data-s="1">Frota</button>
+      <button class="stab" data-s="2">Financeiro</button>
+      <button class="stab" data-s="3">Análise por moto</button>
+      <button class="stab" data-s="4">Prospectos</button>
+    </div>
+    <div class="win rv d2">
+      <div class="win-top"><i></i><i></i><i></i><span id="shotUrl">sistema.fortallocaevende.com/dashboard</span></div>
+      <div class="app">
+        <div class="side" id="shotSide">
+          <img src="img/logo-fortal.png" alt="" />
+          <a class="on"><i></i>Dashboard</a><a><i></i>Frota</a><a><i></i>Financeiro</a><a><i></i>Análise</a><a><i></i>Prospectos</a><a><i></i>Multas</a><a><i></i>Oficina</a><a><i></i>Rastreamento</a>
+          <span class="sep">Compra e Venda</span><a><i></i>Vitrine</a><a><i></i>Vendas</a>
+        </div>
+        <div style="min-width:0">
+          <!-- dashboard -->
+          <div class="main shot on">
+            <div class="main-h"><b>Dashboard</b><span class="pill g">● tudo em dia</span></div>
+            <div class="kpis">
+              <div class="kpi r"><small>Locadas</small><strong>96</strong><em>de 104 motos</em></div>
+              <div class="kpi"><small>Receita da semana</small><strong>R$ 34.860</strong><em>+6,2%</em></div>
+              <div class="kpi"><small>Inadimplência</small><strong>2,9%</strong><em>3 locatários</em></div>
+              <div class="kpi"><small>Disponíveis</small><strong>8</strong><em style="color:var(--muted-d)">5 no pátio · 3 preparação</em></div>
+            </div>
+            <div class="two">
+              <div class="box-d">
+                <small><span>Recebido × previsto · semanas</span><span>nov</span></small>
+                <div class="bars-h">
+                  <div class="bh"><span>Semana 44</span><div class="tr"><i style="--w:96%;background:var(--red)"></i></div><strong>R$ 33,1 mil</strong></div>
+                  <div class="bh"><span>Semana 45</span><div class="tr"><i style="--w:98%;background:var(--red)"></i></div><strong>R$ 33,9 mil</strong></div>
+                  <div class="bh"><span>Semana 46</span><div class="tr"><i style="--w:94%;background:var(--red)"></i></div><strong>R$ 32,8 mil</strong></div>
+                  <div class="bh"><span>Semana 47</span><div class="tr"><i style="--w:72%;background:#ff6a70"></i></div><strong>em curso</strong></div>
+                </div>
+              </div>
+              <div class="box-d">
+                <small><span>Frota por situação</span></small>
+                <div class="donut">
+                  <svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#26262b" stroke-width="6"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#e3121b" stroke-width="6" stroke-dasharray="92 8" stroke-dashoffset="25"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#2fd27a" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-67"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#ffb020" stroke-width="6" stroke-dasharray="3 97" stroke-dashoffset="-72"/></svg>
+                  <div class="legend"><span><i style="background:var(--red)"></i>Locadas · 96</span><span><i style="background:var(--ok)"></i>Disponíveis · 5</span><span><i style="background:var(--warn)"></i>Oficina · 3</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="rows">
+              <div class="row"><i class="dot" style="background:var(--ok)"></i><span>Contrato #0412 assinado · Honda CG 160 Fan 0 km</span><span class="pill g">assinado</span></div>
+              <div class="row"><i class="dot" style="background:var(--warn)"></i><span>OS #218 aguardando sua aprovação · Moto Peças do Zé</span><span class="pill y">aprovar</span></div>
+              <div class="row"><i class="dot" style="background:var(--red)"></i><span>Multa nova hoje · Yamaha Lander 250 · lançada na semana 37</span><span class="pill r">multa</span></div>
+            </div>
+          </div>
+          <!-- frota -->
+          <div class="main shot">
+            <div class="main-h"><b>Frota · 104 motos</b><span style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill r">Locada 96</span><span class="pill g">Disponível 5</span><span class="pill y">Oficina 3</span></span></div>
+            <div class="tbl-w"><table class="tbl">
+              <tr><th>Placa</th><th>Moto</th><th>Locatário</th><th>KM (ÁgilLock)</th><th>Próx. óleo</th><th>Situação</th></tr>
+              <tr><td><span class="plate">RJX4F21</span></td><td>CG 160 Start 26</td><td>Marcos A. Lima</td><td>8.412</td><td>em 588 km</td><td><span class="pill r">locada</span></td></tr>
+              <tr><td><span class="plate">SBA7J33</span></td><td>Bros 160 26</td><td>Jéssica N. Souza</td><td>22.759</td><td style="color:var(--warn)">em 41 km</td><td><span class="pill r">locada</span></td></tr>
+              <tr><td><span class="plate">PMX2D90</span></td><td>Lander 250 26</td><td>Rafael S. Nunes</td><td>11.230</td><td>em 1.770 km</td><td><span class="pill r">locada</span></td></tr>
+              <tr><td><span class="plate">QTE1A08</span></td><td>Crosser 150 27</td><td>—</td><td>0</td><td>—</td><td><span class="pill g">disponível</span></td></tr>
+              <tr><td><span class="plate">HNO5C44</span></td><td>FZ15 26</td><td>—</td><td>163</td><td>—</td><td><span class="pill y">preparação</span></td></tr>
+              <tr><td><span class="plate">PJK9E12</span></td><td>CG 160 Fan 26</td><td>Ana P. Moura</td><td>5.904</td><td>em 96 km</td><td><span class="pill r">locada</span></td></tr>
+            </table></div>
+            <div class="rows"><div class="row"><i class="dot" style="background:var(--ok)"></i><span>KM atualizado automaticamente pela ÁgilLock há 4 min</span><strong style="color:var(--ok)">sincronizado</strong></div></div>
+          </div>
+          <!-- financeiro -->
+          <div class="main shot">
+            <div class="main-h"><b>Financeiro · novembro</b><span class="pill">Banco: o da Fortal</span></div>
+            <div class="kpis">
+              <div class="kpi"><small>Recebido</small><strong style="color:var(--ok)">R$ 118.420</strong></div>
+              <div class="kpi"><small>A receber</small><strong>R$ 41.300</strong></div>
+              <div class="kpi"><small>Contas a pagar</small><strong style="color:#ff6a70">R$ 23.180</strong></div>
+              <div class="kpi r"><small>Resultado</small><strong>R$ 95.240</strong></div>
+            </div>
+            <div class="tbl-w"><table class="tbl">
+              <tr><th>Nº</th><th>Descrição</th><th>Forma</th><th>Venc.</th><th>Valor</th></tr>
+              <tr><td>3381</td><td>Semana 37 · Marcos A. Lima</td><td>Pix</td><td>18/11</td><td style="color:var(--ok)">R$ 350,00 ✓</td></tr>
+              <tr><td>3382</td><td>Semana 12 · Jéssica N. Souza</td><td>Boleto</td><td>18/11</td><td>R$ 420,00</td></tr>
+              <tr><td>3383</td><td>Multa · art. 218 I · Rafael S. Nunes</td><td>Na semana</td><td>25/11</td><td style="color:#ff6a70">R$ 130,16</td></tr>
+              <tr><td>3384</td><td>Entrada · CG 160 Fan 0 km · contrato #0412</td><td>Pix</td><td>18/11</td><td style="color:var(--ok)">R$ 1.500,00 ✓</td></tr>
+              <tr><td>3385</td><td>OS #218 · Moto Peças do Zé</td><td>A pagar</td><td>30/11</td><td style="color:#ff6a70">R$ 286,00</td></tr>
+            </table></div>
+          </div>
+          <!-- análise por moto -->
+          <div class="main shot">
+            <div class="main-h"><b>Análise por moto · <span class="plate">SBA7J33</span> Bros 160</b><span class="pill g">rentável</span></div>
+            <div class="kpis">
+              <div class="kpi"><small>Recebido no contrato</small><strong>R$ 21.300</strong></div>
+              <div class="kpi"><small>Manutenção</small><strong style="color:#ff6a70">R$ 1.842</strong></div>
+              <div class="kpi"><small>Multas pagas</small><strong>R$ 0</strong><em>todas repassadas</em></div>
+              <div class="kpi r"><small>Lucro da moto</small><strong>R$ 19.458</strong></div>
+            </div>
+            <div class="two">
+              <div class="box-d">
+                <small><span>Custo de manutenção por tipo</span></small>
+                <div class="bars-h">
+                  <div class="bh"><span>Troca de óleo</span><div class="tr"><i style="--w:62%;background:var(--red)"></i></div><strong>R$ 640</strong></div>
+                  <div class="bh"><span>Kit relação</span><div class="tr"><i style="--w:48%;background:var(--red)"></i></div><strong>R$ 490</strong></div>
+                  <div class="bh"><span>Pneus</span><div class="tr"><i style="--w:40%;background:var(--red)"></i></div><strong>R$ 412</strong></div>
+                  <div class="bh"><span>Freios e outros</span><div class="tr"><i style="--w:28%;background:#ff6a70"></i></div><strong>R$ 300</strong></div>
+                </div>
+              </div>
+              <div class="box-d">
+                <small><span>Linha do tempo</span></small>
+                <div class="rows" style="margin-top:8px">
+                  <div class="row"><span>Troca de óleo · 21.000 km</span><strong>12/11</strong></div>
+                  <div class="row"><span>OS #198 · kit relação</span><strong>28/10</strong></div>
+                  <div class="row"><span>Vistoria de entrega</span><strong>02/02</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- prospectos -->
+          <div class="main shot">
+            <div class="main-h"><b>Prospectos · vindos do WhatsApp, do site e do app</b><span class="pill r">SafeLock integrada</span></div>
+            <div class="tbl-w"><table class="tbl">
+              <tr><th>Nome</th><th>Origem</th><th>Moto desejada</th><th>SafeLock</th><th>Ação</th></tr>
+              <tr><td>Diego Rocha</td><td>VozChat</td><td>CG 160 Start 0 km</td><td><span class="pill g">passou</span></td><td style="color:#ff6a70">Transformar em cliente →</td></tr>
+              <tr><td>Lia Matos</td><td>App Fortal</td><td>Bros 160</td><td><span class="pill y">em análise</span></td><td>ver laudo</td></tr>
+              <tr><td>Caio Prado</td><td>Site</td><td>Lander 250 0 km</td><td><span class="pill g">passou</span></td><td style="color:#ff6a70">Transformar em cliente →</td></tr>
+              <tr><td>Bruno T.</td><td>VozChat</td><td>CG 160 Fan</td><td><span class="pill r">não passou</span></td><td>ver motivos</td></tr>
+              <tr><td>Bia Torres</td><td>Instagram</td><td>Crosser 150</td><td><span class="pill b">aguardando CNH</span></td><td>WhatsApp</td></tr>
+            </table></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Telas ilustrativas com dados fictícios · modelos e valores tirados do site da Fortal</p>
+  </div>
+</section>
+
+<!-- INTEGRAÇÕES -->
+<section class="pad" id="integracoes" style="padding-top:0">
+  <div class="wrap">
+
+    <!-- ÁgilLock -->
+    <div class="feat first" id="rastreamento">
+      <div class="feat-txt">
+        <span class="label rv">03 · ÁgilLock dentro do sistema</span>
+        <h3 class="display rv d1">O rastreador que você já tem <span class="it hl">passa a trabalhar pelo sistema.</span></h3>
+        <p class="lead rv d2">Como fui eu que desenvolvi o sistema da ÁgilLock e sigo mantendo, a integração é completa e nativa. Não é um link para outra tela: o mapa, o KM e os alertas aparecem dentro do sistema da Fortal, ligados ao contrato, ao locatário e à manutenção de cada moto.</p>
+        <ul class="rv d3">
+          <li><b>Mapa da frota dentro do sistema</b>, no computador e no app da equipe, com o locatário e os dias em atraso de cada moto</li>
+          <li><b>KM sempre atualizado</b> sozinho, direto do rastreador, sem ninguém digitar hodômetro</li>
+          <li><b>Plano de manutenção por km</b>: a troca de óleo avisa antes de vencer, para a equipe e para o locatário</li>
+          <li><b>Alerta de moto sem posição</b>, fora da área ou acima da velocidade, na hora</li>
+          <li><b>Bloqueio por atraso e desbloqueio quando o Pix cai</b>, com regra definida pela Fortal</li>
+          <li>Ao cadastrar a placa, o sistema já encontra o rastreador e traz o KM e os dados da moto</li>
+        </ul>
+      </div>
+      <div class="panel rv d2">
+        <div class="panel-h"><b>Rastreamento · mapa da frota</b><b style="color:var(--ok)">● ÁgilLock ao vivo</b></div>
+        <div class="map">
+          <svg class="streets" viewBox="0 0 400 275" preserveAspectRatio="none" aria-hidden="true">
+            <rect width="400" height="275" fill="#101114"/>
+            <path d="M0 40 C120 60 220 20 400 52" stroke="#1f2026" stroke-width="10" fill="none"/>
+            <path d="M0 150 C100 130 260 170 400 140" stroke="#26272e" stroke-width="14" fill="none"/>
+            <path d="M0 230 C140 210 240 250 400 222" stroke="#1f2026" stroke-width="8" fill="none"/>
+            <path d="M80 0 C90 100 60 180 92 275" stroke="#1f2026" stroke-width="9" fill="none"/>
+            <path d="M210 0 C200 90 232 180 214 275" stroke="#26272e" stroke-width="12" fill="none"/>
+            <path d="M330 0 C320 80 350 200 326 275" stroke="#1f2026" stroke-width="8" fill="none"/>
+            <path d="M0 95 L400 100 M140 0 L150 275 M270 0 L280 275" stroke="#17181d" stroke-width="4" fill="none"/>
+            <path d="M260 20 C300 30 360 10 400 0 L400 60 C360 70 300 64 260 20Z" fill="#0d2230" opacity=".8"/>
+          </svg>
+          <div class="map-legend"><span class="pill g">● em movimento 81</span><span class="pill">● parada 14</span><span class="pill r">● sem posição 1</span></div>
+          <i class="pin" style="left:22%;top:38%"></i><i class="pin" style="left:31%;top:56%;animation-delay:.4s"></i><i class="pin" style="left:48%;top:30%;animation-delay:.8s"></i><i class="pin st" style="left:57%;top:62%"></i><i class="pin" style="left:66%;top:44%;animation-delay:1.2s"></i><i class="pin" style="left:78%;top:70%;animation-delay:.2s"></i><i class="pin st" style="left:14%;top:76%"></i><i class="pin" style="left:40%;top:82%;animation-delay:1s"></i><i class="pin" style="left:86%;top:36%;animation-delay:.6s"></i>
+          <i class="pin al" style="left:30%;top:24%"></i>
+          <div class="map-pop" style="right:10px;top:16%"><b>Bros 160 · SBA7J33</b><small>Jéssica N. Souza · contrato #0377</small><small>última posição há 6 h · Messejana</small><span class="pill r">sem posição</span></div>
+        </div>
+        <div class="trk-grid">
+          <div class="box-d"><small><span>KM · CG 160 Start</span><span>RJX4F21</span></small><div class="km" data-count="8412">0<small>ÁgilLock</small></div></div>
+          <div class="box-d oil"><small><span>Troca de óleo</span><span>a cada 1.000 km</span></small><div class="tr" style="margin-top:12px"><i style="--w:82%"></i></div><div><span>feita em 7.000</span><span>vence em 9.000</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SafeLock + VozChat -->
+    <div class="feat rev" id="safelock">
+      <div class="feat-txt">
+        <span class="label rv">04 · SafeLock + VozChat</span>
+        <h3 class="display rv d1">O lead manda a CNH. <span class="it hl">A análise já está pronta.</span></h3>
+        <p class="lead rv d2">No WhatsApp da Fortal, o interessado envia a foto da CNH. O VozChat lê o documento, consulta a SafeLock sozinho e o contato já cai na coluna certa do quadro: <b style="color:#fff">passou, em análise ou não passou</b>. Quando a equipe abre a conversa, a consulta já foi feita.</p>
+        <ul class="rv d3">
+          <li><b>Leitura automática da CNH</b> enviada no WhatsApp, sem digitar CPF</li>
+          <li><b>Consulta na SafeLock pela integração</b>, com o laudo dentro da conversa</li>
+          <li>O lead é <b>organizado sozinho</b> nas colunas Passou, Em análise e Não passou</li>
+          <li><b>SafeLock também dentro do sistema</b>: dá para consultar por lá, sem abrir o WhatsApp</li>
+          <li>Com um clique, o <b>prospecto do WhatsApp vira cliente</b> e o contrato já é criado com os dados dele</li>
+        </ul>
+      </div>
+      <div class="panel rv d2" id="slPanel">
+        <div class="panel-h"><b>VozChat · WhatsApp comercial da Fortal</b><button class="mini-btn ghost" id="slGo">Repetir</button></div>
+        <div class="sl">
+          <div class="wa">
+            <div class="wa-top"><i></i><div>Diego Rocha<small>online</small></div></div>
+            <div class="wa-body" id="slChat"></div>
+          </div>
+          <div class="kb3">
+            <div class="kcol" data-c="ok"><h6><span><i style="background:var(--ok)"></i>Passou</span><span>4</span></h6><div class="kc">Caio Prado<small>Lander 250</small></div></div>
+            <div class="kcol" data-c="an"><h6><span><i style="background:var(--warn)"></i>Em análise</span><span>2</span></h6><div class="kc">Lia Matos<small>Bros 160</small></div></div>
+            <div class="kcol" data-c="no"><h6><span><i style="background:var(--red)"></i>Não passou</span><span>1</span></h6><div class="kc">Bruno T.<small>CG 160 Fan</small></div></div>
+          </div>
+        </div>
+        <div class="sl-steps" id="slSteps"><span>CNH recebida</span><span>leitura</span><span>SafeLock</span><span>coluna Passou</span><span>vira cliente</span></div>
+        <div class="convert"><div><b>Diego Rocha · passou na SafeLock</b><small>CG 160 Start 0 km · entrada R$ 1.200 · R$ 350/semana</small></div><span class="mini-btn">Transformar em cliente e criar contrato</span></div>
+      </div>
+    </div>
+
+    <!-- print do VozChat -->
+    <div class="vzshot rv">
+      <div class="vz-h"><span class="badge-new">print do VozChat</span><b>O quadro do WhatsApp comercial já separado pela SafeLock</b></div>
+      <div class="win"><div class="win-top"><i></i><i></i><i></i><span>vozchat.tech · Fortal Loca &amp; Vende · Kanban</span></div>
+        <div class="vz-scroll"><img src="img/vozchat-kanban.jpg" alt="Kanban do VozChat com as colunas Em análise, Passou na análise e Não passou na análise" loading="lazy" /></div>
+      </div>
+      <p class="caption">Tela do VozChat com a cor e a logo da Fortal · nomes e telefones fictícios · no celular, arraste para o lado</p>
+    </div>
+
+    <!-- Multas -->
+    <div class="feat" id="multas">
+      <div class="feat-txt">
+        <span class="label rv">05 · Multas <span class="badge-new">função nova</span></span>
+        <h3 class="display rv d1">Levou a multa hoje? <span class="it hl">Ela aparece hoje.</span></h3>
+        <p class="lead rv d2">A nova função de multas chega automaticamente, no mesmo dia da infração. O sistema descobre quem estava com a moto naquele horário e já lança o valor na semana do locatário. Nada de descobrir a multa um mês depois, quando o cliente já devolveu a moto.</p>
+        <ul class="rv d3">
+          <li><b>Multa do dia já no sistema</b>, sem ninguém entrar em site do Detran</li>
+          <li><b>Vinculada ao locatário certo</b>, pela data, hora e trecho de cada contrato</li>
+          <li><b>Lançada automaticamente na semana do locatário</b>, junto com o aluguel</li>
+          <li>Aviso pelo WhatsApp e pelo app com a infração, o local e o valor</li>
+          <li>Prazo de indicação de condutor e de pagamento com desconto sob controle</li>
+        </ul>
+      </div>
+      <div class="panel rv d2" id="mtPanel">
+        <div class="panel-h"><b>Multas · hoje, quarta 18/11</b><button class="mini-btn ghost" id="mtGo">Repetir</button></div>
+        <div class="mt">
+          <div class="tline" id="mtLine">
+            <div class="tl-i"><b>08:12 · infração</b><small>Lander 250 · PMX2D90 · art. 218 I · Av. Washington Soares</small></div>
+            <div class="tl-i"><b>Hoje · multa no sistema</b><small>chegou automaticamente</small></div>
+            <div class="tl-i"><b>Locatário encontrado</b><small>Rafael S. Nunes · contrato #0388</small></div>
+            <div class="tl-i"><b>Lançada na semana 37</b><small>vence com o aluguel de 25/11</small></div>
+            <div class="tl-i"><b>Aviso no WhatsApp e no app</b><small>com a infração e o valor</small></div>
+          </div>
+          <div class="week">
+            <h6>App do locatário · Rafael</h6>
+            <h5>Semana 37 · vence 25/11</h5>
+            <div class="wl"><span>Aluguel · Lander 250</span><b>R$ 480,00</b></div>
+            <div class="wl add" id="mtAdd"><span>+ Multa de 18/11 · art. 218 I</span><b>R$ 130,16</b></div>
+            <div class="wtot"><span>Total da semana</span><strong id="mtTot">R$ 480,00</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrato em minutos -->
+    <div class="feat rev" id="assinatura">
+      <div class="feat-txt">
+        <span class="label rv">06 · Contrato em minutos</span>
+        <h3 class="display rv d1">Do "passou" ao contrato assinado <span class="it hl">antes do café esfriar.</span></h3>
+        <p class="lead rv d2">Um clique em <b style="color:#fff">Transformar em cliente</b> dispara tudo em sequência. O contrato de 4 anos sai do modelo da Fortal já preenchido, vai para assinatura digital no WhatsApp do cliente e, no instante em que ele assina, o sistema cria o cliente no banco, gera as semanas, a cobrança da entrada e agenda a vistoria. Ninguém digita nada duas vezes.</p>
+        <ul class="rv d3">
+          <li><b>Assinatura digital pelo Autentique</b> ou <b>pela própria plataforma da Fortal</b>, com validade jurídica</li>
+          <li><b>Assinou, virou cobrança:</b> cliente criado no banco e as 208 semanas geradas sozinhas</li>
+          <li><b>Pix da entrada</b> enviado na hora, e o status do contrato muda sem ninguém clicar</li>
+          <li><b>Ações rápidas</b> em cada cliente: cobrar no WhatsApp, 2ª via, bloquear, trocar a moto, aditivo e encerrar</li>
+          <li>Vistoria de entrega com fotos e assinatura do locatário no app</li>
+        </ul>
+      </div>
+      <div class="panel rv d2" id="ctPanel">
+        <div class="panel-h"><b>Novo contrato · Diego Rocha</b><button class="mini-btn" id="ctGo">Transformar em cliente</button></div>
+        <div class="clock"><div class="clock-t"><small>cronômetro</small><strong id="ctClock">00:00</strong></div><div class="clock-m"><b id="ctMsg">pronto para começar</b><small>CG 160 Start 2026 0 km · entrada R$ 1.200 · R$ 350/semana</small></div></div>
+        <div class="chain" id="ctChain">
+          <div class="ch" data-t="2"><span class="n">1</span><div><b>Cliente criado a partir do prospecto</b><small>dados e CNH vindos do WhatsApp e da SafeLock</small></div><em>00:02</em></div>
+          <div class="ch" data-t="9"><span class="n">2</span><div><b>Contrato gerado do modelo da Fortal</b><small>4 anos · intenção de compra · semanal</small></div><em>00:09</em></div>
+          <div class="ch" data-t="14"><span class="n">3</span><div><b>Enviado para assinatura no WhatsApp</b><small>Autentique ou assinatura da plataforma</small></div><em>00:14</em></div>
+          <div class="ch" data-t="128"><span class="n">4</span><div><b>Diego assinou pelo celular</b><small>status atualizado sozinho</small></div><em>02:08</em></div>
+          <div class="ch" data-t="129"><span class="n">5</span><div><b>Cliente no banco + 208 semanas criadas</b><small>Pix e boleto, com juros e multa por atraso</small></div><em>02:09</em></div>
+          <div class="ch" data-t="130"><span class="n">6</span><div><b>Pix da entrada enviado e vistoria agendada</b><small>R$ 1.200,00 · retirada amanhã às 9h</small></div><em>02:10</em></div>
+        </div>
+        <div class="quick" id="ctQuick"><span>Cobrar no WhatsApp</span><span>2ª via</span><span>Bloquear</span><span>Trocar moto</span><span>Aditivo</span><span>Encerrar</span></div>
+      </div>
+    </div>
+
+    <!-- Banco -->
+    <div class="feat" id="banco">
+      <div class="feat-txt">
+        <span class="label rv">07 · Integração bancária</span>
+        <h3 class="display rv d1">O banco é o da Fortal. <span class="it hl">Qualquer um.</span></h3>
+        <p class="lead rv d2">O sistema se conecta ao banco que a Fortal escolher. As semanas viram cobranças por Pix e boleto no momento do contrato e são baixadas sozinhas quando o pagamento cai. O dinheiro vai direto para a conta da Fortal.</p>
+        <div class="banks rv d3"><span class="bank">Inter</span><span class="bank">Sicoob</span><span class="bank">Itaú</span><span class="bank">Bradesco</span><span class="bank">Banco do Brasil</span><span class="bank">Santander</span><span class="bank">Caixa</span><span class="bank">C6</span><span class="bank">Asaas</span><span class="bank any">o que vocês já usam</span></div>
+        <ul class="rv d3">
+          <li>Semanas criadas junto com o contrato, com juros e multa por atraso calculados</li>
+          <li>Pix pago, semana baixada e moto liberada no rastreador, sem ninguém clicar</li>
+          <li>Caixa com a forma e o banco de cada recebimento, fechando com o extrato</li>
+        </ul>
+      </div>
+      <div class="panel rv d2" id="bkPanel">
+        <div class="panel-h"><b>Pix da semana 37 · Marcos A. Lima</b><b style="color:var(--ok)" id="bkSt">aguardando</b></div>
+        <div class="pixflow" id="bkFlow">
+          <div class="pf"><span class="n">1</span><div>Cobrança criada no banco da Fortal<small>junto com o contrato · R$ 350,00 · vence hoje</small></div></div>
+          <div class="pf"><span class="n">2</span><div>Lembrete com Pix copia e cola no WhatsApp<small>template automático às 8h</small></div></div>
+          <div class="pf"><span class="n">3</span><div>Cliente paga pelo app da Fortal<small>10:41 · Pix recebido</small></div></div>
+          <div class="pf"><span class="n">4</span><div>Semana baixada sozinha no sistema<small>caixa e relatórios atualizados</small></div></div>
+          <div class="pf"><span class="n">5</span><div>Se estava bloqueada, a moto é liberada<small>comando enviado pela ÁgilLock</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp templates -->
+    <div class="feat rev" id="lembretes">
+      <div class="feat-txt">
+        <span class="label rv">08 · Lembretes no WhatsApp do cliente</span>
+        <h3 class="display rv d1">O sistema avisa. <span class="it hl">A equipe não precisa lembrar.</span></h3>
+        <p class="lead rv d2">Mensagens oficiais do WhatsApp, com a marca da Fortal, disparadas pelo próprio sistema no momento certo. O cliente recebe o Pix, o aviso da multa e o lembrete da troca de óleo sem ninguém da loja digitar nada.</p>
+        <ul class="rv d3">
+          <li><b>Semana vencendo hoje</b>, com o Pix copia e cola pronto</li>
+          <li><b>Atraso</b>, com régua de dias definida pela Fortal</li>
+          <li><b>Multa nova</b>, com infração, local e valor</li>
+          <li><b>Troca de óleo chegando</b>, pelo KM real da ÁgilLock</li>
+          <li>Vistoria, contrato para assinar, CNH vencendo e disparos em massa para a carteira</li>
+        </ul>
+      </div>
+      <div class="phones rv d2" style="min-height:540px">
+        <div class="phone"><div class="scr dk wa-ph">
+          <div class="wa-top"><i style="background:url(img/icone.png) center/cover"></i><div>Fortal Loca &amp; Vende<small>conta comercial oficial</small></div></div>
+          <div class="wa-msgs" id="tpls">
+            <div class="tpl"><div class="hd"><img src="img/logo-fortal.png" alt=""/><span>vence hoje</span></div><p>Olá, Marcos! Sua semana 37 da CG 160 Start vence <b>hoje</b>: <b>R$ 350,00</b>. Use o Pix abaixo e fique em dia 🏍️</p><div class="bt">Copiar Pix</div><small>08:00</small></div>
+            <div class="tpl"><div class="hd"><img src="img/logo-fortal.png" alt=""/><span>multa nova</span></div><p>Marcos, chegou uma multa de 18/11 (art. 218 I) na moto RJX4F21. Valor de R$ 130,16, lançado na semana 38.</p><small>08:41</small></div>
+            <div class="tpl"><div class="hd"><img src="img/logo-fortal.png" alt=""/><span>manutenção</span></div><p>Faltam <b>50 km</b> para a troca de óleo da sua moto. Agende com a gente para manter a garantia 👍</p><div class="bt">Agendar</div><small>14:20</small></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFICINA -->
+<section class="light pad" id="oficina">
+  <div class="wrap">
+    <span class="label rv">09 · Oficina e ordens de serviço</span>
+    <h2 class="title display split" data-split>Não tem oficina própria? <span class="it hl">O mecânico entra no sistema.</span></h2>
+    <p class="lead rv d1">O mecânico parceiro usa o mesmo app da equipe da Fortal, mas só enxerga ordens de serviço. Ele abre a OS com fotos, peças e mão de obra. A Fortal recebe a notificação e aprova ou reprova na hora. No fim do mês, cada oficina sabe quanto tem a receber, e a Fortal sabe quanto deve, quanto já pagou e quanto cada moto custou.</p>
+    <div class="os-grid" style="margin-top:56px">
+      <div class="phone rv"><div class="scr os-scr">
+        <div class="as-top"><img src="img/logo-fortal.png" alt=""/><small>App da equipe · perfil Mecânico</small><b>Nova OS · Bros 160 SBA7J33</b></div>
+        <div class="os-body">
+          <h6>Fotos do serviço</h6>
+          <div class="photos"><i></i><i></i><i></i></div>
+          <h6>Peças e mão de obra</h6>
+          <div class="osl"><span>Kit relação DID</span><b>R$ 189,00</b></div>
+          <div class="osl"><span>Óleo 10W30 · 1 L</span><b>R$ 37,00</b></div>
+          <div class="osl warn"><span>Mão de obra · acima da tabela</span><b>R$ 60,00</b></div>
+          <div class="os-tot"><span>Total da OS<br/><small style="opacity:.7">KM 22.759 · ÁgilLock</small></span><strong>R$ 286,00</strong></div>
+          <div class="os-send">Enviar para aprovação da Fortal</div>
+        </div>
+      </div></div>
+      <div class="os-right" id="osRight">
+        <div class="push" id="osPush">
+          <div class="push-h"><img src="img/icone.png" alt=""/>Fortal · Sistema · agora</div>
+          <b>OS #218 aguardando sua aprovação</b>
+          <p>Moto Peças do Zé · Bros 160 SBA7J33 · R$ 286,00 · 3 fotos · mão de obra acima da tabela</p>
+          <div class="push-a"><span class="ok">Aprovar</span><span class="no">Reprovar</span><span>Ver OS</span></div>
+        </div>
+        <div class="panel dk">
+          <div class="panel-h"><b>Oficinas parceiras · novembro</b><span class="pill r">Moto Peças do Zé</span></div>
+          <div class="oc">
+            <div><small>Total em OS</small><strong data-count="4860" data-money>0</strong></div>
+            <div class="r"><small>Em aberto</small><strong data-count="1240" data-money>0</strong></div>
+            <div class="g"><small>Já pago</small><strong data-count="3620" data-money>0</strong></div>
+          </div>
+          <div class="bars-h" style="margin-top:16px">
+            <div class="bh"><span>Bros 160 · SBA7J33</span><div class="tr"><i style="--w:70%;background:var(--red)"></i></div><strong>R$ 1.842</strong></div>
+            <div class="bh"><span>Lander 250 · PMX2D90</span><div class="tr"><i style="--w:44%;background:var(--red)"></i></div><strong>R$ 1.160</strong></div>
+            <div class="bh"><span>CG 160 · RJX4F21</span><div class="tr"><i style="--w:24%;background:#ff6a70"></i></div><strong>R$ 620</strong></div>
+          </div>
+          <p class="caption" style="text-align:left">Custo de manutenção por moto · alimenta a análise de rentabilidade</p>
+        </div>
+      </div>
+    </div>
+    <div class="chips rv">
+      <span class="chip k">Perfil Mecânico só com OS</span><span class="chip">Fotos e arquivos na OS</span><span class="chip">Tabela de preço por oficina</span><span class="chip">Alerta "acima da tabela"</span><span class="chip">Aprovação pelo push</span><span class="chip">Fechamento do mês por oficina</span><span class="chip">Estoque de peças</span><span class="chip r">Análise de cada moto</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCEIRO & RELATÓRIOS -->
+<section class="light pad" id="financeiro" style="padding-top:0">
+  <div class="wrap">
+    <span class="label rv">10 · Financeiro e relatórios</span>
+    <h2 class="title display split" data-split>Os números da Fortal <span class="it hl">sem planilha.</span></h2>
+    <p class="lead rv d1">Contas a receber, contas a pagar, caixa por banco, caução, acordos e a rentabilidade de cada moto. Tudo filtrável e exportável, no computador e no app.</p>
+    <div class="reps">
+      <div class="rep rv"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><div><b>Receita e projeção</b><p>Semana a semana, com o que já entrou e o que ainda vai entrar.</p></div></div>
+      <div class="rep rv d1"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div><b>Inadimplência e juros</b><p>Quem está em atraso, há quantos dias e quanto rendeu de juros.</p></div></div>
+      <div class="rep rv d2"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span><div><b>Caixa por banco</b><p>Cada recebimento com a forma e o banco, batendo com o extrato.</p></div></div>
+      <div class="rep rv"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6l-3-7h4l2 3"/></svg></span><div><b>Rentabilidade por moto</b><p>Receita, manutenção e multas de cada moto. Qual dá lucro e qual dá trabalho.</p></div></div>
+      <div class="rep rv d1"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span><div><b>Custo de oficina</b><p>Por oficina, por moto e por tipo de serviço, com o comparativo do mês.</p></div></div>
+      <div class="rep rv d2"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><div><b>Multas</b><p>Em aberto, repassadas, pagas pela empresa e prazos de indicação.</p></div></div>
+      <div class="rep rv"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4M20 12H4M14 17H4"/></svg></span><div><b>Contratos</b><p>Ativos, a encerrar, quitados e motos que já passaram para o nome do cliente.</p></div></div>
+      <div class="rep rv d1"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><div><b>Funil de clientes</b><p>De onde vêm os leads, quantos passam na SafeLock e quantos viram contrato.</p></div></div>
+      <div class="rep rv d2"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18l-2 11H5L3 9Z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></span><div><b>Vendas e comissões</b><p>Compra e Venda com lucro por moto, a receber e comissão de cada vendedor.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPRA E VENDA -->
+<section class="pad" id="compra-venda" style="overflow:hidden">
+  <div class="glow" style="left:10%;top:60%"></div>
+  <div class="wrap cv-grid" style="position:relative">
+    <div>
+      <span class="label rv">11 · Compra e Venda · incluída</span>
+      <h2 class="title display split" data-split>A Fortal também vende. <span class="it hl">O sistema também.</span></h2>
+      <p class="lead rv d1">Junto com a locação vem a área de Compra e Venda, a mesma que roda na Raposo. Um seletor no topo troca entre <b style="color:#fff">Locação</b> e <b style="color:#fff">Compra e Venda</b>, cada uma com as suas telas, o seu financeiro e os seus relatórios.</p>
+      <ul class="rv d2" style="list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px">
+        <li style="display:flex;gap:12px;color:#d0d0d4"><span style="flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)"></span><span><b style="color:#fff">Site de seminovos e 0 km</b> com preço, entrada e parcela, alimentado pelo estoque</span></li>
+        <li style="display:flex;gap:12px;color:#d0d0d4"><span style="flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)"></span><span><b style="color:#fff">Ficha aberta</b>: a moto que sai da frota mostra as trocas de óleo, manutenções e o KM do rastreador</span></li>
+        <li style="display:flex;gap:12px;color:#d0d0d4"><span style="flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)"></span><span><b style="color:#fff">Análise de compra</b> pela placa, com consulta de débitos antes de fazer a oferta</span></li>
+        <li style="display:flex;gap:12px;color:#d0d0d4"><span style="flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)"></span><span>Interessados, vendas, contrato e assinatura, vistoria de entrega, troca como pagamento e financiamento</span></li>
+        <li style="display:flex;gap:12px;color:#d0d0d4"><span style="flex:none;width:7px;height:7px;margin-top:9px;background:var(--red);transform:rotate(45deg)"></span><span>Financeiro próprio: a receber, a pagar, comissões e lucro de cada venda</span></li>
+      </ul>
+    </div>
+    <div class="rv d2">
+      <div class="site">
+        <div class="site-top"><img src="img/logo-fortal.png" alt=""/><span>seminovos.fortallocaevende.com</span></div>
+        <div class="site-hero"><b>Moto boa, com histórico aberto.</b><small>0 km e seminovas da própria frota, revisadas e com ficha de manutenção.</small></div>
+        <div class="vit">
+          <div class="car"><div class="ph"><span class="tg">0 KM</span><img src="img/motos/fan.jpg" alt="Honda CG 160 Fan na loja da Fortal"/></div><div class="cb"><b>Honda CG 160 Fan</b><small>2026 · 0 km</small><strong>R$ 1.500 + semanal</strong></div></div>
+          <div class="car"><div class="ph"><span class="tg k">SEMINOVA</span><img src="img/motos/bros.jpg" alt="Honda Bros 160 na loja da Fortal"/></div><div class="cb"><b>Honda Bros 160</b><small>2026 · 22.759 km · Azul</small><strong>Ficha aberta</strong></div></div>
+          <div class="car"><div class="ph"><span class="tg">0 KM</span><img src="img/motos/crosser.jpg" alt="Yamaha Crosser 150 na loja da Fortal"/></div><div class="cb"><b>Yamaha Crosser 150</b><small>2027 · 0 km</small><strong>R$ 1.800 + semanal</strong></div></div>
+        </div>
+        <div class="ficha"><b>Ficha aberta · Bros 160 SBA7J33</b><div><span>KM medido pela ÁgilLock</span><span>22.759</span></div><div><span>Trocas de óleo em dia</span><span>22 de 22</span></div><div><span>Última revisão</span><span>12/11/2026</span></div></div>
+      </div>
+      <p class="caption">Tela ilustrativa · os anúncios saem direto do estoque do sistema</p>
+    </div>
+  </div>
+</section>
+
+<!-- APP NAS LOJAS -->
+<section class="pad" id="app" style="overflow:hidden;background:linear-gradient(180deg,var(--ink),#140506 60%,var(--ink))">
+  <div class="speed" aria-hidden="true"><i style="top:22%;width:30%;animation-delay:.6s"></i><i style="top:70%;width:40%;animation-delay:1.8s"></i></div>
+  <div class="wrap store-grid" style="position:relative">
+    <div>
+      <span class="label rv">12 · App próprio · incluso na implantação</span>
+      <h2 class="title display split" data-split>A Fortal na Google Play <span class="it hl">e na App Store.</span></h2>
+      <p class="lead rv d1">Um aplicativo com a logo e as cores da Fortal, publicado nas duas lojas com o nome da empresa. Já está incluso nos R$ 40.000 da implantação. Não é só ferramenta: é vitrine. Quem procura "aluguel de moto Fortaleza" na loja encontra a Fortal.</p>
+      <div class="ben">
+        <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M17 11v6M14 14h6M2 21a7 7 0 0 1 14 0"/></svg><b>Traz gente para alugar</b><p>O interessado escolhe a moto, envia a CNH pelo app e já entra no funil com a análise da SafeLock.</p></div>
+        <div class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 3 7h7l-5.5 4.5 2 7.5-6.5-4.5L5.5 21l2-7.5L2 9h7l3-7Z"/></svg><b>Impacto de marca</b><p>Ter app próprio nas lojas coloca a Fortal em outro patamar diante do cliente e da concorrência.</p></div>
+        <div class="rv d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg><b>Locatário resolve sozinho</b><p>Paga a semana por Pix, vê multas, contrato, vistorias e faz a troca de óleo pelo app.</p></div>
+        <div class="rv d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><b>Equipe no bolso</b><p>O mesmo app, com login da equipe, mostra o mapa, aprova OS, consulta a SafeLock e recebe os alertas.</p></div>
+      </div>
+      <div class="store-btns rv d3">
+        <div class="store"><svg viewBox="0 0 24 24"><path d="M3.6 2.3 13.5 12l-9.9 9.7c-.4-.2-.6-.7-.6-1.2V3.5c0-.5.2-1 .6-1.2Zm11.1 8.5 2.7-2.7L5.2 1.4l9.5 9.4Zm0 2.4-9.5 9.4 12.2-6.7-2.7-2.7Zm4.4-4 2.7 1.5c.8.5.8 1.6 0 2.1l-2.7 1.5-3-3 3-2.1Z"/></svg><div><small>Disponível no</small><b>Google Play</b></div></div>
+        <div class="store"><svg viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.2ZM13.9 5.1c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg><div><small>Baixar na</small><b>App Store</b></div></div>
+      </div>
+    </div>
+    <div class="stores-vis rv d2">
+      <div class="phone"><div class="scr real"><img src="img/loja/loja-google-play.jpg" alt="App da Fortal Loca &amp; Vende na Google Play" /></div></div>
+      <div class="phone"><div class="scr real"><img src="img/loja/loja-app-store.jpg" alt="App da Fortal Loca &amp; Vende na App Store" /></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE PÚBLICO + APP LOCATÁRIO -->
+<section class="light pad" id="site">
+  <div class="wrap sitepub">
+    <div>
+      <span class="label rv">13 · Site público, app e WhatsApp ligados</span>
+      <h2 class="title display split" data-split>Todo lead chega <span class="it hl">no mesmo lugar.</span></h2>
+      <p class="lead rv d1">O site público da Fortal, o app e o WhatsApp passam a falar com o sistema. As motos disponíveis e os valores saem do estoque e se atualizam sozinhos, e cada interessado vira um prospecto com origem registrada, pronto para a análise.</p>
+      <div class="flow">
+        <div class="rv"><span>1</span><div><b>Escolhe a moto no site ou no app</b><p>Estoque real, com entrada e semanal, sempre atualizado pelo sistema.</p></div></div>
+        <div class="rv d1"><span>2</span><div><b>Envia a CNH</b><p>Pelo app, pelo site ou pelo WhatsApp. A SafeLock analisa na hora.</p></div></div>
+        <div class="rv d2"><span>3</span><div><b>Passou? Vira cliente com um clique</b><p>Contrato gerado, assinatura digital e semanas criadas no banco.</p></div></div>
+        <div class="rv d3"><span>4</span><div><b>Retira a moto e acompanha tudo pelo app</b><p>Vistoria assinada no app, pagamentos, multas e manutenção.</p></div></div>
+      </div>
+    </div>
+    <div class="phones rv d2">
+      <div class="phone back"><div class="scr real"><img src="img/loja/tela-financeiro.jpg" alt="Tela de financeiro do app com as cores da Fortal" /></div></div>
+      <div class="phone front"><div class="scr real"><img src="img/loja/tela-inicio.jpg" alt="Tela inicial do app com as cores da Fortal" /></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="light pad" id="modulos" style="padding-top:0">
+  <div class="wrap">
+    <span class="label rv">14 · Tudo o que vem no sistema</span>
+    <h2 class="title display split" data-split>Do pátio ao caixa, <span class="it">da locação à venda.</span></h2>
+    <div class="tabs rv" role="tablist">
+      <button class="tab on" data-f="all">Todos</button>
+      <button class="tab" data-f="op">Operação</button>
+      <button class="tab" data-f="int">Integrações</button>
+      <button class="tab" data-f="fin">Financeiro</button>
+      <button class="tab" data-f="cv">Compra e Venda</button>
+    </div>
+    <div class="mods" id="mods">
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Frota</h4><p>Situação de cada moto, documentos, histórico e linha do tempo completa.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Contratos</h4><p>Intenção de compra em 4 anos, semanal, aditivos, troca de moto e quitação.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Vistorias</h4><p>Fotos e vídeos, assinatura do locatário no app e laudo em PDF.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Prospectos e clientes</h4><p>Funil do lead até o contrato, com origem, etapa e análise.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Oficina e OS</h4><p>Mecânico parceiro no app, aprovação pelo push e tabela por oficina.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Operação</span><h4>Manutenção por km</h4><p>Plano de troca de óleo e revisões disparado pelo KM real.</p></div>
+      <div class="mod" data-c="op"><span class="tag n">Novo</span><h4>Multas no mesmo dia</h4><p>Multa de hoje no sistema hoje, lançada na semana do locatário.</p></div>
+      <div class="mod" data-c="op"><span class="tag">Gestão</span><h4>Perfis e permissões</h4><p>Administrador, atendente, mecânico, vistoriador e perfis do seu jeito, com auditoria.</p></div>
+      <div class="mod" data-c="int"><span class="tag">Integração</span><h4>ÁgilLock</h4><p>Mapa, KM, alertas, bloqueio e desbloqueio automáticos.</p></div>
+      <div class="mod" data-c="int"><span class="tag">Integração</span><h4>SafeLock</h4><p>No WhatsApp e dentro do sistema, com laudo e veredito.</p></div>
+      <div class="mod" data-c="int"><span class="tag">Integração</span><h4>VozChat</h4><p>WhatsApp oficial com vários atendentes, quadro de leads e disparos.</p></div>
+      <div class="mod" data-c="int"><span class="tag">Integração</span><h4>Assinatura digital</h4><p>Autentique ou a assinatura da própria plataforma.</p></div>
+      <div class="mod" data-c="fin"><span class="tag">Financeiro</span><h4>Banco da Fortal</h4><p>Pix e boleto em qualquer banco, com baixa automática.</p></div>
+      <div class="mod" data-c="fin"><span class="tag">Financeiro</span><h4>Contas a pagar e caixa</h4><p>Despesas por categoria, caução, acordos e caixa por banco.</p></div>
+      <div class="mod" data-c="fin"><span class="tag">Financeiro</span><h4>Relatórios</h4><p>Receita, inadimplência, juros, rentabilidade por moto e custo de oficina.</p></div>
+      <div class="mod" data-c="cv"><span class="tag">Compra e Venda</span><h4>Site de seminovos</h4><p>Vitrine com 0 km e seminovas, preço, entrada e ficha aberta.</p></div>
+      <div class="mod" data-c="cv"><span class="tag">Compra e Venda</span><h4>Estoque e análise</h4><p>Preparação item a item e análise de compra pela placa.</p></div>
+      <div class="mod" data-c="cv"><span class="tag">Compra e Venda</span><h4>Vendas e comissões</h4><p>Contrato de venda, troca, financiamento, comissão e lucro.</p></div>
+      <div class="mod" data-c="op"><span class="tag">App</span><h4>App do locatário</h4><p>Pix, multas, contrato, vistorias e troca de óleo pelo celular.</p></div>
+      <div class="mod" data-c="op"><span class="tag">App</span><h4>App da equipe</h4><p>Mapa, OS, SafeLock, aprovações e alertas no bolso.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM FAZ -->
+<section class="pad" id="quem-faz">
+  <div class="wrap dev">
+    <figure class="dev-photo rv">
+      <img src="img/perfil.jpg" alt="Pedro Castro" />
+      <figcaption><b>Pedro Castro</b><small>Desenvolvedor · Fortaleza/CE</small></figcaption>
+    </figure>
+    <div>
+      <span class="label rv">15 · Quem constrói</span>
+      <blockquote class="q rv d1">A Fortal não está contratando uma promessa. Está contratando <em>quem já desenvolve os sistemas</em> que cuidam das suas motos e dos seus clientes todos os dias.</blockquote>
+      <p class="lead rv d2" style="margin-bottom:30px">Quem atende é quem programou. Sem intermediário e sem fila de suporte. Estas empresas confiam a mim o desenvolvimento e a manutenção dos seus sistemas:</p>
+      <div class="trust rv d3">
+        <div class="pj hot"><b>ÁgilLock <small>a Fortal usa</small></b><p>Desenvolvo e mantenho a plataforma de rastreamento GPS e bloqueio remoto, com painel, app e financeiro.</p></div>
+        <div class="pj hot"><b>SafeLock <small>a Fortal usa</small></b><p>Desenvolvo e mantenho o sistema de análise de risco de locatários pelo WhatsApp, com laudo em PDF.</p></div>
+        <div class="pj"><b>Zé Loc <small>do Valmir</small></b><p>A locadora de motos que mostrou o sistema para a Fortal. Mesmo núcleo, oficina parceira e análise por moto.</p></div>
+        <div class="pj"><b>Raposo Motors <small>locação + venda</small></b><p>Locação de motos e carros elétricos, com a área de Compra e Venda que a Fortal vai receber.</p></div>
+        <div class="pj"><b>IAPRO <small>proteção veicular</small></b><p>Empresa do mesmo dono da ÁgilLock: associados, cotação e vistoria por link.</p></div>
+        <div class="pj"><b>Grid Locadora <small>locação</small></b><p>Plataforma de locação com contratos, vistorias e financeiro.</p></div>
+        <div class="pj"><b>Zé Motoca <small>motos</small></b><p>Mais uma operação de motos rodando com sistema feito por mim.</p></div>
+        <div class="pj"><b>VozChat <small>atendimento</small></b><p>Central de WhatsApp oficial com quadro de leads, usada pelas locadoras acima.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="wall">
+    <div class="hot"><img src="img/clientes/agillock-escuro.png" alt="ÁgilLock" /></div>
+    <div class="hot sq"><img src="img/clientes/safelock.png" alt="SafeLock" /></div>
+    <div class="sq"><img src="img/clientes/zeloc.png" alt="Zé Loc" /></div>
+    <div><img src="img/clientes/raposo.png" alt="Raposo Motors" /></div>
+    <div class="sq"><img src="img/clientes/iapro.png" alt="IAPRO" /></div>
+    <div><img src="img/clientes/grid.png" alt="Grid Locadora" /></div>
+    <div><span class="txt">Zé Motoca<small>locação de motos</small></span></div>
+    <div class="sq"><img src="img/clientes/vozchat.png" alt="VozChat" style="max-height:70px" /></div>
+  </div></div>
+</section>
+
+<!-- IMPLANTAÇÃO -->
+<section class="light pad" id="implantacao">
+  <div class="wrap">
+    <span class="label rv">16 · Prazo e acompanhamento</span>
+    <h2 class="title display split" data-split>Duas semanas para estar no ar. <span class="it hl">E eu na loja com vocês.</span></h2>
+    <p class="lead rv d1">Em 14 dias a Fortal está operando com sistema próprio e com o app disponível para baixar na Google Play e na App Store. Depois disso eu não sumo: fico ao lado da equipe até ela dominar tudo.</p>
+    <div class="big3">
+      <div class="b3 rv"><strong>2<span> sem.</span></strong><b>Tudo pronto</b><p>Sistema, integrações, site e apps publicados nas lojas.</p></div>
+      <div class="b3 rv d1"><strong>2<span> sem.</span></strong><b>Treinamento na loja</b><p>Segunda a sexta, um turno por dia (manhã ou tarde), com a equipe usando no trabalho real.</p></div>
+      <div class="b3 red rv d2"><strong>1<span>× sem.</span></strong><b>Visita semanal</b><p>Depois, um turno por semana na loja, no dia e turno que a Fortal escolher.</p></div>
+    </div>
+    <div class="steps">
+      <div class="stp rv"><span class="n">01</span><small class="wk">Semana 1</small><h4>Identidade e integrações</h4><p>Logo e cores da Fortal no sistema, no app e no site. Contrato, perfis de acesso e as ligações com ÁgilLock, SafeLock, VozChat, banco, assinatura e multas.</p></div>
+      <div class="stp rv d1"><span class="n">02</span><small class="wk">Semana 2</small><h4>Apps nas lojas e dados</h4><p>App publicado e disponível para baixar. Frota, clientes, contratos e semanas importados. Sistema no ar.</p></div>
+      <div class="stp rv d2"><span class="n">03</span><small class="wk">Semanas 3 e 4</small><h4>Treinamento presencial</h4><p>Segunda a sexta, manhã ou tarde, módulo por módulo, com a equipe operando o dia a dia comigo do lado.</p></div>
+      <div class="stp rv d3"><span class="n">04</span><small class="wk">Daí em diante</small><h4>Uma vez por semana na loja</h4><p>Um turno por semana para tirar dúvidas, ajustar processos e trazer as novidades do sistema.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="pricing pad" id="investimento">
+  <div class="grid-bg"></div><div class="glow"></div>
+  <div class="wrap" style="position:relative">
+    <span class="label rv">17 · Investimento</span>
+    <h2 class="title display split" data-split>Um sistema só. <span class="it hl">Com a cara da Fortal.</span></h2>
+    <p class="lead rv d1">Locação, Compra e Venda, app próprio nas lojas e as integrações com o que a Fortal já usa, num investimento só, dividido em quatro vezes.</p>
+
+    <div class="prices">
+      <div class="price main rv">
+        <span class="k">Implantação</span>
+        <div class="amount"><sup>R$</sup><strong data-count="40000" data-plain>0</strong></div>
+        <p class="note">em 4 parcelas de R$ 10.000</p>
+        <div class="parc"><div><small>1ª</small><b>R$ 10 mil</b></div><div><small>2ª</small><b>R$ 10 mil</b></div><div><small>3ª</small><b>R$ 10 mil</b></div><div><small>4ª</small><b>R$ 10 mil</b></div></div>
+        <ul class="incl-l">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Sistema de locação completo com a marca da Fortal</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Área de Compra e Venda, igual à da Raposo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>App personalizado na Google Play e na App Store</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Integração com ÁgilLock, SafeLock, banco e assinatura digital</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Tudo pronto em 2 semanas, com os apps disponíveis para baixar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>Importação dos dados e 2 semanas de treinamento presencial</li>
+        </ul>
+      </div>
+
+      <div class="price rv d1">
+        <span class="k">Manutenção mensal</span>
+        <div class="amount"><sup>R$</sup><strong id="mens">3.000</strong><sub>/mês</sub></div>
+        <p class="note" id="mensNote">Tudo junto: locação, Compra e Venda e VozChat integrado à SafeLock.</p>
+        <div class="plans" id="plans">
+          <button class="plan on" data-v="3000" data-n="Tudo junto: locação, Compra e Venda e VozChat integrado à SafeLock."><span class="rd"></span><div><b>Completo <span class="best">RECOMENDADO</span></b><small>Locação + Compra e Venda + VozChat integrado à SafeLock</small></div><strong>R$ 3.000</strong></button>
+          <button class="plan" data-v="2500" data-n="Locação e Compra e Venda, sem o VozChat."><span class="rd"></span><div><b>Sem VozChat</b><small>Locação + Compra e Venda</small></div><strong>R$ 2.500</strong></button>
+          <button class="plan" data-v="2000" data-n="Só a locação, sem o VozChat e sem a Compra e Venda."><span class="rd"></span><div><b>Locação</b><small>Sem VozChat e sem Compra e Venda</small></div><strong>R$ 2.000</strong></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="incl">
+      <div class="box mine rv">
+        <span class="label">Por minha conta, dentro da mensalidade</span>
+        <h4>Toda a infraestrutura e o suporte</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Servidor, banco de dados e armazenamento de fotos, vídeos e documentos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Domínio, certificado de segurança e contas de desenvolvedor da Apple e do Google</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Backups automáticos duas vezes por dia e monitoramento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Manutenção, correções, atualizações (como a nova função de multas) e suporte direto comigo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Uma visita por semana na loja, um turno, no dia que a Fortal escolher</li>
+        </ul>
+        <p class="foot">As atualizações que eu lanço para o sistema chegam para a Fortal sem custo extra.</p>
+      </div>
+      <div class="box theirs rv d1">
+        <span class="label">Por conta da Fortal</span>
+        <h4>Custos de terceiros</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Templates do WhatsApp oficial (mensagens automáticas), cobrados pela Meta na conta da empresa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Tarifas do banco sobre Pix e boletos recebidos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Rastreamento ÁgilLock e consultas SafeLock, como já funciona hoje</li>
+        </ul>
+        <p class="foot">Conversas que o cliente inicia e que são respondidas em até 24 horas não pagam template.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="light pad cta">
+  <div class="wrap">
+    <img class="cta-logo rv" src="img/logo-fortal-escuro.png" alt="Fortal Loca & Vende" />
+    <span class="label rv" style="justify-content:center">18 · Próximo passo</span>
+    <h2 class="display split" data-split style="margin-top:18px">Vamos colocar a Fortal <span class="it hl">no próximo nível?</span></h2>
+    <p class="lead rv d1">Você já aprovou a ÁgilLock e a SafeLock no dia a dia. Com o aceite, em duas semanas a Fortal tem tudo isso num sistema só, com a sua marca no computador, no celular da equipe e na loja de aplicativos.</p>
+    <div class="cta-btns rv d2">
+      <a class="btn btn-red" id="waBtn" target="_blank" rel="noopener">Aprovar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="#investimento">Rever o investimento</a>
+    </div>
+    <div class="terms">
+      <span>Confidencial · uso exclusivo</span><span>No ar em 2 semanas</span><span>Validade: 15 dias</span><span>Implantação R$ 40.000 em 4×</span><span>Mensal a partir de R$ 2.000</span>
+    </div>
+  </div>
+</section>
+
+<section class="conf">
+  <div class="wrap conf-in">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    <div>
+      <b>Documento confidencial e de uso exclusivo da Fortal Loca &amp; Vende</b>
+      <p>Esta proposta, incluindo valores, condições, descrições de funcionalidades, telas e o conteúdo técnico e comercial aqui apresentado, foi elaborada exclusivamente para a Fortal Loca &amp; Vende. É proibida a sua reprodução, divulgação, encaminhamento ou compartilhamento, total ou parcial, com terceiros sem autorização prévia e por escrito de Pedro Castro. O descumprimento sujeita o responsável às medidas judiciais cabíveis, com responsabilização civil e criminal, inclusive indenização por perdas e danos, nos termos da Lei nº 9.610/1998 (Direitos Autorais), da Lei nº 9.609/1998 (Lei do Software) e da Lei nº 9.279/1996 (concorrência desleal).</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>Proposta preparada por <b style="color:#fff">Pedro Castro</b> para a <a href="https://www.instagram.com/fortal_loca_vende/" target="_blank" rel="noopener">@fortal_loca_vende</a> · novembro de 2026</span>
+    <a href="mailto:pedrohenriquecastro.martins@gmail.com">pedrohenriquecastro.martins@gmail.com</a>
+  </div>
+</footer>
+
+<a class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="Falar com Pedro no WhatsApp"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+
+<script>
+(function(){
+  var CONFIG = {
+    whatsapp: '5585992010562',
+    msg: 'Olá, Pedro! Vi a proposta do sistema da Fortal Loca & Vende e quero seguir.'
+  };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,c){return (c||document).querySelector(s)};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var sleep = function(ms){return new Promise(function(r){setTimeout(r, reduce ? 0 : ms)})};
+  var wa = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.msg);
+  $('#waBtn').href = wa; $('#waFab').href = wa;
+
+  // títulos palavra a palavra
+  $$('[data-split]').forEach(function(el){
+    var walk = function(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function(part){
+            if(!part) return;
+            if(/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span'); w.className = 'w';
+            var i = document.createElement('span'); i.textContent = part;
+            w.appendChild(i); frag.appendChild(w);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if(n.nodeType === 1){ walk(n); }
+      });
+    };
+    walk(el);
+    $$('.w>span', el).forEach(function(s,i){ s.style.transitionDelay = (i*0.05)+'s'; });
+    el.classList.add('split');
+  });
+
+  // contadores
+  var fmt = function(n,el){
+    if(el.hasAttribute('data-money')) return 'R$ ' + n.toLocaleString('pt-BR');
+    if(el.hasAttribute('data-plain')) return n.toLocaleString('pt-BR');
+    var s = n.toLocaleString('pt-BR'); var sm = el.querySelector('small');
+    return s;
+  };
+  var count = function(el){
+    if(el._done) return; el._done = true;
+    var to = +el.dataset.count, t0 = null, dur = reduce ? 1 : 1600, tail = el.querySelector('small');
+    var tick = function(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/dur,1); var e = 1-Math.pow(1-p,3);
+      el.textContent = fmt(Math.round(to*e), el); if(tail) el.appendChild(tail); if(p<1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  };
+
+  // revelar ao rolar
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target; el.classList.add('in');
+      $$('[data-count]', el).concat(el.dataset.count ? [el] : []).forEach(count);
+      io.unobserve(el);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  $$('.rv,[data-split],.panel,.box-d').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ $$('#heroWin [data-count]').forEach(count); }, 500);
+
+  // nav + progresso + botão flutuante
+  var nav = $('#nav'), bar = $('#progress'), fab = $('#waFab');
+  var onScroll = function(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    nav.classList.toggle('solid', y > 30);
+    bar.style.width = (h>0 ? y/h*100 : 0) + '%';
+    fab.classList.toggle('show', y > innerHeight*0.8);
+  };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // brilho segue o cursor
+  var hero = $('#topo'), glow = $('#glow');
+  hero.addEventListener('pointermove', function(e){
+    var r = hero.getBoundingClientRect();
+    glow.style.setProperty('--gx', ((e.clientX-r.left)/r.width*100)+'%');
+    glow.style.setProperty('--gy', ((e.clientY-r.top)/r.height*100)+'%');
+  });
+
+  // faixas que rolam
+  var mq = $('#mq'); mq.innerHTML += mq.innerHTML;
+
+  // avisos do hero
+  var toasts = [
+    ['Pix recebido · R$ 350,00','Semana baixada sozinha'],
+    ['Diego Rocha passou na SafeLock','Card movido para "Passou"'],
+    ['Contrato #0412 assinado','Status atualizado no sistema'],
+    ['OS #218 para aprovar','Moto Peças do Zé · R$ 286,00'],
+    ['Multa de hoje lançada','Semana 37 do locatário']
+  ];
+  var ti = 0, toast = $('#toast');
+  var cycleToast = function(){
+    $('#toastT').textContent = toasts[ti][0]; $('#toastS').textContent = toasts[ti][1];
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 3200);
+    ti = (ti+1) % toasts.length;
+  };
+  setTimeout(function(){ cycleToast(); setInterval(cycleToast, 4400); }, 2200);
+
+  // abas das telas
+  var urls = ['dashboard','frota','financeiro','analise/moto/SBA7J33','prospectos'];
+  var sideIdx = [0,1,2,3,4];
+  $$('.stab').forEach(function(b){
+    b.addEventListener('click', function(){
+      var i = +b.dataset.s;
+      $$('.stab').forEach(function(x){ x.classList.toggle('on', x===b); });
+      $$('#telas .shot').forEach(function(s,k){ s.classList.toggle('on', k===i); });
+      $$('#shotSide a').forEach(function(a,k){ a.classList.toggle('on', k===sideIdx[i]); });
+      $('#shotUrl').textContent = 'sistema.fortallocaevende.com/' + urls[i];
+    });
+  });
+
+  // quando um painel entra na tela, roda uma vez
+  var onView = function(el, fn, th){
+    var o = new IntersectionObserver(function(e){ if(e[0].isIntersecting){ o.disconnect(); setTimeout(fn, 300); } }, {threshold: th || .45});
+    o.observe(el);
+  };
+
+  // SafeLock + VozChat
+  var slRunning = false;
+  var addBub = function(box, side, html){
+    var b = document.createElement('div'); b.className = 'bub ' + side; b.innerHTML = html;
+    box.appendChild(b);
+    while(box.children.length > 4) box.removeChild(box.firstChild);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ b.classList.add('show'); }); });
+    return b;
+  };
+  var runSl = async function(){
+    if(slRunning) return; slRunning = true;
+    var chat = $('#slChat'), steps = $$('#slSteps span');
+    chat.innerHTML = ''; steps.forEach(function(s){ s.classList.remove('on'); });
+    $$('.kc.live').forEach(function(k){ k.remove(); });
+    addBub(chat,'in','Oi! Quero a CG 160 Start 0 km. O que preciso?<small>10:02</small>'); await sleep(1100);
+    addBub(chat,'out','Me manda uma foto da sua CNH que eu já faço a sua análise 🙂<small>10:02 · automático</small>'); await sleep(1200);
+    var b = addBub(chat,'in','<div class="cnh"><span class="scan"></span></div>Tá aqui<small>10:03</small>');
+    steps[0].classList.add('on'); await sleep(700);
+    b.querySelector('.cnh').classList.add('go'); steps[1].classList.add('on');
+    var an = document.createElement('div'); an.className = 'kc live'; an.innerHTML = 'Diego Rocha<small>CNH lida · consultando</small>';
+    var colAn = $('.kcol[data-c="an"]'); colAn.insertBefore(an, colAn.querySelector('h6').nextSibling);
+    await sleep(1500); steps[2].classList.add('on'); await sleep(1300);
+    an.remove();
+    var ok = document.createElement('div'); ok.className = 'kc live'; ok.innerHTML = '<div>Diego Rocha<small>SafeLock · baixo risco</small></div><span class="pill g">passou</span>';
+    var colOk = $('.kcol[data-c="ok"]'); colOk.insertBefore(ok, colOk.querySelector('h6').nextSibling);
+    steps[3].classList.add('on');
+    addBub(chat,'out','Boa notícia, Diego! Sua análise foi aprovada ✅ Já vou separar a sua moto.<small>10:03 · automático</small>');
+    await sleep(1400); steps[4].classList.add('on');
+    slRunning = false;
+  };
+  $('#slGo').addEventListener('click', runSl);
+  onView($('#slPanel'), runSl);
+
+  // multas
+  var mtRunning = false;
+  var runMt = async function(){
+    if(mtRunning) return; mtRunning = true;
+    var items = $$('#mtLine .tl-i'), add = $('#mtAdd'), tot = $('#mtTot');
+    items.forEach(function(i){ i.classList.remove('on'); }); add.classList.remove('on'); tot.textContent = 'R$ 480,00';
+    for(var k=0;k<items.length;k++){
+      items[k].classList.add('on');
+      if(k===3){ add.classList.add('on'); tot.textContent = 'R$ 610,16'; }
+      await sleep(850);
+    }
+    mtRunning = false;
+  };
+  $('#mtGo').addEventListener('click', runMt);
+  onView($('#mtPanel'), runMt);
+
+  // contrato em minutos: o cronômetro corre acelerado e cada etapa acende no seu segundo
+  var ctRunning = false;
+  var runCt = async function(){
+    if(ctRunning) return; ctRunning = true;
+    var steps = $$('#ctChain .ch'), clock = $('#ctClock'), msg = $('#ctMsg'), quick = $('#ctQuick');
+    steps.forEach(function(s){ s.classList.remove('on'); }); quick.classList.remove('on');
+    var fmtT = function(t){ var m = Math.floor(t/60), s = t%60; return (m<10?'0':'')+m+':'+(s<10?'0':'')+s; };
+    var msgs = ['criando o cliente…','gerando o contrato…','enviado · aguardando a assinatura…','assinado!','gerando as semanas no banco…','tudo pronto'];
+    var end = 130, t = 0, k = 0;
+    msg.textContent = 'começou';
+    await new Promise(function(res){
+      var iv = setInterval(function(){
+        t += (t >= 14 && t < 126) ? 4 : 1;
+        if(t > end) t = end;
+        clock.textContent = fmtT(t);
+        while(k < steps.length && t >= +steps[k].dataset.t){ steps[k].classList.add('on'); msg.textContent = msgs[k]; k++; }
+        if(t >= end){ clearInterval(iv); res(); }
+      }, reduce ? 1 : 55);
+    });
+    msg.textContent = 'contrato assinado e cobrado em 2 min 10 s';
+    quick.classList.add('on');
+    ctRunning = false;
+  };
+  $('#ctGo').addEventListener('click', runCt);
+  onView($('#ctPanel'), runCt);
+
+  // banco
+  onView($('#bkPanel'), async function(){
+    var pf = $$('#bkFlow .pf');
+    for(var k=0;k<pf.length;k++){ pf[k].classList.add('on'); if(k===2){ $('#bkSt').textContent='● Pix recebido'; } await sleep(700); }
+    $('#bkSt').textContent = '● semana paga';
+  });
+
+  // templates do WhatsApp
+  onView($('#tpls'), async function(){
+    var t = $$('#tpls .tpl');
+    for(var k=0;k<t.length;k++){ t[k].classList.add('show'); await sleep(900); }
+  }, .3);
+
+  // OS: notificação
+  onView($('#osRight'), function(){ $('#osPush').classList.add('show'); }, .3);
+
+  // filtro de módulos
+  $$('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      $$('.tab').forEach(function(x){ x.classList.remove('on'); }); t.classList.add('on');
+      var f = t.dataset.f;
+      $$('.mod').forEach(function(m){ m.classList.toggle('dim', f !== 'all' && m.dataset.c !== f); });
+    });
+  });
+
+  // planos da mensalidade
+  var mens = $('#mens'), cur = 3000;
+  $$('.plan').forEach(function(p){
+    p.addEventListener('click', function(){
+      $$('.plan').forEach(function(x){ x.classList.toggle('on', x===p); });
+      var to = +p.dataset.v, from = cur, t0 = null; cur = to;
+      var tick = function(t){ if(!t0) t0=t; var k = Math.min((t-t0)/(reduce?1:600),1);
+        mens.textContent = Math.round(from + (to-from)*(1-Math.pow(1-k,3))).toLocaleString('pt-BR'); if(k<1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+      $('#mensNote').textContent = p.dataset.n;
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -18,9 +18,11 @@ App Store, e integração com ÁgilLock, SafeLock e VozChat.
 | `img/logo-fortal*.png`, `img/icone.png` | Logo da Fortal sem fundo (claro/escuro) e ícone do app |
 | `img/loja/` | Telas do app nas cores da Fortal e prints da Google Play e da App Store |
 | `img/vozchat-kanban.jpg` | Print do quadro do VozChat (dados fictícios) |
+| `img/sistema/` | Prints reais do sistema com a pele da Fortal (valores de demonstração) |
+| `img/app-equipe/` | Prints reais do app da equipe, recoloridos e com nomes e documentos fictícios |
 | `img/clientes/` | Logos das empresas atendidas |
 | `img/motos/` | Fotos das motos tiradas do site da Fortal |
-| `_fontes/` | HTML de onde saem as artes e os prints (renderizados no Chrome headless) |
+| `_fontes/` | HTML das artes, `pele-fortal.js` (aplica cores, logo e valores no sistema local para os prints) e `app-equipe/editar.py` (recolore e anonimiza os prints do app) |
 
 Todas as telas usam dados fictícios.
 

@@ -430,10 +430,10 @@ section{position:relative}
 .eq-i img.lg{height:40px;width:auto;margin:0 auto 6px;object-fit:contain;max-width:100%}
 .wall{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:60px}
 @media(max-width:820px){.wall{grid-template-columns:repeat(2,1fr)}}
-.wall div{background:#fff;border-radius:16px;height:120px;display:grid;place-items:center;padding:18px;position:relative;overflow:hidden;transition:transform .3s var(--ease)}
+.wall div{background:#fff;border-radius:16px;height:130px;display:flex;align-items:center;justify-content:center;padding:18px;position:relative;overflow:hidden;transition:transform .3s var(--ease)}
 .wall div:hover{transform:translateY(-4px)}
-.wall img{max-height:74px;max-width:88%;width:auto;object-fit:contain}
-.wall div.sq img{max-height:88px}
+.wall img{max-height:70px;max-width:88%;width:auto;object-fit:contain}
+.wall div.sq img{max-height:96px}
 .wall div.hot::after{content:'a Fortal usa';position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:.54rem;background:var(--red);color:#fff;padding:2px 7px;border-radius:4px;letter-spacing:.06em}
 .wall .txt{font-weight:900;font-style:italic;font-stretch:125%;font-size:1.6rem;color:#111;letter-spacing:-.03em;line-height:1;text-align:center}
 .wall .txt small{display:block;font-family:var(--mono);font-style:normal;font-weight:500;font-size:.56rem;letter-spacing:.14em;color:var(--red);margin-top:6px;text-transform:uppercase}
@@ -669,6 +669,25 @@ blockquote.q em{font-style:italic;color:var(--red-2);font-weight:800}
 .logos span{font-weight:900;font-style:italic;font-stretch:125%;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;color:#4d4d53;padding:0 30px;white-space:nowrap;display:flex;align-items:center;gap:60px}
 .logos span em{font-style:italic;color:#fff}
 
+.pj .num.t{background:rgba(255,255,255,.06);border-color:var(--line-d);color:#d4d4d8;margin-left:6px}
+.pj .num{display:inline-block;font-style:normal;font-family:var(--mono);font-size:.74rem;font-weight:600;color:#fff;background:rgba(227,18,27,.22);border:1px solid rgba(227,18,27,.45);padding:3px 9px;border-radius:6px;margin-top:8px}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:60px}
+@media(max-width:820px){.nums{grid-template-columns:repeat(2,1fr)}}
+.nums>div{min-width:0}
+.nums div{border:1px solid var(--line-d);border-radius:18px;padding:22px 20px;background:linear-gradient(160deg,rgba(227,18,27,.12),var(--ink-2) 70%)}
+.nums strong{display:block;font-size:clamp(2.2rem,4.6vw,3.4rem);font-weight:900;font-style:italic;font-stretch:125%;letter-spacing:-.04em;line-height:1;color:#fff}
+.nums span{display:block;color:var(--muted-d);font-size:.92rem;margin-top:8px;line-height:1.4}
+@media(max-width:520px){.nums div{padding:16px 14px}.nums strong{font-size:1.55rem;font-stretch:110%}.nums span{font-size:.82rem}}
+.zeloc-box{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center;margin-top:18px;border:1px solid rgba(227,18,27,.45);border-radius:22px;padding:28px;background:linear-gradient(120deg,rgba(227,18,27,.14),var(--ink-2) 60%)}
+.zeloc-box img{width:150px;border-radius:18px}
+.zeloc-box h3{font-size:clamp(1.5rem,3vw,2.2rem);margin:12px 0 10px}
+.zeloc-box p{color:#cfcfd3;font-size:.98rem;max-width:720px}
+@media(max-width:640px){.zeloc-box{grid-template-columns:1fr;gap:18px;padding:22px}.zeloc-box img{width:110px}}
+.wall div{flex-direction:column;gap:10px}
+.wall div small{font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--red);letter-spacing:.04em;text-align:center}
+.wall div.dk{background:#36332e}
+.wall div.dk img{max-height:104px;border-radius:6px}
+.wall div.dk small{color:#ff8a8f}
 /* IMPLANTAÇÃO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:50px}
 @media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
@@ -687,6 +706,16 @@ blockquote.q em{font-style:italic;color:var(--red-2);font-weight:800}
 .b3 b{display:block;font-size:1.15rem;font-weight:800;font-stretch:112%;margin:12px 0 4px}
 .b3 p{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.5}
 .stp .wk{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.apos{margin-top:60px;border-top:1px solid var(--line);padding-top:50px}
+.apos h3{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+.apos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+@media(max-width:900px){.apos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.apos-grid{grid-template-columns:1fr}}
+.ap{background:var(--ink);color:#fff;border-radius:18px;padding:22px}
+.ap .ai{width:40px;height:40px;border-radius:11px;background:rgba(227,18,27,.2);display:grid;place-items:center;margin-bottom:14px}
+.ap .ai svg{width:20px;height:20px;color:#ff5a61}
+.ap b{display:block;font-size:1.08rem;font-weight:800;font-stretch:112%;margin-bottom:6px}
+.ap p{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.5}
 /* PRICING */
 .pricing{background:var(--ink);overflow:hidden}
 .pricing .glow{left:50%;top:0}
@@ -886,7 +915,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   <div class="wrap" style="position:relative">
     <span class="label rv">02 · O sistema da Fortal</span>
     <h2 class="title display split" data-split>Já com a sua cara. <span class="it hl">Vermelho, preto e a sua logo.</span></h2>
-    <p class="lead rv d1">Estas são telas reais do sistema que o Valmir mostrou na Zé Loc, já vestidas com a identidade da Fortal. Toque nas abas para ver cada parte.</p>
+    <p class="lead rv d1">Estas são telas reais do sistema que o Valmir usa há mais de 4 meses na Zé Loc, já vestidas com a identidade da Fortal. Toque nas abas para ver cada parte.</p>
     <div class="shots-tabs rv d2" role="tablist">
       <button class="stab on" data-s="0">Dashboard</button>
       <button class="stab" data-s="1">Dinheiro</button>
@@ -1365,16 +1394,32 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
     <div>
       <span class="label rv">17 · Quem constrói</span>
       <blockquote class="q rv d1">A Fortal não está contratando uma promessa. Está contratando <em>quem já desenvolve os sistemas</em> que cuidam das suas motos e dos seus clientes todos os dias.</blockquote>
-      <p class="lead rv d2" style="margin-bottom:30px">Quem atende é quem programou. Sem intermediário e sem fila de suporte. Estas empresas confiam a mim o desenvolvimento e a manutenção dos seus sistemas:</p>
+      <p class="lead rv d2" style="margin-bottom:30px">Quem atende é quem programou. Sem intermediário e sem fila de suporte. E não importa o tamanho da operação: estas empresas, algumas bem maiores que a Fortal, confiam a mim o desenvolvimento e a manutenção dos seus sistemas.</p>
       <div class="trust rv d3">
-        <div class="pj hot"><b>ÁgilLock <small>a Fortal usa</small></b><p>Desenvolvo e mantenho a plataforma de rastreamento GPS e bloqueio remoto, com painel, app e financeiro.</p></div>
-        <div class="pj hot"><b>SafeLock <small>a Fortal usa</small></b><p>Desenvolvo e mantenho o sistema de análise de risco de locatários pelo WhatsApp, com laudo em PDF.</p></div>
-        <div class="pj"><b>Zé Loc <small>do Valmir</small></b><p>A locadora de motos que mostrou o sistema para a Fortal. Mesmo núcleo, oficina parceira e análise por moto.</p></div>
-        <div class="pj"><b>Raposo Motors <small>locação + venda</small></b><p>Locação de motos e carros elétricos, com a área de Compra e Venda que a Fortal vai receber.</p></div>
-        <div class="pj"><b>IAPRO <small>proteção veicular</small></b><p>Empresa do mesmo dono da ÁgilLock: associados, cotação e vistoria por link.</p></div>
-        <div class="pj"><b>Grid Locadora <small>locação</small></b><p>Plataforma de locação com contratos, vistorias e financeiro.</p></div>
-        <div class="pj"><b>Zé Motoca <small>motos</small></b><p>Mais uma operação de motos rodando com sistema feito por mim.</p></div>
-        <div class="pj"><b>VozChat <small>atendimento</small></b><p>Central de WhatsApp oficial com quadro de leads, usada pelas locadoras acima.</p></div>
+        <div class="pj hot"><b>ÁgilLock <small>a Fortal usa</small></b><em class="num">+10.000 veículos</em><em class="num t">10 meses comigo</em><p>Plataforma de rastreamento GPS e bloqueio remoto, com painel, app e financeiro.</p></div>
+        <div class="pj hot"><b>SafeLock <small>a Fortal usa</small></b><em class="num">+300 consultas por dia</em><em class="num t">6 meses comigo</em><p>Análise de risco de locatários pelo WhatsApp, com laudo em PDF.</p></div>
+        <div class="pj"><b>Zé Loc <small>do Valmir</small></b><em class="num">+300 motos</em><em class="num t">+4 meses no sistema</em><p>A locadora de motos que mostrou o sistema para a Fortal. Mesmo núcleo, oficina parceira e análise por moto.</p></div>
+        <div class="pj"><b>Zé Motoca <small>motos</small></b><em class="num">+300 motos</em><em class="num t">chegou agora</em><p>Operação de locação de motos rodando com sistema feito por mim.</p></div>
+        <div class="pj"><b>Raposo Motors <small>locação + venda</small></b><em class="num">+150 veículos</em><em class="num t">6 meses no sistema</em><p>Motos e carros elétricos, com a área de Compra e Venda que a Fortal vai receber.</p></div>
+        <div class="pj"><b>Grid Locadora <small>carros</small></b><em class="num">+2.500 carros</em><em class="num t">3 meses no sistema</em><p>Locadora de carros com contratos, vistorias e financeiro numa operação de grande porte.</p></div>
+        <div class="pj"><b>IAPRO <small>proteção veicular</small></b><em class="num">+10.000 associados</em><em class="num t">10 meses comigo</em><p>Associação do mesmo dono da ÁgilLock: associados, cotação e vistoria por link.</p></div>
+        <div class="pj"><b>VozChat <small>atendimento</small></b><em class="num">+100 empresas</em><em class="num t">1 ano no ar</em><p>Plataforma de WhatsApp com clientes dos mais variados segmentos, com foco em locação.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="nums">
+      <div class="rv"><strong data-count="10000" data-mais>0</strong><span>veículos rastreados pela ÁgilLock</span></div>
+      <div class="rv d1"><strong data-count="10000" data-mais>0</strong><span>associados na IAPRO</span></div>
+      <div class="rv d2"><strong data-count="2500" data-mais>0</strong><span>carros na Grid</span></div>
+      <div class="rv d3"><strong data-count="300" data-mais>0</strong><span>consultas por dia na SafeLock</span></div>
+    </div>
+    <div class="zeloc-box rv">
+      <img src="img/clientes/zeloc.png" alt="Zé Loc" />
+      <div>
+        <span class="label">Quem a Fortal já conhece</span>
+        <h3 class="display">O Valmir usa este sistema na Zé Loc <span class="it hl">há mais de 4 meses.</span></h3>
+        <p>É o mesmo sistema que ele mostrou para a Fortal, rodando todo dia numa operação com mais de 300 motos, com as atualizações chegando sem parar. A Fortal recebe essa base já testada na prática por uma locadora amiga, com a sua marca e com o que a Fortal precisa a mais.</p>
       </div>
     </div>
   </div>
@@ -1382,11 +1427,11 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
     <div class="hot"><img src="img/clientes/agillock-escuro.png" alt="ÁgilLock" /></div>
     <div class="hot sq"><img src="img/clientes/safelock.png" alt="SafeLock" /></div>
     <div class="sq"><img src="img/clientes/zeloc.png" alt="Zé Loc" /></div>
+    <div class="sq"><img src="img/clientes/zemotoca.png" alt="Zé Motoca" /></div>
     <div><img src="img/clientes/raposo.png" alt="Raposo Motors" /></div>
-    <div class="sq"><img src="img/clientes/iapro.png" alt="IAPRO" /></div>
     <div><img src="img/clientes/grid.png" alt="Grid Locadora" /></div>
-    <div><span class="txt">Zé Motoca<small>locação de motos</small></span></div>
-    <div class="sq"><img src="img/clientes/vozchat.png" alt="VozChat" style="max-height:70px" /></div>
+    <div class="dk"><img src="img/clientes/iapro.jpg" alt="IAPRO Proteção Veicular" /></div>
+    <div><img src="img/clientes/vozchat.png" alt="VozChat" /></div>
   </div></div>
 </section>
 
@@ -1395,7 +1440,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   <div class="wrap">
     <span class="label rv">18 · Prazo e acompanhamento</span>
     <h2 class="title display split" data-split>Duas semanas para estar no ar. <span class="it hl">E eu na loja com vocês.</span></h2>
-    <p class="lead rv d1">Em 14 dias a Fortal está operando com sistema próprio e com o app disponível para baixar na Google Play e na App Store. Depois disso eu não sumo: fico ao lado da equipe até ela dominar tudo.</p>
+    <p class="lead rv d1">Em 14 dias a Fortal está operando com sistema próprio e com o app disponível para baixar na Google Play e na App Store. Depois disso eu não sumo: fico ao lado da equipe até ela dominar tudo, e o suporte continua enquanto a Fortal usar o sistema.</p>
     <div class="big3">
       <div class="b3 rv"><strong>2<span> sem.</span></strong><b>Tudo pronto</b><p>Sistema, integrações, site e apps publicados nas lojas.</p></div>
       <div class="b3 rv d1"><strong>2<span> sem.</span></strong><b>Treinamento na loja</b><p>Segunda a sexta, um turno por dia (manhã ou tarde), com a equipe usando no trabalho real.</p></div>
@@ -1406,6 +1451,15 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       <div class="stp rv d1"><span class="n">02</span><small class="wk">Semana 2</small><h4>Apps nas lojas e dados</h4><p>App publicado e disponível para baixar. Frota, clientes, contratos e semanas importados. Sistema no ar.</p></div>
       <div class="stp rv d2"><span class="n">03</span><small class="wk">Semanas 3 e 4</small><h4>Treinamento presencial</h4><p>Segunda a sexta, manhã ou tarde, módulo por módulo, com a equipe operando o dia a dia comigo do lado.</p></div>
       <div class="stp rv d3"><span class="n">04</span><small class="wk">Daí em diante</small><h4>Uma vez por semana na loja</h4><p>Um turno por semana para tirar dúvidas, ajustar processos e trazer as novidades do sistema.</p></div>
+    </div>
+    <div class="apos">
+      <h3 class="display rv">Depois da implantação, <span class="it hl">o sistema continua evoluindo.</span></h3>
+      <div class="apos-grid">
+        <div class="ap rv"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><b>Suporte contínuo</b><p>Em horário comercial, direto comigo pelo WhatsApp. Sem central, sem protocolo, sem repassar para ninguém.</p></div>
+        <div class="ap rv d1"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><b>Emergência fora do horário</b><p>Se algo urgente acontecer à noite, no fim de semana ou no feriado, eu atendo. A operação da Fortal não para esperando segunda-feira.</p></div>
+        <div class="ap rv d2"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 3 7h7l-5.5 4.5 2 7.5-6.5-4.5L5.5 21l2-7.5L2 9h7l3-7Z"/></svg></span><b>Melhorias futuras</b><p>O sistema recebe funções novas o tempo todo, como a nova função de multas. Elas chegam para a Fortal sem custo extra, e os pedidos da equipe entram na fila de melhorias.</p></div>
+        <div class="ap rv d3"><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><b>Monitoramento e backups</b><p>Um vigia confere o sistema a cada minuto e me avisa no WhatsApp se algo sair do ar. Backups automáticos duas vezes por dia.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1454,7 +1508,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Servidor, banco de dados e armazenamento de fotos, vídeos e documentos</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Domínio, certificado de segurança e contas de desenvolvedor da Apple e do Google</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Backups automáticos duas vezes por dia e monitoramento</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Manutenção, correções, atualizações (como a nova função de multas) e suporte direto comigo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Manutenção, correções, melhorias futuras e suporte direto comigo em horário comercial, e fora dele em emergências</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Uma visita por semana na loja, um turno, no dia que a Fortal escolher</li>
         </ul>
         <p class="foot">As atualizações que eu lanço para o sistema chegam para a Fortal sem custo extra.</p>
@@ -1548,6 +1602,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   var fmt = function(n,el){
     if(el.hasAttribute('data-money')) return 'R$ ' + n.toLocaleString('pt-BR');
     if(el.hasAttribute('data-plain')) return n.toLocaleString('pt-BR');
+    if(el.hasAttribute('data-mais')) return '+' + n.toLocaleString('pt-BR');
     var s = n.toLocaleString('pt-BR'); var sm = el.querySelector('small');
     return s;
   };

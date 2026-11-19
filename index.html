@@ -235,6 +235,7 @@ section{position:relative}
 /* PRINTS */
 .shots-tabs{display:flex;gap:8px;margin:40px 0 22px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
 .shots-tabs::-webkit-scrollbar{display:none}
+@media(min-width:900px){.shots-tabs{flex-wrap:wrap;overflow:visible}}
 .stab{flex:none;padding:10px 18px;border-radius:999px;border:1px solid var(--line-d);background:transparent;color:#d2d2d6;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s}
 .stab:hover{border-color:#fff}
 .stab.on{background:var(--red);color:#fff;border-color:var(--red)}
@@ -279,6 +280,25 @@ section{position:relative}
 .mini-btn.ghost{background:transparent;color:#ff6a70}
 .mini-btn:disabled{opacity:.4;cursor:default}
 
+.shot-img{display:block;width:100%;height:auto;background:#141416}
+.shots-box{position:relative;background:#141416}
+.shots-box .shot{display:none}
+.shots-box .shot.on{display:block;animation:shotIn .5s var(--ease)}
+.shot-cap{margin-top:14px;font-size:.98rem;color:#d4d4d8;min-height:1.5em}
+.realshot{margin-top:26px}
+.realshot .win{box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+.realshot .caption{text-align:left}
+.light .realshot .win{border-color:#1f1f22}
+@media(max-width:700px){#telas .shots-box,.realshot .win,#vistorias .win{overflow-x:auto;-webkit-overflow-scrolling:touch}#telas .shot-img,.realshot .shot-img,#vistorias .shot-img{width:760px;max-width:none}.swipe-hint{display:inline}}
+.swipe-hint{display:none}
+.phones-row{display:flex;gap:18px;overflow-x:auto;padding:10px 4px 26px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.phones-row .phone{scroll-snap-align:center}
+.phones-row figure{flex:none;display:flex;flex-direction:column;align-items:center;gap:12px}
+.phones-row figcaption{font-size:.86rem;color:var(--muted-d);text-align:center;max-width:230px;line-height:1.4}
+.phones-row figcaption b{display:block;color:#fff;font-size:.95rem}
+.duo-shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.duo-shots>*{min-width:0}
+@media(max-width:900px){.duo-shots{grid-template-columns:1fr}}
 /* MAPA */
 .map{position:relative;border-radius:12px;overflow:hidden;background:#101114;border:1px solid var(--line-d);aspect-ratio:16/11}
 .map svg.streets{position:absolute;inset:0;width:100%;height:100%}
@@ -786,37 +806,10 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       <div class="float f3"><span class="ic" style="background:rgba(255,176,32,.15);color:var(--warn)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><div><b>Multa de hoje, lançada hoje</b><small>na semana do locatário</small></div></div>
       <div class="win" id="heroWin">
         <div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com</span></div>
-        <div class="app">
-          <div class="side">
-            <img src="img/logo-fortal.png" alt="" />
-            <a class="on"><i></i>Dashboard</a><a><i></i>Frota</a><a><i></i>Contratos</a><a><i></i>Financeiro</a><a><i></i>Multas</a><a><i></i>Oficina</a><a><i></i>Rastreamento</a>
-            <span class="sep">Compra e Venda</span><a><i></i>Vitrine</a>
-          </div>
-          <div class="main">
-            <div class="main-h"><b>Bom dia, Fortal</b><small>qua · 18 nov</small></div>
-            <div class="kpis">
-              <div class="kpi r"><small>Motos locadas</small><strong data-count="96">0</strong><em>+4 esta semana</em></div>
-              <div class="kpi"><small>A receber hoje</small><strong data-count="12740" data-money>0</strong><em>32 semanas</em></div>
-              <div class="kpi"><small>Em atraso</small><strong data-count="3">0</strong><em style="color:var(--warn)">R$ 1.050</em></div>
-              <div class="kpi"><small>Sem posição</small><strong data-count="1">0</strong><em style="color:#ff6a70">há 6 h</em></div>
-            </div>
-            <div class="box-d chart">
-              <small><span>Receita semanal · 12 semanas</span><span style="color:var(--ok)">+18%</span></small>
-              <svg viewBox="0 0 400 120" preserveAspectRatio="none">
-                <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e3121b" stop-opacity=".45"/><stop offset="1" stop-color="#e3121b" stop-opacity="0"/></linearGradient></defs>
-                <path d="M0,98 C30,92 50,84 80,84 S130,66 160,70 210,52 240,56 290,38 320,40 370,22 400,14 L400,120 L0,120Z" fill="url(#ga)"/>
-                <path class="ln go" d="M0,98 C30,92 50,84 80,84 S130,66 160,70 210,52 240,56 290,38 320,40 370,22 400,14" fill="none" stroke="#ff2b34" stroke-width="2.6"/>
-              </svg>
-            </div>
-            <div class="rows">
-              <div class="row"><i class="dot" style="background:var(--ok)"></i><span>Pix recebido · semana 37 · CG 160 Start · <b>RJX4F21</b></span><strong style="color:var(--ok)">R$ 350,00</strong></div>
-              <div class="row"><i class="dot" style="background:var(--red)"></i><span>Bros 160 sem posição há 6 h · alerta da ÁgilLock</span><strong style="color:#ff6a70">ver no mapa</strong></div>
-            </div>
-          </div>
-        </div>
+        <img class="shot-img" src="img/sistema/dash-topo.jpg" alt="Dashboard do sistema com as cores da Fortal" />
         <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><div><span id="toastT">Pix recebido · R$ 350,00</span><small id="toastS">Semana baixada sozinha</small></div></div>
       </div>
-      <p class="caption">Tela ilustrativa do sistema da Fortal · dados fictícios</p>
+      <p class="caption">Tela real do sistema com as cores da Fortal · valores de demonstração</p>
     </div>
   </div>
 </section>
@@ -886,133 +879,44 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   <div class="wrap" style="position:relative">
     <span class="label rv">02 · O sistema da Fortal</span>
     <h2 class="title display split" data-split>Já com a sua cara. <span class="it hl">Vermelho, preto e a sua logo.</span></h2>
-    <p class="lead rv d1">É o mesmo sistema que o Valmir mostrou na Zé Loc, vestido com a identidade da Fortal. Toque nas abas para ver algumas telas.</p>
+    <p class="lead rv d1">Estas são telas reais do sistema que o Valmir mostrou na Zé Loc, já vestidas com a identidade da Fortal. Toque nas abas para ver cada parte.</p>
     <div class="shots-tabs rv d2" role="tablist">
       <button class="stab on" data-s="0">Dashboard</button>
-      <button class="stab" data-s="1">Frota</button>
-      <button class="stab" data-s="2">Financeiro</button>
-      <button class="stab" data-s="3">Análise por moto</button>
-      <button class="stab" data-s="4">Prospectos</button>
+      <button class="stab" data-s="1">Dinheiro</button>
+      <button class="stab" data-s="2">Receita</button>
+      <button class="stab" data-s="3">Mapa ÁgilLock</button>
+      <button class="stab" data-s="4">Multas</button>
+      <button class="stab" data-s="5">Multa na semana</button>
+      <button class="stab" data-s="6">Manutenção</button>
+      <button class="stab" data-s="7">Ordens de serviço</button>
+      <button class="stab" data-s="8">Oficinas</button>
+      <button class="stab" data-s="9">SafeLock</button>
+      <button class="stab" data-s="10">Laudo SafeLock</button>
+      <button class="stab" data-s="11">Vistorias</button>
+      <button class="stab" data-s="12">Contas a pagar</button>
+      <button class="stab" data-s="13">Investidores</button>
     </div>
     <div class="win rv d2">
-      <div class="win-top"><i></i><i></i><i></i><span id="shotUrl">sistema.fortallocaevende.com/dashboard</span></div>
-      <div class="app">
-        <div class="side" id="shotSide">
-          <img src="img/logo-fortal.png" alt="" />
-          <a class="on"><i></i>Dashboard</a><a><i></i>Frota</a><a><i></i>Financeiro</a><a><i></i>Análise</a><a><i></i>Prospectos</a><a><i></i>Multas</a><a><i></i>Oficina</a><a><i></i>Rastreamento</a>
-          <span class="sep">Compra e Venda</span><a><i></i>Vitrine</a><a><i></i>Vendas</a>
-        </div>
-        <div style="min-width:0">
-          <!-- dashboard -->
-          <div class="main shot on">
-            <div class="main-h"><b>Dashboard</b><span class="pill g">● tudo em dia</span></div>
-            <div class="kpis">
-              <div class="kpi r"><small>Locadas</small><strong>96</strong><em>de 104 motos</em></div>
-              <div class="kpi"><small>Receita da semana</small><strong>R$ 34.860</strong><em>+6,2%</em></div>
-              <div class="kpi"><small>Inadimplência</small><strong>2,9%</strong><em>3 locatários</em></div>
-              <div class="kpi"><small>Disponíveis</small><strong>8</strong><em style="color:var(--muted-d)">5 no pátio · 3 preparação</em></div>
-            </div>
-            <div class="two">
-              <div class="box-d">
-                <small><span>Recebido × previsto · semanas</span><span>nov</span></small>
-                <div class="bars-h">
-                  <div class="bh"><span>Semana 44</span><div class="tr"><i style="--w:96%;background:var(--red)"></i></div><strong>R$ 33,1 mil</strong></div>
-                  <div class="bh"><span>Semana 45</span><div class="tr"><i style="--w:98%;background:var(--red)"></i></div><strong>R$ 33,9 mil</strong></div>
-                  <div class="bh"><span>Semana 46</span><div class="tr"><i style="--w:94%;background:var(--red)"></i></div><strong>R$ 32,8 mil</strong></div>
-                  <div class="bh"><span>Semana 47</span><div class="tr"><i style="--w:72%;background:#ff6a70"></i></div><strong>em curso</strong></div>
-                </div>
-              </div>
-              <div class="box-d">
-                <small><span>Frota por situação</span></small>
-                <div class="donut">
-                  <svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#26262b" stroke-width="6"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#e3121b" stroke-width="6" stroke-dasharray="92 8" stroke-dashoffset="25"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#2fd27a" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-67"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#ffb020" stroke-width="6" stroke-dasharray="3 97" stroke-dashoffset="-72"/></svg>
-                  <div class="legend"><span><i style="background:var(--red)"></i>Locadas · 96</span><span><i style="background:var(--ok)"></i>Disponíveis · 5</span><span><i style="background:var(--warn)"></i>Oficina · 3</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="rows">
-              <div class="row"><i class="dot" style="background:var(--ok)"></i><span>Contrato #0412 assinado · Honda CG 160 Fan 0 km</span><span class="pill g">assinado</span></div>
-              <div class="row"><i class="dot" style="background:var(--warn)"></i><span>OS #218 aguardando sua aprovação · Moto Peças do Zé</span><span class="pill y">aprovar</span></div>
-              <div class="row"><i class="dot" style="background:var(--red)"></i><span>Multa nova hoje · Yamaha Lander 250 · lançada na semana 37</span><span class="pill r">multa</span></div>
-            </div>
-          </div>
-          <!-- frota -->
-          <div class="main shot">
-            <div class="main-h"><b>Frota · 104 motos</b><span style="display:flex;gap:6px;flex-wrap:wrap"><span class="pill r">Locada 96</span><span class="pill g">Disponível 5</span><span class="pill y">Oficina 3</span></span></div>
-            <div class="tbl-w"><table class="tbl">
-              <tr><th>Placa</th><th>Moto</th><th>Locatário</th><th>KM (ÁgilLock)</th><th>Próx. óleo</th><th>Situação</th></tr>
-              <tr><td><span class="plate">RJX4F21</span></td><td>CG 160 Start 26</td><td>Marcos A. Lima</td><td>8.412</td><td>em 588 km</td><td><span class="pill r">locada</span></td></tr>
-              <tr><td><span class="plate">SBA7J33</span></td><td>Bros 160 26</td><td>Jéssica N. Souza</td><td>22.759</td><td style="color:var(--warn)">em 41 km</td><td><span class="pill r">locada</span></td></tr>
-              <tr><td><span class="plate">PMX2D90</span></td><td>Lander 250 26</td><td>Rafael S. Nunes</td><td>11.230</td><td>em 1.770 km</td><td><span class="pill r">locada</span></td></tr>
-              <tr><td><span class="plate">QTE1A08</span></td><td>Crosser 150 27</td><td>—</td><td>0</td><td>—</td><td><span class="pill g">disponível</span></td></tr>
-              <tr><td><span class="plate">HNO5C44</span></td><td>FZ15 26</td><td>—</td><td>163</td><td>—</td><td><span class="pill y">preparação</span></td></tr>
-              <tr><td><span class="plate">PJK9E12</span></td><td>CG 160 Fan 26</td><td>Ana P. Moura</td><td>5.904</td><td>em 96 km</td><td><span class="pill r">locada</span></td></tr>
-            </table></div>
-            <div class="rows"><div class="row"><i class="dot" style="background:var(--ok)"></i><span>KM atualizado automaticamente pela ÁgilLock há 4 min</span><strong style="color:var(--ok)">sincronizado</strong></div></div>
-          </div>
-          <!-- financeiro -->
-          <div class="main shot">
-            <div class="main-h"><b>Financeiro · novembro</b><span class="pill">Banco: o da Fortal</span></div>
-            <div class="kpis">
-              <div class="kpi"><small>Recebido</small><strong style="color:var(--ok)">R$ 118.420</strong></div>
-              <div class="kpi"><small>A receber</small><strong>R$ 41.300</strong></div>
-              <div class="kpi"><small>Contas a pagar</small><strong style="color:#ff6a70">R$ 23.180</strong></div>
-              <div class="kpi r"><small>Resultado</small><strong>R$ 95.240</strong></div>
-            </div>
-            <div class="tbl-w"><table class="tbl">
-              <tr><th>Nº</th><th>Descrição</th><th>Forma</th><th>Venc.</th><th>Valor</th></tr>
-              <tr><td>3381</td><td>Semana 37 · Marcos A. Lima</td><td>Pix</td><td>18/11</td><td style="color:var(--ok)">R$ 350,00 ✓</td></tr>
-              <tr><td>3382</td><td>Semana 12 · Jéssica N. Souza</td><td>Boleto</td><td>18/11</td><td>R$ 420,00</td></tr>
-              <tr><td>3383</td><td>Multa · art. 218 I · Rafael S. Nunes</td><td>Na semana</td><td>25/11</td><td style="color:#ff6a70">R$ 130,16</td></tr>
-              <tr><td>3384</td><td>Entrada · CG 160 Fan 0 km · contrato #0412</td><td>Pix</td><td>18/11</td><td style="color:var(--ok)">R$ 1.500,00 ✓</td></tr>
-              <tr><td>3385</td><td>OS #218 · Moto Peças do Zé</td><td>A pagar</td><td>30/11</td><td style="color:#ff6a70">R$ 286,00</td></tr>
-            </table></div>
-          </div>
-          <!-- análise por moto -->
-          <div class="main shot">
-            <div class="main-h"><b>Análise por moto · <span class="plate">SBA7J33</span> Bros 160</b><span class="pill g">rentável</span></div>
-            <div class="kpis">
-              <div class="kpi"><small>Recebido no contrato</small><strong>R$ 21.300</strong></div>
-              <div class="kpi"><small>Manutenção</small><strong style="color:#ff6a70">R$ 1.842</strong></div>
-              <div class="kpi"><small>Multas pagas</small><strong>R$ 0</strong><em>todas repassadas</em></div>
-              <div class="kpi r"><small>Lucro da moto</small><strong>R$ 19.458</strong></div>
-            </div>
-            <div class="two">
-              <div class="box-d">
-                <small><span>Custo de manutenção por tipo</span></small>
-                <div class="bars-h">
-                  <div class="bh"><span>Troca de óleo</span><div class="tr"><i style="--w:62%;background:var(--red)"></i></div><strong>R$ 640</strong></div>
-                  <div class="bh"><span>Kit relação</span><div class="tr"><i style="--w:48%;background:var(--red)"></i></div><strong>R$ 490</strong></div>
-                  <div class="bh"><span>Pneus</span><div class="tr"><i style="--w:40%;background:var(--red)"></i></div><strong>R$ 412</strong></div>
-                  <div class="bh"><span>Freios e outros</span><div class="tr"><i style="--w:28%;background:#ff6a70"></i></div><strong>R$ 300</strong></div>
-                </div>
-              </div>
-              <div class="box-d">
-                <small><span>Linha do tempo</span></small>
-                <div class="rows" style="margin-top:8px">
-                  <div class="row"><span>Troca de óleo · 21.000 km</span><strong>12/11</strong></div>
-                  <div class="row"><span>OS #198 · kit relação</span><strong>28/10</strong></div>
-                  <div class="row"><span>Vistoria de entrega</span><strong>02/02</strong></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- prospectos -->
-          <div class="main shot">
-            <div class="main-h"><b>Prospectos · vindos do WhatsApp, do site e do app</b><span class="pill r">SafeLock integrada</span></div>
-            <div class="tbl-w"><table class="tbl">
-              <tr><th>Nome</th><th>Origem</th><th>Moto desejada</th><th>SafeLock</th><th>Ação</th></tr>
-              <tr><td>Diego Rocha</td><td>VozChat</td><td>CG 160 Start 0 km</td><td><span class="pill g">passou</span></td><td style="color:#ff6a70">Transformar em cliente →</td></tr>
-              <tr><td>Lia Matos</td><td>App Fortal</td><td>Bros 160</td><td><span class="pill y">em análise</span></td><td>ver laudo</td></tr>
-              <tr><td>Caio Prado</td><td>Site</td><td>Lander 250 0 km</td><td><span class="pill g">passou</span></td><td style="color:#ff6a70">Transformar em cliente →</td></tr>
-              <tr><td>Bruno T.</td><td>VozChat</td><td>CG 160 Fan</td><td><span class="pill r">não passou</span></td><td>ver motivos</td></tr>
-              <tr><td>Bia Torres</td><td>Instagram</td><td>Crosser 150</td><td><span class="pill b">aguardando CNH</span></td><td>WhatsApp</td></tr>
-            </table></div>
-          </div>
-        </div>
+      <div class="win-top"><i></i><i></i><i></i><span id="shotUrl">sistema.fortallocaevende.com/painel</span></div>
+      <div class="shots-box">
+        <img class="shot-img shot on" data-url="painel" data-cap="Indicadores da operação, OS por oficina e o valor da frota." src="img/sistema/dash-topo.jpg" alt="Dashboard · tela do sistema" loading="eager" />
+        <img class="shot-img shot" data-url="painel#dinheiro" data-cap="Recebido, despesas, lucro, juros e mora do período, comparados ao mês anterior." src="img/sistema/dash-dinheiro.jpg" alt="Dinheiro · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="painel#receita" data-cap="Receita mês a mês e entradas de cada dia." src="img/sistema/dash-receita.jpg" alt="Receita · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="veiculos/mapa" data-cap="A frota inteira no mapa, com filtros de movimento, atraso, devolução e motos paradas." src="img/sistema/mapa.jpg" alt="Mapa ÁgilLock · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="veiculos/multas" data-cap="Multas chegando do Detran, com o locatário, a cobrança vinculada e o aceite." src="img/sistema/multas.jpg" alt="Multas · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="financeiro/pagamentos" data-cap="A semana do locatário já com o aluguel + a multa na mesma cobrança." src="img/sistema/multa-semana.jpg" alt="Multa na semana · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="oficina/manutencoes" data-cap="Plano de troca de óleo por moto: em dia, chegando e vencida." src="img/sistema/manutencao.jpg" alt="Manutenção · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="oficina/ordens-servico" data-cap="OS da oficina parceira esperando aprovação, com o antes e depois do valor." src="img/sistema/os.jpg" alt="Ordens de serviço · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="oficina/oficinas" data-cap="Quanto cada oficina recebeu, o que está a pagar e o que falta aprovar." src="img/sistema/oficinas.jpg" alt="Oficinas · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="clientes/brick" data-cap="Consultas SafeLock dentro do sistema, com risco e decisão do administrador." src="img/sistema/safelock.jpg" alt="SafeLock · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="clientes/brick" data-cap="O laudo aberto: motivos, matriz de risco e PDF para baixar." src="img/sistema/safelock-laudo.jpg" alt="Laudo SafeLock · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="veiculos/vistorias" data-cap="Vistoria feita pelo próprio locatário, só com a câmera, esperando a conferência." src="img/sistema/vistoria.jpg" alt="Vistorias · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="financeiro/contas-a-pagar" data-cap="Contas da empresa e da frota, com vencimento, categoria e baixa." src="img/sistema/contas-pagar.jpg" alt="Contas a pagar · tela do sistema" loading="lazy" />
+        <img class="shot-img shot" data-url="veiculos/investidores" data-cap="Investidores com as motos de cada um e o fechamento do mês." src="img/sistema/investidores.jpg" alt="Investidores · tela do sistema" loading="lazy" />
       </div>
     </div>
-    <p class="caption">Telas ilustrativas com dados fictícios · modelos e valores tirados do site da Fortal</p>
+    <p class="shot-cap" id="shotCap">Indicadores da operação, OS por oficina e o valor da frota.</p>
+    <p class="caption">Telas reais do sistema com as cores da Fortal · nomes e valores de demonstração<span class="swipe-hint"> · arraste a tela para o lado</span></p>
   </div>
 </section>
 
@@ -1036,24 +940,8 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
         </ul>
       </div>
       <div class="panel rv d2">
-        <div class="panel-h"><b>Rastreamento · mapa da frota</b><b style="color:var(--ok)">● ÁgilLock ao vivo</b></div>
-        <div class="map">
-          <svg class="streets" viewBox="0 0 400 275" preserveAspectRatio="none" aria-hidden="true">
-            <rect width="400" height="275" fill="#101114"/>
-            <path d="M0 40 C120 60 220 20 400 52" stroke="#1f2026" stroke-width="10" fill="none"/>
-            <path d="M0 150 C100 130 260 170 400 140" stroke="#26272e" stroke-width="14" fill="none"/>
-            <path d="M0 230 C140 210 240 250 400 222" stroke="#1f2026" stroke-width="8" fill="none"/>
-            <path d="M80 0 C90 100 60 180 92 275" stroke="#1f2026" stroke-width="9" fill="none"/>
-            <path d="M210 0 C200 90 232 180 214 275" stroke="#26272e" stroke-width="12" fill="none"/>
-            <path d="M330 0 C320 80 350 200 326 275" stroke="#1f2026" stroke-width="8" fill="none"/>
-            <path d="M0 95 L400 100 M140 0 L150 275 M270 0 L280 275" stroke="#17181d" stroke-width="4" fill="none"/>
-            <path d="M260 20 C300 30 360 10 400 0 L400 60 C360 70 300 64 260 20Z" fill="#0d2230" opacity=".8"/>
-          </svg>
-          <div class="map-legend"><span class="pill g">● em movimento 81</span><span class="pill">● parada 14</span><span class="pill r">● sem posição 1</span></div>
-          <i class="pin" style="left:22%;top:38%"></i><i class="pin" style="left:31%;top:56%;animation-delay:.4s"></i><i class="pin" style="left:48%;top:30%;animation-delay:.8s"></i><i class="pin st" style="left:57%;top:62%"></i><i class="pin" style="left:66%;top:44%;animation-delay:1.2s"></i><i class="pin" style="left:78%;top:70%;animation-delay:.2s"></i><i class="pin st" style="left:14%;top:76%"></i><i class="pin" style="left:40%;top:82%;animation-delay:1s"></i><i class="pin" style="left:86%;top:36%;animation-delay:.6s"></i>
-          <i class="pin al" style="left:30%;top:24%"></i>
-          <div class="map-pop" style="right:10px;top:16%"><b>Bros 160 · SBA7J33</b><small>Jéssica N. Souza · contrato #0377</small><small>última posição há 6 h · Messejana</small><span class="pill r">sem posição</span></div>
-        </div>
+        <div class="panel-h"><b>Tela real · Mapa (ÁgilLock)</b><b style="color:var(--ok)">● ao vivo</b></div>
+        <div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/veiculos/mapa</span></div><img class="shot-img" src="img/sistema/mapa.jpg" alt="Mapa da frota pela ÁgilLock dentro do sistema" loading="lazy" /></div>
         <div class="trk-grid">
           <div class="box-d"><small><span>KM · CG 160 Start</span><span>RJX4F21</span></small><div class="km" data-count="8412">0<small>ÁgilLock</small></div></div>
           <div class="box-d oil"><small><span>Troca de óleo</span><span>a cada 1.000 km</span></small><div class="tr" style="margin-top:12px"><i style="--w:82%"></i></div><div><span>feita em 7.000</span><span>vence em 9.000</span></div></div>
@@ -1102,6 +990,12 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       <p class="caption">Tela do VozChat com a cor e a logo da Fortal · nomes e telefones fictícios · no celular, arraste para o lado</p>
     </div>
 
+    <div class="realshot rv" style="margin:-60px 0 100px">
+      <div class="vz-h"><span class="badge-new">tela real</span><b>E o laudo da SafeLock abre dentro do sistema, sem sair da tela</b></div>
+      <div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/clientes/brick</span></div><img class="shot-img" src="img/sistema/safelock-laudo.jpg" alt="Laudo da SafeLock aberto dentro do sistema" loading="lazy" /></div>
+      <p class="caption">Consulta SafeLock aberta no sistema · nome e CPF fictícios</p>
+    </div>
+
     <!-- Multas -->
     <div class="feat" id="multas">
       <div class="feat-txt">
@@ -1137,6 +1031,11 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       </div>
     </div>
 
+    <div class="realshot rv" style="margin:-40px 0 40px">
+      <div class="vz-h"><span class="badge-new">tela real</span><b>A cobrança da semana já sai como "Aluguel + Multa"</b></div>
+      <div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/financeiro/pagamentos</span></div><img class="shot-img" src="img/sistema/multa-semana.jpg" alt="Contas a receber com aluguel e multa na mesma semana" loading="lazy" /></div>
+    </div>
+
     <!-- Contrato em minutos -->
     <div class="feat rev" id="assinatura">
       <div class="feat-txt">
@@ -1166,10 +1065,30 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       </div>
     </div>
 
+    <!-- Vistorias -->
+    <div class="feat" id="vistorias">
+      <div class="feat-txt">
+        <span class="label rv">07 · Vistorias à distância</span>
+        <h3 class="display rv d1">O locatário faz a vistoria. <span class="it hl">A Fortal confere de longe.</span></h3>
+        <p class="lead rv d2">A vistoria periódica não precisa trazer a moto até a loja. O sistema agenda, o locatário recebe o aviso e faz tudo pelo app, item a item, só com a câmera do celular, sem poder usar foto antiga da galeria. A equipe abre o laudo, confere as fotos e aprova ou reprova de onde estiver.</p>
+        <ul class="rv d3">
+          <li><b>Vistoria de entrega, devolução e periódica</b> com modelo de itens da Fortal</li>
+          <li><b>Só câmera</b>: foto tirada na hora, com data, hora e local</li>
+          <li><b>Laudo em PDF</b> com as fotos e a assinatura do locatário</li>
+          <li><b>Link público</b> para um vistoriador de fora fazer sem login</li>
+          <li>Atrasou a vistoria? O sistema avisa a equipe e o locatário no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="rv d2">
+        <div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/veiculos/vistorias</span></div><img class="shot-img" src="img/sistema/vistoria.jpg" alt="Vistoria periódica feita pelo locatário esperando conferência" loading="lazy" /></div>
+        <p class="caption">Tela real · vistoria enviada pelo locatário, esperando a conferência</p>
+      </div>
+    </div>
+
     <!-- Banco -->
     <div class="feat" id="banco">
       <div class="feat-txt">
-        <span class="label rv">07 · Integração bancária</span>
+        <span class="label rv">08 · Integração bancária</span>
         <h3 class="display rv d1">O banco é o da Fortal. <span class="it hl">Qualquer um.</span></h3>
         <p class="lead rv d2">O sistema se conecta ao banco que a Fortal escolher. As semanas viram cobranças por Pix e boleto no momento do contrato e são baixadas sozinhas quando o pagamento cai. O dinheiro vai direto para a conta da Fortal.</p>
         <div class="banks rv d3"><span class="bank">Inter</span><span class="bank">Sicoob</span><span class="bank">Itaú</span><span class="bank">Bradesco</span><span class="bank">Banco do Brasil</span><span class="bank">Santander</span><span class="bank">Caixa</span><span class="bank">C6</span><span class="bank">Asaas</span><span class="bank any">o que vocês já usam</span></div>
@@ -1194,7 +1113,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
     <!-- WhatsApp templates -->
     <div class="feat rev" id="lembretes">
       <div class="feat-txt">
-        <span class="label rv">08 · Lembretes no WhatsApp do cliente</span>
+        <span class="label rv">09 · Lembretes no WhatsApp do cliente</span>
         <h3 class="display rv d1">O sistema avisa. <span class="it hl">A equipe não precisa lembrar.</span></h3>
         <p class="lead rv d2">Mensagens oficiais do WhatsApp, com a marca da Fortal, disparadas pelo próprio sistema no momento certo. O cliente recebe o Pix, o aviso da multa e o lembrete da troca de óleo sem ninguém da loja digitar nada.</p>
         <ul class="rv d3">
@@ -1222,7 +1141,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
 <!-- OFICINA -->
 <section class="light pad" id="oficina">
   <div class="wrap">
-    <span class="label rv">09 · Oficina e ordens de serviço</span>
+    <span class="label rv">10 · Oficina e ordens de serviço</span>
     <h2 class="title display split" data-split>Não tem oficina própria? <span class="it hl">O mecânico entra no sistema.</span></h2>
     <p class="lead rv d1">O mecânico parceiro usa o mesmo app da equipe da Fortal, mas só enxerga ordens de serviço. Ele abre a OS com fotos, peças e mão de obra. A Fortal recebe a notificação e aprova ou reprova na hora. No fim do mês, cada oficina sabe quanto tem a receber, e a Fortal sabe quanto deve, quanto já pagou e quanto cada moto custou.</p>
     <div class="os-grid" style="margin-top:56px">
@@ -1265,13 +1184,17 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
     <div class="chips rv">
       <span class="chip k">Perfil Mecânico só com OS</span><span class="chip">Fotos e arquivos na OS</span><span class="chip">Tabela de preço por oficina</span><span class="chip">Alerta "acima da tabela"</span><span class="chip">Aprovação pelo push</span><span class="chip">Fechamento do mês por oficina</span><span class="chip">Estoque de peças</span><span class="chip r">Análise de cada moto</span>
     </div>
+    <div class="duo-shots">
+      <div class="realshot rv"><div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/oficina/ordens-servico</span></div><img class="shot-img" src="img/sistema/os.jpg" alt="Ordens de serviço esperando aprovação" loading="lazy" /></div><p class="caption">Tela real · OS da oficina parceira esperando a sua aprovação</p></div>
+      <div class="realshot rv d1"><div class="win"><div class="win-top"><i></i><i></i><i></i><span>sistema.fortallocaevende.com/oficina/oficinas</span></div><img class="shot-img" src="img/sistema/oficinas.jpg" alt="Resumo das oficinas parceiras" loading="lazy" /></div><p class="caption">Tela real · quanto cada oficina recebeu e quanto está a pagar</p></div>
+    </div>
   </div>
 </section>
 
 <!-- FINANCEIRO & RELATÓRIOS -->
 <section class="light pad" id="financeiro" style="padding-top:0">
   <div class="wrap">
-    <span class="label rv">10 · Financeiro e relatórios</span>
+    <span class="label rv">11 · Financeiro e relatórios</span>
     <h2 class="title display split" data-split>Os números da Fortal <span class="it hl">sem planilha.</span></h2>
     <p class="lead rv d1">Contas a receber, contas a pagar, caixa por banco, caução, acordos e a rentabilidade de cada moto. Tudo filtrável e exportável, no computador e no app.</p>
     <div class="reps">
@@ -1293,7 +1216,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   <div class="glow" style="left:10%;top:60%"></div>
   <div class="wrap cv-grid" style="position:relative">
     <div>
-      <span class="label rv">11 · Compra e Venda · incluída</span>
+      <span class="label rv">12 · Compra e Venda · incluída</span>
       <h2 class="title display split" data-split>A Fortal também vende. <span class="it hl">O sistema também.</span></h2>
       <p class="lead rv d1">Junto com a locação vem a área de Compra e Venda, a mesma que roda na Raposo. Um seletor no topo troca entre <b style="color:#fff">Locação</b> e <b style="color:#fff">Compra e Venda</b>, cada uma com as suas telas, o seu financeiro e os seus relatórios.</p>
       <ul class="rv d2" style="list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px">
@@ -1325,7 +1248,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   <div class="speed" aria-hidden="true"><i style="top:22%;width:30%;animation-delay:.6s"></i><i style="top:70%;width:40%;animation-delay:1.8s"></i></div>
   <div class="wrap store-grid" style="position:relative">
     <div>
-      <span class="label rv">12 · App próprio · incluso na implantação</span>
+      <span class="label rv">13 · App próprio · incluso na implantação</span>
       <h2 class="title display split" data-split>A Fortal na Google Play <span class="it hl">e na App Store.</span></h2>
       <p class="lead rv d1">Um aplicativo com a logo e as cores da Fortal, publicado nas duas lojas com o nome da empresa. Já está incluso nos R$ 40.000 da implantação. Não é só ferramenta: é vitrine. Quem procura "aluguel de moto Fortaleza" na loja encontra a Fortal.</p>
       <div class="ben">
@@ -1346,11 +1269,32 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   </div>
 </section>
 
+<!-- APP DA EQUIPE -->
+<section class="pad" id="app-equipe" style="overflow:hidden">
+  <div class="glow" style="left:90%;top:30%"></div>
+  <div class="wrap" style="position:relative">
+    <span class="label rv">14 · App da equipe · incluso</span>
+    <h2 class="title display split" data-split>A loja inteira <span class="it hl">no bolso da equipe.</span></h2>
+    <p class="lead rv d1">O mesmo app da Fortal, com o login da equipe, vira o sistema no celular. Cada pessoa vê só o que o perfil dela permite: o atendente vê clientes e contratos, o mecânico parceiro só as ordens de serviço, e o dono vê tudo, com os avisos chegando na hora.</p>
+    <div class="phones-row rv d2">
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/inicio.jpg" alt="Tudo a um toque" loading="lazy" /></div></div><figcaption><b>Tudo a um toque</b>Clientes, contratos, SafeLock, mapa e multas no mesmo menu.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/notificacao.jpg" alt="Avisos na hora" loading="lazy" /></div></div><figcaption><b>Avisos na hora</b>OS para aprovar, multa nova, vistoria e pagamento chegam como notificação.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/safelock.jpg" alt="SafeLock no app" loading="lazy" /></div></div><figcaption><b>SafeLock no app</b>Leads do VozChat já consultados, com risco e botão de aprovar.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/mapa.jpg" alt="Mapa da ÁgilLock" loading="lazy" /></div></div><figcaption><b>Mapa da ÁgilLock</b>Onde cada moto está, em qualquer lugar.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/contrato.jpg" alt="Contrato aberto" loading="lazy" /></div></div><figcaption><b>Contrato aberto</b>Locação, locatário e ações rápidas: WhatsApp, contrato e financeiro.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/multas.jpg" alt="Multas" loading="lazy" /></div></div><figcaption><b>Multas</b>Cada multa com o locatário e o aceite, direto do celular.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/contratos.jpg" alt="Contratos" loading="lazy" /></div></div><figcaption><b>Contratos</b>Todos os contratos, com atraso e vencimento em destaque.</figcaption></figure>
+      <figure><div class="phone"><div class="scr real"><img src="img/app-equipe/login.jpg" alt="Com a marca da Fortal" loading="lazy" /></div></div><figcaption><b>Com a marca da Fortal</b>Entrada com biometria e a identidade da loja.</figcaption></figure>
+    </div>
+    <p class="caption" style="text-align:left">Prints reais do app com as cores da Fortal · nomes e documentos fictícios · arraste para o lado</p>
+  </div>
+</section>
+
 <!-- SITE PÚBLICO + APP LOCATÁRIO -->
 <section class="light pad" id="site">
   <div class="wrap sitepub">
     <div>
-      <span class="label rv">13 · Site público, app e WhatsApp ligados</span>
+      <span class="label rv">15 · Site público, app e WhatsApp ligados</span>
       <h2 class="title display split" data-split>Todo lead chega <span class="it hl">no mesmo lugar.</span></h2>
       <p class="lead rv d1">O site público da Fortal, o app e o WhatsApp passam a falar com o sistema. As motos disponíveis e os valores saem do estoque e se atualizam sozinhos, e cada interessado vira um prospecto com origem registrada, pronto para a análise.</p>
       <div class="flow">
@@ -1370,7 +1314,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
 <!-- MÓDULOS -->
 <section class="light pad" id="modulos" style="padding-top:0">
   <div class="wrap">
-    <span class="label rv">14 · Tudo o que vem no sistema</span>
+    <span class="label rv">16 · Tudo o que vem no sistema</span>
     <h2 class="title display split" data-split>Do pátio ao caixa, <span class="it">da locação à venda.</span></h2>
     <div class="tabs rv" role="tablist">
       <button class="tab on" data-f="all">Todos</button>
@@ -1412,7 +1356,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
       <figcaption><b>Pedro Castro</b><small>Desenvolvedor · Fortaleza/CE</small></figcaption>
     </figure>
     <div>
-      <span class="label rv">15 · Quem constrói</span>
+      <span class="label rv">17 · Quem constrói</span>
       <blockquote class="q rv d1">A Fortal não está contratando uma promessa. Está contratando <em>quem já desenvolve os sistemas</em> que cuidam das suas motos e dos seus clientes todos os dias.</blockquote>
       <p class="lead rv d2" style="margin-bottom:30px">Quem atende é quem programou. Sem intermediário e sem fila de suporte. Estas empresas confiam a mim o desenvolvimento e a manutenção dos seus sistemas:</p>
       <div class="trust rv d3">
@@ -1442,7 +1386,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
 <!-- IMPLANTAÇÃO -->
 <section class="light pad" id="implantacao">
   <div class="wrap">
-    <span class="label rv">16 · Prazo e acompanhamento</span>
+    <span class="label rv">18 · Prazo e acompanhamento</span>
     <h2 class="title display split" data-split>Duas semanas para estar no ar. <span class="it hl">E eu na loja com vocês.</span></h2>
     <p class="lead rv d1">Em 14 dias a Fortal está operando com sistema próprio e com o app disponível para baixar na Google Play e na App Store. Depois disso eu não sumo: fico ao lado da equipe até ela dominar tudo.</p>
     <div class="big3">
@@ -1463,7 +1407,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
 <section class="pricing pad" id="investimento">
   <div class="grid-bg"></div><div class="glow"></div>
   <div class="wrap" style="position:relative">
-    <span class="label rv">17 · Investimento</span>
+    <span class="label rv">19 · Investimento</span>
     <h2 class="title display split" data-split>Um sistema só. <span class="it hl">Com a cara da Fortal.</span></h2>
     <p class="lead rv d1">Locação, Compra e Venda, app próprio nas lojas e as integrações com o que a Fortal já usa, num investimento só, dividido em quatro vezes.</p>
 
@@ -1526,7 +1470,7 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
 <section class="light pad cta">
   <div class="wrap">
     <img class="cta-logo rv" src="img/logo-fortal-escuro.png" alt="Fortal Loca & Vende" />
-    <span class="label rv" style="justify-content:center">18 · Próximo passo</span>
+    <span class="label rv" style="justify-content:center">20 · Próximo passo</span>
     <h2 class="display split" data-split style="margin-top:18px">Vamos colocar a Fortal <span class="it hl">no próximo nível?</span></h2>
     <p class="lead rv d1">Você já aprovou a ÁgilLock e a SafeLock no dia a dia. Com o aceite, em duas semanas a Fortal tem tudo isso num sistema só, com a sua marca no computador, no celular da equipe e na loja de aplicativos.</p>
     <div class="cta-btns rv d2">
@@ -1658,16 +1602,15 @@ footer{padding:40px 0;border-top:1px solid var(--line-d);font-size:.84rem;color:
   };
   setTimeout(function(){ cycleToast(); setInterval(cycleToast, 4400); }, 2200);
 
-  // abas das telas
-  var urls = ['dashboard','frota','financeiro','analise/moto/SBA7J33','prospectos'];
-  var sideIdx = [0,1,2,3,4];
+  // abas das telas reais
   $$('.stab').forEach(function(b){
     b.addEventListener('click', function(){
-      var i = +b.dataset.s;
+      var i = +b.dataset.s, imgs = $$('#telas .shot');
       $$('.stab').forEach(function(x){ x.classList.toggle('on', x===b); });
-      $$('#telas .shot').forEach(function(s,k){ s.classList.toggle('on', k===i); });
-      $$('#shotSide a').forEach(function(a,k){ a.classList.toggle('on', k===sideIdx[i]); });
-      $('#shotUrl').textContent = 'sistema.fortallocaevende.com/' + urls[i];
+      imgs.forEach(function(s,k){ s.classList.toggle('on', k===i); });
+      $('#shotUrl').textContent = 'sistema.fortallocaevende.com/' + imgs[i].dataset.url;
+      $('#shotCap').textContent = imgs[i].dataset.cap;
+      b.scrollIntoView({block:'nearest', inline:'center', behavior: reduce ? 'auto' : 'smooth'});
     });
   });
 
